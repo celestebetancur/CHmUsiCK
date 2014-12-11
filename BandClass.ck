@@ -2,17 +2,19 @@ public class Band extends CHmUsiCK
 {
     Notes notes;
     
-    Gain vol => Master => outlet;
+    Pan2 p => Gain vol => Master => outlet;
     
     Drum drum => vol;
     Bass bass => vol;
     Melody melody => vol;
     Harmony harmony => vol;
-    FMSynth fm => vol;
+    FMSynth fm => p.left;
+    FMSynth fm1 => p.right;
     
     8 => int Division;
     OverallTempo => float Tempo;
     4 => int Beats;
+    "C" => string Key;
     
     public float gain(float volum)
     {
@@ -39,7 +41,16 @@ public class Band extends CHmUsiCK
     }
     public int subdivision()
     {
-        return subdivision(Division);
+        return Division;
+    }
+    public string key(string k)
+    {
+        k => Key;
+        return Key;
+    }
+    public string key()
+    {
+        return Key;
     }
     private dur convert(float beat)
     {
@@ -89,7 +100,9 @@ public class Band extends CHmUsiCK
     }
     public void randomBand(dur beat, int beats, int div, string key)
     {
+        convertD(beat) => Tempo;
         div => Division;
+        key => Key;
         
         harmony.random(beats,key) @=> string chords[];
         notes.stodArray(key,chords) @=> int note[];
@@ -98,9 +111,10 @@ public class Band extends CHmUsiCK
         
         spork~ harmony.sinOsc(beat,chords,4);
         spork~ drum.randomDrum(beat,Division, (beats*2));
-        spork~ bass.bass(beat,(notes.stom(key)),note,4);
-        spork~ melody.randomMelody(beat,(Division * 2),(beats*8),key);
-        spork~ fm.randomFM(beat,Division,(beats*4),key);
+        spork~ bass.bass(beat,(notes.stom(Key)),note,4);
+        spork~ melody.randomMelody(beat,(Division * 2),(beats*8),Key);
+        spork~ fm.randomFM(beat,Division,(beats*4),Key);
+        spork~ fm1.randomFM(beat,Division,(beats*4),Key);
         while(true) 1::second => now;
     }
 }

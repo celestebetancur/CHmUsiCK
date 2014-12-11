@@ -10,7 +10,7 @@ public class Melody extends CHmUsiCK
 {   
     Gain Normalize => Gain vol => Master => outlet;
     
-    0.5 => Normalize.gain; //don't change this
+    0.4 => Normalize.gain; //don't change this
     
     ADSR envelope;
     
@@ -144,24 +144,24 @@ public class Melody extends CHmUsiCK
     }
     public int controlChange(int parameter)
     {
-        if(parameter == 0) 0.5 => Normalize.gain;
-        if(parameter == 1) 7 => Normalize.gain;
-        if(parameter == 2) 0.5 => Normalize.gain;
-        if(parameter == 3) 0.5 => Normalize.gain;
-        if(parameter == 4) 5 => Normalize.gain;
-        if(parameter == 5) 0.6 => Normalize.gain;
-        if(parameter == 6) 0.6 => Normalize.gain;
-        if(parameter == 7) 0.4 => Normalize.gain;
-        if(parameter == 8) 0.5 => Normalize.gain;
-        if(parameter == 9) 0.55 => Normalize.gain;
-        if(parameter == 10) 2 => Normalize.gain;
-        if(parameter == 11) 2 => Normalize.gain;
-        if(parameter == 12) 0.32 => Normalize.gain;
-        if(parameter == 13) 1.5 => Normalize.gain;
-        if(parameter == 14) 0.6 => Normalize.gain;
-        if(parameter == 15) 0.5 => Normalize.gain;
-        if(parameter == 16) 0.35 => Normalize.gain;
-        if(parameter == 17) 0.5 => Normalize.gain;
+        if(parameter == 0) 0.35 => Normalize.gain;
+        if(parameter == 1) 5.5 => Normalize.gain;
+        if(parameter == 2) 0.35 => Normalize.gain;
+        if(parameter == 3) 0.35 => Normalize.gain;
+        if(parameter == 4) 3 => Normalize.gain;
+        if(parameter == 5) 0.45 => Normalize.gain;
+        if(parameter == 6) 0.45 => Normalize.gain;
+        if(parameter == 7) 0.3 => Normalize.gain;
+        if(parameter == 8) 0.35 => Normalize.gain;
+        if(parameter == 9) 0.4 => Normalize.gain;
+        if(parameter == 10) 1 => Normalize.gain;
+        if(parameter == 11) 1 => Normalize.gain;
+        if(parameter == 12) 0.2 => Normalize.gain;
+        if(parameter == 13) 0.8 => Normalize.gain;
+        if(parameter == 14) 0.35 => Normalize.gain;
+        if(parameter == 15) 0.35 => Normalize.gain;
+        if(parameter == 16) 0.25 => Normalize.gain;
+        if(parameter == 17) 0.35 => Normalize.gain;
 
         parameter => activeInst;
         return activeInst;
@@ -204,30 +204,37 @@ public class Melody extends CHmUsiCK
     }
     public void randomMelody(int capacity)
     {
+        controlChange(Math.random2(0,17));
         synth(convert(Tempo),Division,random(capacity));
     }
     public void randomMelody(float beat ,int capacity)
     {
+        controlChange(Math.random2(0,17));
         synth(convert(beat),Division,random(capacity));
     }
     public void randomMelody(dur beat ,int capacity)
     {
+        controlChange(Math.random2(0,17));
         synth(beat,Division,random(capacity));
     }
     public void randomMelody(float beat, int div ,int capacity)
     {
+        controlChange(Math.random2(0,17));
         synth(convert(beat),Division,random(capacity));
     }
     public void randomMelody(dur beat, int div ,int capacity)
     {
+        controlChange(Math.random2(0,17));
         synth(beat,div,random(capacity));
     }
     public void randomMelody(float beat, int div ,int capacity, string key)
     {
+        controlChange(Math.random2(0,17));
         synth(convert(beat),div,random(key,capacity));
     }
     public void randomMelody(dur beat, int div ,int capacity, string key)
     {
+        controlChange(Math.random2(0,17));
         synth(beat,div,random(key,capacity));
     }
     //———————————————synth——————————————//
