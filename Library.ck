@@ -24,6 +24,7 @@ Machine.add(me.dir() + "/BandClass.ck");
 Machine.add(me.dir() + "/EFXClass.ck");
 Machine.add(me.dir() + "/RecSession.ck");
 Machine.add(me.dir() + "/Looper.ck");
+Machine.add(me.dir() + "/Pan.ck");
 //Machine.add(me.dir() + "/LoopTap.ck");
 //Machine.add(me.dir() + "/Loop.ck");
 

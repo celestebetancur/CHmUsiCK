@@ -1,5 +1,9 @@
 #CHmUsiCK
 ========
+________
 (under construction)
 _______________
-##Musical Simple Interface beta version
+##Musical Simple Interface 
+(beta version)
+---------------
+

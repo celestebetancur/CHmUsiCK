@@ -1,3 +1,11 @@
+//
+//  EFXClass.ck
+//  CHmUsiCK
+//
+//  Created by Esteban Betancur on 10/12/14.
+//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
+//
+
 public class EFX extends CHmUsiCK
 {     
     Gain Normalize; Gain vol;
