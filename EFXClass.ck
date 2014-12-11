@@ -1,14 +1,23 @@
 public class EFX extends CHmUsiCK
 {     
-    Gain Normalize;
+    Gain Normalize; Gain vol;
     
     0.18 => Normalize.gain; //don't change this
     
     float t;
     
+    public float gain(float volum)
+    {
+        volum => vol.gain;
+        return vol.gain();
+    }
+    public float gain()
+    {
+        return vol.gain();
+    }
     public void bpf(float Dur)
     {
-        Noise noise => BPF filter => Normalize => Master => outlet;
+        Noise noise => BPF filter => Normalize => vol => Master => outlet;
 
         1 => filter.Q;
         
@@ -23,7 +32,7 @@ public class EFX extends CHmUsiCK
     }
     public void brf(float fr)
     {
-        SqrOsc sq => BRF filter => Normalize => Master => outlet;
+        SqrOsc sq => BRF filter => Normalize => vol => Master => outlet;
         
         fr => sq.freq;
 
@@ -43,7 +52,7 @@ public class EFX extends CHmUsiCK
     }
     public void hpf(float Dur)
     {
-        Noise noise => HPF filter => Normalize => Master => outlet;
+        Noise noise => HPF filter => Normalize => vol => Master => outlet;
 
         .5 => filter.gain;
         
@@ -59,7 +68,7 @@ public class EFX extends CHmUsiCK
     }
     public void lpf(float Dur)
     {
-        Noise noise => LPF lpf => Normalize => Master => outlet;
+        Noise noise => LPF lpf => Normalize => vol => Master => outlet;
 
         while( true )
         {
@@ -73,7 +82,7 @@ public class EFX extends CHmUsiCK
     }
     public void rezonZ(float Dur)
     {
-        Noise noise => ResonZ filter => Normalize => Master => outlet;
+        Noise noise => ResonZ filter => Normalize => vol => Master => outlet;
 
         1 => filter.Q;
 
@@ -89,7 +98,7 @@ public class EFX extends CHmUsiCK
     }
     public void rhp(float Dur)
     {
-        SqrOsc sq => HPF filter => Normalize => Master => outlet;
+        SqrOsc sq => HPF filter => Normalize => vol => Master => outlet;
 
         50 => sq.freq;
 
@@ -109,7 +118,7 @@ public class EFX extends CHmUsiCK
     }
     public void rlp(float Dur)
     {
-        SqrOsc sq => LPF filter => Normalize => Master => outlet;
+        SqrOsc sq => LPF filter => Normalize => vol => Master => outlet;
         
         50 => sq.freq;
 
