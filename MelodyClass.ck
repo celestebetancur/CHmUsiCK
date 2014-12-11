@@ -10,7 +10,7 @@ public class Melody extends CHmUsiCK
 {   
     Gain Normalize => Gain vol => Master => outlet;
     
-    1.5 => Normalize.gain; //don't change this
+    0.5 => Normalize.gain; //don't change this
     
     ADSR envelope;
     
@@ -19,11 +19,11 @@ public class Melody extends CHmUsiCK
     
     0 => int activeOsc;
     
-    BandedWG BWG; BlowBotl BB; Wurley W; TubeBell TB; Bowed bow;
+    BlowBotl BB; BandedWG BWG; Wurley W; TubeBell TB; Bowed bow;
     Rhodey rhod; PercFlut PF; BlowHole BH; HevyMetl HM; ModalBar MB;
     Flute flut; Mandolin mandol; Saxofony sax; Moog mg; Sitar sit; 
     StifKarp SK; BeeThree BT; FMVoices fmv;
-    [BWG,BB,W,TB,bow,rhod,PF,BH,flut,mandol,MB,mg,sax,sit,SK,BT,fmv,HM] @=> StkInstrument inst[];
+    [BB, BWG,W,TB,bow,rhod,PF,BH,flut,mandol,MB,mg,sax,sit,SK,BT,fmv,HM] @=> StkInstrument inst[];
     
     0 => int activeInst; 
     
@@ -131,6 +131,11 @@ public class Melody extends CHmUsiCK
     public int controlChangeOsc(int parameter)
     {
         parameter => activeOsc;
+        if(parameter == 0) 0.5 => Normalize.gain;
+        if(parameter == 1) 0.19 => Normalize.gain;
+        if(parameter == 2) 0.19 => Normalize.gain;
+        if(parameter == 3) 0.19 => Normalize.gain;
+        if(parameter == 4) 0.45 => Normalize.gain;
         return activeOsc;
     }
     public int controlChangeOsc()
@@ -139,6 +144,25 @@ public class Melody extends CHmUsiCK
     }
     public int controlChange(int parameter)
     {
+        if(parameter == 0) 0.5 => Normalize.gain;
+        if(parameter == 1) 7 => Normalize.gain;
+        if(parameter == 2) 0.5 => Normalize.gain;
+        if(parameter == 3) 0.5 => Normalize.gain;
+        if(parameter == 4) 5 => Normalize.gain;
+        if(parameter == 5) 0.6 => Normalize.gain;
+        if(parameter == 6) 0.6 => Normalize.gain;
+        if(parameter == 7) 0.4 => Normalize.gain;
+        if(parameter == 8) 0.5 => Normalize.gain;
+        if(parameter == 9) 0.55 => Normalize.gain;
+        if(parameter == 10) 2 => Normalize.gain;
+        if(parameter == 11) 2 => Normalize.gain;
+        if(parameter == 12) 0.32 => Normalize.gain;
+        if(parameter == 13) 1.5 => Normalize.gain;
+        if(parameter == 14) 0.6 => Normalize.gain;
+        if(parameter == 15) 0.5 => Normalize.gain;
+        if(parameter == 16) 0.35 => Normalize.gain;
+        if(parameter == 17) 0.5 => Normalize.gain;
+
         parameter => activeInst;
         return activeInst;
     }

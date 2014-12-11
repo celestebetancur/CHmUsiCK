@@ -1,5 +1,10 @@
 public class Looper extends CHmUsiCK
 {
+    Gain Normalize;
+    LiSa Looper;
+    
+    0.6 => Normalize.gain;
+    
     1::second => dur Dur; 
     1 => float Rate;
     1 => int Play;
@@ -14,7 +19,7 @@ public class Looper extends CHmUsiCK
     
     public void looper()
     {
-        adc => LiSa Looper => Master => outlet;
+        adc => Looper => Normalize => Master => outlet;
         
         Dur => Looper.duration;
         Looper.recRamp( Ramp::ms );
@@ -34,7 +39,7 @@ public class Looper extends CHmUsiCK
     }
     public void looper(float beat)
     {
-        adc => LiSa Looper => Master => outlet;
+        adc => Looper => Normalize => Master => outlet;
         
         convert(beat) => Looper.duration;
         Looper.recRamp( Ramp::ms );
@@ -55,7 +60,7 @@ public class Looper extends CHmUsiCK
     public void looper(string file)
     {
         SndBuf buf;
-        LiSa Looper => Master => outlet;
+        Looper => Normalize => Master => outlet;
         
         me.dir() + "/RecordedFiles/" + file + ".wav" => buf.read;
         
@@ -77,7 +82,7 @@ public class Looper extends CHmUsiCK
     public void madLooper(string file)
     {
         SndBuf buf;
-        LiSa Looper => Master => outlet;
+        Looper => Normalize => Master => outlet;
         
         me.dir() + "/RecordedFiles/" + file + ".wav" => buf.read;
         
