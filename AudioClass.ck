@@ -1,11 +1,11 @@
-public class Audio extends Chubgraph
+public class Audio extends CHmUsiCK
 {
     JCRev reverb;
     Delay delaY;
     
     inlet => delaY => reverb => outlet;
     
-    1000::samp => dur dDelay; 
+    800::samp => dur dDelay; 
     dDelay => delaY.delay;
     
     0.22 => float Mix;

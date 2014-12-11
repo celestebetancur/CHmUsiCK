@@ -12,7 +12,7 @@ public class Drum extends CHmUsiCK
     
     Gain Normalize => Gain vol => Master => outlet;
     
-    0.15 => Normalize.gain; //don't change this
+    0.2 => Normalize.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
