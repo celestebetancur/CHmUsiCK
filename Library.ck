@@ -7,7 +7,7 @@
 //
 
 //Library
-Machine.add(me.dir() + "/CHmUsiCK");
+Machine.add(me.dir() + "/CHmUsiCK.ck");
 Machine.add(me.dir() + "/FavoriteArray.ck");
 Machine.add(me.dir() + "/Array.ck");
 Machine.add(me.dir() + "/AudioClass.ck");
