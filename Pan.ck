@@ -13,6 +13,14 @@ public class Pan extends CHmUsiCK
     120 => float Tempo;
     8 => int Division;
     
+    public void randomPan()
+    {        
+        while(true)
+        {
+            Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 
+            Dur(convert(Tempo),Division) => now; 
+        }
+    }
     public void randomPan(float t)
     {
         t => Tempo;
