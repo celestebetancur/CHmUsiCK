@@ -10,7 +10,9 @@ public class Drum extends CHmUsiCK
 {
     FileIO rythyms;
     
-    Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master => outlet;
+    
+    0.15 => Normalize.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
@@ -49,17 +51,17 @@ public class Drum extends CHmUsiCK
     
     for(0 => int i; i < Kick.cap(); i++)
     {
-        Kick[i] => vol;
+        Kick[i] => Normalize;
         Kick[i].samples() => Kick[i].pos;
     }
     for(0 => int i; i < Snare.cap(); i++)
     { 
-        Snare[i] => vol;
+        Snare[i] => Normalize;
         Snare[i].samples() => Snare[i].pos;
     }
     for(0 => int i; i < HH.cap(); i++)
     {   
-        HH[i] => vol;
+        HH[i] => Normalize;
         HH[i].samples() => HH[i].pos;
     }
     

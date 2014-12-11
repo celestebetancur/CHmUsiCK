@@ -10,11 +10,6 @@ public class Band extends CHmUsiCK
     Harmony harmony => vol;
     FMSynth fm => vol;
     
-    2.2 => melody.gain;
-    0.7 => drum.gain;
-    0.05 => harmony.gain;
-    1.2 => bass.gain;
-    
     8 => int Division;
     OverallTempo => float Tempo;
     4 => int Beats;
@@ -103,7 +98,7 @@ public class Band extends CHmUsiCK
         
         spork~ harmony.sinOsc(beat,chords,4);
         spork~ drum.randomDrum(beat,Division, (beats*2));
-        spork~ bass.bass(beat,1,(notes.stom(key)),note,4);
+        spork~ bass.bass(beat,(notes.stom(key)),note,4);
         spork~ melody.randomMelody(beat,(Division * 2),(beats*8),key);
         spork~ fm.randomFM(beat,Division,(beats*4),key);
         while(true) 1::second => now;

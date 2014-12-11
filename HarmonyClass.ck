@@ -9,11 +9,12 @@
 
 public class Harmony extends CHmUsiCK
 {  
-    Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master => outlet;
+    
+    0.035 => Normalize.gain; // don't change this
     
     Notes chords;
-    
-    0.1 => vol.gain;
+
     3 => int numVoices;
     
     OverallTempo => float Tempo;
@@ -164,7 +165,7 @@ public class Harmony extends CHmUsiCK
         SinOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
-            polyphony[i] => vol;
+            polyphony[i] => Normalize;
         }  
         
         while(true)
@@ -208,7 +209,7 @@ public class Harmony extends CHmUsiCK
         SqrOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
-            polyphony[i] => vol;
+            polyphony[i] => Normalize;
         }   
         while(true)
         {
@@ -251,7 +252,7 @@ public class Harmony extends CHmUsiCK
         TriOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
-            polyphony[i] => vol;
+            polyphony[i] => Normalize;
         }  
         while(true)
         {
@@ -294,7 +295,7 @@ public class Harmony extends CHmUsiCK
         SawOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
-            polyphony[i] => vol;
+            polyphony[i] => Normalize;
         }  
         while(true)
         {
@@ -337,7 +338,7 @@ public class Harmony extends CHmUsiCK
         PulseOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
-            polyphony[i] => vol;
+            polyphony[i] => Normalize;
         }
         while(true)
         {

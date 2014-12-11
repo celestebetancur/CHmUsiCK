@@ -10,8 +10,10 @@
 
 public class Bass extends CHmUsiCK
 {
-    TriOsc Bass => ADSR e => Gain bassGain => Master => outlet;
+    TriOsc Bass => ADSR e => Gain Normalize => Gain bassGain => Master => outlet;
     e.set(10::ms, 8::ms, .5, 5::ms);
+    
+    0.25 => Normalize.gain; //don't change this
     
     OverallTempo => float Tempo;
     

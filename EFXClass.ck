@@ -1,11 +1,15 @@
 public class EFX extends CHmUsiCK
 {     
+    Gain Normalize;
+    
+    0.25 => Normalize.gain; //don't change this
+    
     float t;
     
     public void bpf(float Dur)
     {
-        Noise noise => BPF filter => outlet;
-        
+        Noise noise => BPF filter => Normalize => Master => outlet;
+
         1 => filter.Q;
         
         while( true )
@@ -19,8 +23,8 @@ public class EFX extends CHmUsiCK
     }
     public void brf(float fr)
     {
-        SqrOsc sq => BRF filter => outlet;
-
+        SqrOsc sq => BRF filter => Normalize => Master => outlet;
+        
         fr => sq.freq;
 
         .25 => filter.Q;
@@ -39,7 +43,7 @@ public class EFX extends CHmUsiCK
     }
     public void hpf(float Dur)
     {
-        Noise noise => HPF filter => outlet;
+        Noise noise => HPF filter => Normalize => Master => outlet;
 
         .5 => filter.gain;
         
@@ -55,7 +59,7 @@ public class EFX extends CHmUsiCK
     }
     public void lpf(float Dur)
     {
-        Noise noise => LPF lpf => outlet;
+        Noise noise => LPF lpf => Normalize => Master => outlet;
 
         while( true )
         {
@@ -69,7 +73,7 @@ public class EFX extends CHmUsiCK
     }
     public void rezonZ(float Dur)
     {
-        Noise noise => ResonZ filter => dac;
+        Noise noise => ResonZ filter => Normalize => Master => outlet;
 
         1 => filter.Q;
 
@@ -85,7 +89,7 @@ public class EFX extends CHmUsiCK
     }
     public void rhp(float Dur)
     {
-        SqrOsc sq => HPF filter => outlet;
+        SqrOsc sq => HPF filter => Normalize => Master => outlet;
 
         50 => sq.freq;
 
@@ -105,7 +109,7 @@ public class EFX extends CHmUsiCK
     }
     public void rlp(float Dur)
     {
-        SqrOsc sq => LPF filter => outlet;
+        SqrOsc sq => LPF filter => Normalize => Master => outlet;
         
         50 => sq.freq;
 

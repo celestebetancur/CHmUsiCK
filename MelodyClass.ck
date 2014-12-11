@@ -8,7 +8,10 @@
 
 public class Melody extends CHmUsiCK
 {   
-    Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master => outlet;
+    
+    1.5 => Normalize.gain; //don't change this
+    
     ADSR envelope;
     
     SinOsc sin; SqrOsc sqr; PulseOsc pulse; SawOsc saw;TriOsc tri;
@@ -230,7 +233,7 @@ public class Melody extends CHmUsiCK
         div => Division;
         setNotes(notes);
         
-        osc[activeOsc] => envelope => vol;
+        osc[activeOsc] => envelope => Normalize;
         
         while(true)
         {
@@ -277,7 +280,7 @@ public class Melody extends CHmUsiCK
         div => Division;
         setNotes(notes);
         
-        inst[activeInst] => vol;
+        inst[activeInst] => Normalize;
         
         while(true)
         {

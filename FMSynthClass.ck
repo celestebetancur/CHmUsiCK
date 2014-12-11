@@ -9,7 +9,9 @@
 
 public class FMSynth extends CHmUsiCK
 {
-    SinOsc modulator=> SinOsc carrier => ADSR envelope => Master => outlet;
+    SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
+    
+    0.09 => Normalize.gain; //don't change this
     
     SinOsc carrier2;
     8 => float C2f;
@@ -20,8 +22,6 @@ public class FMSynth extends CHmUsiCK
     0.2 => float M2f;
     carrier.freq() * M2f => modulator2.freq; 
     2 => modulator2.gain;
-    
-    0.7 => carrier.gain;
     
     2 => carrier.sync;
     10000 => modulator.gain;
