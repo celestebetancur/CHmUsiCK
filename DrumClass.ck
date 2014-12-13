@@ -175,6 +175,19 @@ public class Drum extends CHmUsiCK
         }
         return reversed;
     }
+    public int[] every(int parameter)
+    {
+        int everyArray[parameter];
+        
+        1 => everyArray[0];
+        
+        for(1 => int i; i < everyArray.cap(); i++)
+        {
+            0 => everyArray[i];
+        }
+        
+        return everyArray;
+    }
     private dur convert(float beat)
     {
         60/beat => float tempo;
