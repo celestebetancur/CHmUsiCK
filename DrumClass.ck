@@ -188,6 +188,51 @@ public class Drum extends CHmUsiCK
         
         return everyArray;
     }
+    public int[] densify(int pattern[])
+    {
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] == 0 && maybe)
+            {
+                1 => pattern[i];
+            } 
+        }
+        return pattern;
+    }
+    public int[] degrade(int pattern[])
+    {
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] == 1 && maybe)
+            {
+                0 => pattern[i];
+            } 
+        }
+        return pattern;
+    }
+    public int[] rotate(int pattern[])
+    {
+        int newPattern[pattern.cap()];
+        
+        pattern[pattern.cap()-1] => newPattern[0];
+        
+        for(0 => int i; i < (pattern.cap()-1); i++)
+        {
+            pattern[i] => newPattern[i+1];
+        }
+        return newPattern;
+    }
+    public int[] rotate(int pattern[], int move)
+    {
+        int newPattern[pattern.cap()];
+        
+        repeat(move)
+        {
+            rotate(pattern) @=> newPattern;
+            newPattern @=> pattern;
+        }
+        return pattern;
+    }
     private dur convert(float beat)
     {
         60/beat => float tempo;
