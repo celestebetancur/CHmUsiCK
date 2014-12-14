@@ -48,7 +48,7 @@ public class CHmUsiCK extends Chubgraph
     {
         for(0 => int i; i < pattern.cap(); i++)
         {
-            if(pattern[i] == 1 && maybe)
+            if(pattern[i] != 0 && maybe)
             {
                 0 => pattern[i];
             }
