@@ -203,22 +203,6 @@ public class FMSynth extends CHmUsiCK
         }
         return notes;
     }
-    private dur Dur(dur beat, int div)
-    {
-        (div / 4) => float factor;
-        (beat / factor) => dur tempo;
-        return tempo;
-    }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
-    private float convertD(dur beat)
-    {
-        ((60::second/beat)$float) => float tempo;
-        return tempo;
-    }
     public int c2sync(int mode)
     {
         mode => carrier.sync;

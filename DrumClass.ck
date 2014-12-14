@@ -165,16 +165,6 @@ public class Drum extends CHmUsiCK
     {
         return Array.Drum[num];
     }
-    public int[] reverse(int pattern[])
-    {
-        int reversed[0];
-        
-        for((pattern.cap()-1) => int i; i >= 0 ; i - 1 => i)
-        {
-            reversed << pattern[i];
-        }
-        return reversed;
-    }
     public int[] every(int parameter)
     {
         int everyArray[parameter];
@@ -198,56 +188,6 @@ public class Drum extends CHmUsiCK
             } 
         }
         return pattern;
-    }
-    public int[] degrade(int pattern[])
-    {
-        for(0 => int i; i < pattern.cap(); i++)
-        {
-            if(pattern[i] == 1 && maybe)
-            {
-                0 => pattern[i];
-            } 
-        }
-        return pattern;
-    }
-    public int[] rotate(int pattern[])
-    {
-        int newPattern[pattern.cap()];
-        
-        pattern[pattern.cap()-1] => newPattern[0];
-        
-        for(0 => int i; i < (pattern.cap()-1); i++)
-        {
-            pattern[i] => newPattern[i+1];
-        }
-        return newPattern;
-    }
-    public int[] rotate(int pattern[], int move)
-    {
-        int newPattern[pattern.cap()];
-        
-        repeat(move)
-        {
-            rotate(pattern) @=> newPattern;
-            newPattern @=> pattern;
-        }
-        return pattern;
-    }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
-    private float convertD(dur beat)
-    {
-        ((60::second/beat)$float) => float tempo;
-        return tempo;
-    }
-    private dur Dur(dur beat, int div)
-    {
-        (div / 4) => float factor;
-        (beat / factor) => dur tempo;
-        return tempo;
     }
     private void saveFavorite(int k[], int sn[], int hh[])
     {

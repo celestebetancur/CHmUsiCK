@@ -13,7 +13,7 @@ public class Looper extends CHmUsiCK
     
     0.6 => Normalize.gain;
     
-    1::second => dur Dur; 
+    1::second => dur Dura; 
     1 => float Rate;
     1 => int Play;
     1 => int Loop;
@@ -29,11 +29,11 @@ public class Looper extends CHmUsiCK
     {
         adc => Looper => Normalize => Master => outlet;
         
-        Dur => Looper.duration;
+        Dura => Looper.duration;
         Looper.recRamp( Ramp::ms );
         
         Looper.record( 1 );
-        Dur => now;
+        Dura => now;
         Looper.record(0);
         
         Rate => Looper.rate;
@@ -53,7 +53,7 @@ public class Looper extends CHmUsiCK
         Looper.recRamp( Ramp::ms );
         
         Looper.record( 1 );
-        Dur => now;
+        Dura => now;
         Looper.record(0);
         
         Rate => Looper.rate;
@@ -127,24 +127,19 @@ public class Looper extends CHmUsiCK
     {
         return Vol;
     }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
     public dur duration(dur Duration)
     {
-        Duration => Dur;
-        return Dur;
+        Duration => Dura;
+        return Dura;
     }
     public dur duration(float beat)
     {
-        convert(beat) => Dur;
-        return Dur;
+        convert(beat) => Dura;
+        return Dura;
     }
     public dur duration()
     {
-        return Dur;
+        return Dura;
     }
     public float rate(float rate)
     {

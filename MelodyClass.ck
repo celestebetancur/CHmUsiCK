@@ -76,22 +76,6 @@ public class Melody extends CHmUsiCK
     {
         return Notes;
     }
-    private dur Dur(dur beat, int div)
-    {
-        (div / 4) => float factor;
-        (beat / factor) => dur tempo;
-        return tempo;
-    }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
-    private float convertD(dur beat)
-    {
-        ((60::second/beat)$float) => float tempo;
-        return tempo;
-    }
     public dur attack(dur attacK)
     {
         attacK => A;
