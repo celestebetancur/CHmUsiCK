@@ -39,20 +39,10 @@ public class FMSynth extends CHmUsiCK
     
     envelope.set(A, D, S, R);
     
-    OverallTempo => float Tempo;
-    OverallDivision => int Division;
+    8 => int Division;
     
     int Notes[0];
     
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
-    }
     public int subdivision(int div)
     {
         div => Division;
@@ -329,7 +319,7 @@ public class FMSynth extends CHmUsiCK
         convertD(beat) => Tempo;
         setNotes(notes);
         div => Division;
-        Dur(beat,div) => dur tempo;
+        Dur(beat,div) => dur temp;
         
         while(true)
         {
@@ -338,7 +328,7 @@ public class FMSynth extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    tempo => now;
+                    temp => now;
                 }
                 else
                 {
@@ -347,7 +337,7 @@ public class FMSynth extends CHmUsiCK
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
                     envelope.keyOn();
-                    tempo => now;
+                    temp => now;
                     envelope.keyOff();
                 }
             }          

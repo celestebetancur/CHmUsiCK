@@ -12,7 +12,6 @@ public class Band extends CHmUsiCK
     FMSynth fm1 => p.right;
     
     8 => int Division;
-    OverallTempo => float Tempo;
     4 => int Beats;
     "C" => string Key;
     
@@ -24,15 +23,6 @@ public class Band extends CHmUsiCK
     public float gain()
     {
         return vol.gain();
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
     }
     public int subdivision(int div)
     {

@@ -17,10 +17,6 @@ public class Harmony extends CHmUsiCK
 
     3 => int numVoices;
     
-    OverallTempo => float Tempo;
-    
-    4 => int Measure;
-    
     string Notes[0];
 
     public float gain(float volum)
@@ -31,15 +27,6 @@ public class Harmony extends CHmUsiCK
     public float gain()
     {
         return vol.gain();
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
     }
     public int voices(int num)
     {
@@ -144,7 +131,7 @@ public class Harmony extends CHmUsiCK
         voices => numVoices;
         setNotes(note);
         
-        (beat * Measure) => dur tempo;
+        (beat * Measure) => dur temp;
         
         SinOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -162,7 +149,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                tempo => now;  
+                temp => now;  
             }
         }
     }
@@ -188,7 +175,7 @@ public class Harmony extends CHmUsiCK
         voices => numVoices;
         setNotes(note);
         
-        (beat * Measure) => dur tempo;
+        (beat * Measure) => dur temp;
         
         SqrOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -205,7 +192,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                tempo => now;  
+                temp => now;  
             }
         }
     }
@@ -231,7 +218,7 @@ public class Harmony extends CHmUsiCK
         voices => numVoices;
         setNotes(note);
         
-        (beat * Measure) => dur tempo;
+        (beat * Measure) => dur temp;
         
         TriOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -248,7 +235,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                tempo => now;  
+                temp => now;  
             }
         }
     }
@@ -274,7 +261,7 @@ public class Harmony extends CHmUsiCK
         voices => numVoices;
         setNotes(note);
         
-        (beat * Measure) => dur tempo;
+        (beat * Measure) => dur temp;
         
         SawOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -291,7 +278,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                tempo=> now;  
+                temp => now;  
             }
         }
     }
@@ -317,7 +304,7 @@ public class Harmony extends CHmUsiCK
         voices => numVoices;
         setNotes(note);
         
-        (beat * Measure) => dur tempo;
+        (beat * Measure) => dur temp;
         
         PulseOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -334,7 +321,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                tempo => now;  
+                temp => now;  
             }
         }
     }

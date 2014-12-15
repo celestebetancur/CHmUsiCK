@@ -10,7 +10,7 @@ public class Melody extends CHmUsiCK
 {   
     Gain Normalize => Gain vol => Master => outlet;
     
-    0.4 => Normalize.gain; //don't change this
+    0.25 => Normalize.gain; //don't change this
     
     ADSR envelope;
     
@@ -26,9 +26,8 @@ public class Melody extends CHmUsiCK
     [BB, BWG,W,TB,bow,rhod,PF,BH,flut,mandol,MB,mg,sax,sit,SK,BT,fmv,HM] @=> StkInstrument inst[];
     
     0 => int activeInst; 
-    
-    OverallTempo => float Tempo;
-    OverallDivision => int Division;
+
+    8 => int Division;
     
     int Notes[0];
     
@@ -48,15 +47,6 @@ public class Melody extends CHmUsiCK
     public float gain()
     {
         return vol.gain();
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return Tempo;
     }
     public int subdivision(int div)
     {
@@ -128,8 +118,8 @@ public class Melody extends CHmUsiCK
     }
     public int controlChange(int parameter)
     {
-        if(parameter == 0) 0.35 => Normalize.gain;
-        if(parameter == 1) 5.5 => Normalize.gain;
+        if(parameter == 0) 0.25 => Normalize.gain;
+        if(parameter == 1) 4.5 => Normalize.gain;
         if(parameter == 2) 0.35 => Normalize.gain;
         if(parameter == 3) 0.35 => Normalize.gain;
         if(parameter == 4) 3 => Normalize.gain;

@@ -2,9 +2,40 @@ public class CHmUsiCK extends Chubgraph
 {
     Gain Master => Dyno Processor => outlet;
     
-    120 => float OverallTempo;
-    8 => int OverallDivision;
+    120 => float Tempo;
+    4 => int OverallDivision;
     
+    0 => int numBeats;
+    0 => int numMeasures;
+    4 => int Measure;
+    
+    public float tempo(float t)
+    {
+        t => Tempo;
+        return Tempo;
+    }
+    public float tempo()
+    {
+        return Tempo;
+    }
+    public int overallDivision(int div)
+    {
+        div  => OverallDivision;
+        return OverallDivision;
+    }
+    public int overallDivision()
+    {
+        return OverallDivision;
+    }
+    public int measure(int m)
+    {
+        m => Measure;
+        return Measure;
+    }
+    public int measure()
+    {
+        return Measure;
+    }
     public float master(float Mgain)
     {
         Mgain => Master.gain;
@@ -43,6 +74,26 @@ public class CHmUsiCK extends Chubgraph
             reversed << pattern[i];
         }
         return reversed;
+    }
+    public int[] densify(int pattern[])
+    {
+        int notes[0];
+        
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] != 0) 
+            {
+                notes << pattern[i];
+            }
+        }
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] == 0 && maybe)
+            {
+                notes[Math.random2(0, (notes.cap() - 1))] => pattern[i];
+            } 
+        }
+        return pattern;
     }
     public int[] degrade(int pattern[])
     {

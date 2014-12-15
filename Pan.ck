@@ -10,7 +10,6 @@ public class Pan extends CHmUsiCK
 {
     inlet => Pan2 p => Master => outlet;
     
-    120 => float Tempo;
     8 => int Division;
     
     public void randomPan()

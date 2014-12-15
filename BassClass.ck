@@ -15,9 +15,6 @@ public class Bass extends CHmUsiCK
     
     0.25 => Normalize.gain; //don't change this
     
-    OverallTempo => float Tempo;
-    
-    4 => int Measure;
     0 => int Key;    
     1 => int Pattern;
     1.2 => bassGain.gain;
@@ -33,15 +30,6 @@ public class Bass extends CHmUsiCK
     public float gain()
     {
         return bassGain.gain();
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
     }
     public int key(int input) 
     {

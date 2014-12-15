@@ -72,9 +72,8 @@ public class Drum extends CHmUsiCK
     4 => int bdSound;
     3 => int snSound;
     8 => int hhSound;
-    
-    OverallTempo => float Tempo;
-    OverallDivision => int Division;
+
+    8 => int Division;
     
     int hhGlobal[0];
     int snGlobal[0];
@@ -90,15 +89,6 @@ public class Drum extends CHmUsiCK
     public float gain()
     {
         return vol.gain();
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
     }
     public int subdivision(int div)
     {
@@ -177,17 +167,6 @@ public class Drum extends CHmUsiCK
         }
         
         return everyArray;
-    }
-    public int[] densify(int pattern[])
-    {
-        for(0 => int i; i < pattern.cap(); i++)
-        {
-            if(pattern[i] == 0 && maybe)
-            {
-                1 => pattern[i];
-            } 
-        }
-        return pattern;
     }
     private void saveFavorite(int k[], int sn[], int hh[])
     {
@@ -796,7 +775,7 @@ public class Drum extends CHmUsiCK
         while(count < Refill)
         {
             for(0 => int i; i < sn.cap(); i++)
-            {
+            {           
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
