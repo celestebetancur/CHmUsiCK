@@ -27,7 +27,7 @@ public class Rhythm
                 rit << 0.25;
                 sum + (selected * 2) => sum;
             }
-            if(selected == 0.5 || selected == 1.0)
+            else
             {
                 sum + selected => sum;
                 rit << selected;

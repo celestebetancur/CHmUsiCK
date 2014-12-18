@@ -42,26 +42,7 @@ public class Pan extends CHmUsiCK
             }
         }
     }
-    private dur Dur(dur beat, int div)
-    {
-        (div / 4) => float factor;
-        (beat / factor) => dur tempo;
-        return tempo;
-    }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
-    public float tempo(float t)
-    {
-        t => Tempo;
-        return Tempo;
-    }
-    public float tempo()
-    {
-        return tempo(Tempo);
-    }
+
     public int subdivision(int div)
     {
         div => Division;

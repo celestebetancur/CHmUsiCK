@@ -79,60 +79,29 @@ public class Harmony extends CHmUsiCK
     }
     public void randomHarmony()
     {
-        sinOsc(convert(Tempo),random(Math.random2(0,16)),numVoices);
+        sinOsc(random(Math.random2(0,16)),numVoices);
     }
     public void randomHarmony(int capacity)
     {
-        sinOsc(convert(Tempo),random(capacity),numVoices);
+        sinOsc(random(capacity),numVoices);
     }
-    public void randomHarmony(float beat, int capacity)
+    public void randomHarmony(int capacity, int voices)
     {
-        sinOsc(convert(beat),random(capacity),numVoices);
+        sinOsc(random(capacity),voices);
     }
-    public void randomHarmony(dur beat, int capacity)
+    public void randomHarmony(int capacity, string key, int voices)
     {
-        sinOsc(beat,random(capacity),numVoices);
-    }
-    public void randomHarmony(float beat, int capacity, int voices)
-    {
-        sinOsc(convert(beat),random(capacity),voices);
-    }
-    public void randomHarmony(dur beat, int capacity, int voices)
-    {
-        sinOsc(beat,random(capacity),voices);
-    }
-    public void randomHarmony(float beat, int capacity, string key, int voices)
-    {
-        sinOsc(convert(beat),random(capacity,key),voices);
-    }
-    public void randomHarmony(dur beat, int capacity, string key, int voices)
-    {
-        sinOsc(beat,random(capacity,key),voices);
+        sinOsc(random(capacity,key),voices);
     }
     public void sinOsc(string note[])
     {
-        sinOsc(convert(Tempo),note,numVoices);
+        sinOsc(note,numVoices);
     }
-    public void sinOsc(dur beat,string note[])
+    public void sinOsc(string note[],int voices)
     {
-        sinOsc(beat,note,numVoices);
-    }
-    public void sinOsc(float beat,string note[])
-    {
-        sinOsc(convert(beat),note,numVoices);
-    }
-    public void sinOsc(float beat,string note[], int voices)
-    {
-        sinOsc(convert(beat),note,voices);
-    }
-    public void sinOsc(dur beat,string note[],int voices)
-    {
-        convertD(beat) => Tempo;
         voices => numVoices;
         setNotes(note);
-        
-        (beat * Measure) => dur temp;
-        
+
         SinOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
@@ -149,33 +118,18 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                temp => now;  
+                (convert(Tempo) * Measure) => now;  
             }
         }
     }
     public void sqrOsc(string note[])
     {
-        sqrOsc(convert(Tempo),note,numVoices);
+        sqrOsc(note,numVoices);
     }
-    public void sqrOsc(float beat, string note[])
+    public void sqrOsc(string note[],int voices)
     {
-        sqrOsc(convert(beat),note,numVoices);
-    }
-    public void sqrOsc(dur beat, string note[])
-    {
-        sqrOsc(beat,note,numVoices);
-    }
-    public void sqrOsc(float beat, string note[], int voices)
-    {
-        sqrOsc(convert(beat),note,voices);
-    }
-    public void sqrOsc(dur beat,string note[],int voices)
-    {
-        convertD(beat) => Tempo;
         voices => numVoices;
         setNotes(note);
-        
-        (beat * Measure) => dur temp;
         
         SqrOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -192,33 +146,18 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                temp => now;  
+                (convert(Tempo) * Measure) => now;  
             }
         }
     }
     public void triOsc(string note[])
     {
-        triOsc(convert(Tempo),note,numVoices);
+        triOsc(note,numVoices);
     }
-    public void triOsc(float beat, string note[])
+    public void triOsc(string note[],int voices)
     {
-        triOsc(convert(beat),note,numVoices);
-    }
-    public void triOsc(dur beat, string note[])
-    {
-        triOsc(beat,note,numVoices);
-    }
-    public void triOsc(float beat, string note[], int voices)
-    {
-        triOsc(convert(beat),note,voices);
-    }
-    public void triOsc(dur beat, string note[],int voices)
-    {
-        convertD(beat) => Tempo;
         voices => numVoices;
         setNotes(note);
-        
-        (beat * Measure) => dur temp;
         
         TriOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -235,33 +174,18 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                temp => now;  
+                (convert(Tempo) * Measure) => now;  
             }
         }
     }
     public void sawOsc(string note[])
     {
-        sawOsc(convert(Tempo),note,numVoices);
+        sawOsc(note,numVoices);
     }
-    public void sawOsc(float beat, string note[])
+    public void sawOsc(string note[],int voices)
     {
-        sawOsc(convert(beat),note,numVoices);
-    }
-    public void sawOsc(dur beat, string note[])
-    {
-        sawOsc(beat,note,numVoices);
-    }
-    public void sawOsc(float beat, string note[], int voices)
-    {
-        sawOsc(convert(beat),note,voices);
-    }
-    public void sawOsc(dur beat, string note[],int voices)
-    {
-        convertD(beat) => Tempo;
         voices => numVoices;
         setNotes(note);
-        
-        (beat * Measure) => dur temp;
         
         SawOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -278,33 +202,18 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                temp => now;  
+                (convert(Tempo) * Measure) => now;  
             }
         }
     }
     public void pulseOsc(string note[])
     {
-        pulseOsc(convert(Tempo),note,numVoices);
+        pulseOsc(note,numVoices);
     }
-    public void pulseOsc(float beat, string note[])
+    public void pulseOsc(string note[],int voices)
     {
-        pulseOsc(convert(beat),note,numVoices);
-    }
-    public void pulseOsc(dur beat, string note[])
-    {
-        pulseOsc(beat,note,numVoices);
-    }
-    public void pulseOsc(float beat, string note[], int voices)
-    {
-        pulseOsc(convert(beat),note,voices);
-    }
-    public void pulseOsc(dur beat, string note[],int voices)
-    {
-        convertD(beat) => Tempo;
         voices => numVoices;
         setNotes(note);
-        
-        (beat * Measure) => dur temp;
         
         PulseOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
@@ -321,7 +230,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                temp => now;  
+                (convert(Tempo) * Measure) => now;  
             }
         }
     }

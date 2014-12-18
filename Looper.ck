@@ -13,7 +13,7 @@ public class Looper extends CHmUsiCK
     
     0.6 => Normalize.gain;
     
-    1::second => dur Dura; 
+    (convert(Tempo)*4) => dur Dura; 
     1 => float Rate;
     1 => int Play;
     1 => int Loop;

@@ -174,67 +174,34 @@ public class Melody extends CHmUsiCK
     {
         controlChange(Math.random2(0,17));
         Math.random2(0,Math.random2(0,64)) => int capacity;
-        synth(convert(Tempo),Division,random(capacity));
+        synth(Division,random(capacity));
     }
     public void randomMelody(int capacity)
     {
         controlChange(Math.random2(0,17));
-        synth(convert(Tempo),Division,random(capacity));
+        synth(Division,random(capacity));
     }
-    public void randomMelody(float beat ,int capacity)
+    public void randomMelody(int div ,int capacity)
     {
         controlChange(Math.random2(0,17));
-        synth(convert(beat),Division,random(capacity));
+        synth(div,random(capacity));
     }
-    public void randomMelody(dur beat ,int capacity)
+    public void randomMelody(int div ,int capacity, string key)
     {
         controlChange(Math.random2(0,17));
-        synth(beat,Division,random(capacity));
-    }
-    public void randomMelody(float beat, int div ,int capacity)
-    {
-        controlChange(Math.random2(0,17));
-        synth(convert(beat),Division,random(capacity));
-    }
-    public void randomMelody(dur beat, int div ,int capacity)
-    {
-        controlChange(Math.random2(0,17));
-        synth(beat,div,random(capacity));
-    }
-    public void randomMelody(float beat, int div ,int capacity, string key)
-    {
-        controlChange(Math.random2(0,17));
-        synth(convert(beat),div,random(key,capacity));
-    }
-    public void randomMelody(dur beat, int div ,int capacity, string key)
-    {
-        controlChange(Math.random2(0,17));
-        synth(beat,div,random(key,capacity));
+        synth(div,random(key,capacity));
     }
     //———————————————synth——————————————//
     public void synthOsc()
     {
-        synthOsc(convert(Tempo),Division,Notes);
+        synthOsc(Division,Notes);
     }
     public void synthOsc(int notes[])
     {
-        synthOsc(convert(Tempo),Division,notes);
+        synthOsc(Division,notes);
     }
-    public void synthOsc(float beat,int notes[])
+    public void synthOsc(int div,int notes[])
     {
-        synthOsc(convert(beat),Division,notes);
-    }
-    public void synthOsc(dur beat,int notes[])
-    {
-        synthOsc(beat,Division,notes);
-    }
-    public void synthOsc(float beat,int div,int notes[])
-    {
-        synthOsc(convert(beat),div,notes);
-    }
-    public void synthOsc(dur beat,int div,int notes[])
-    {
-        convertD(beat) => Tempo;
         div => Division;
         setNotes(notes);
         
@@ -247,13 +214,13 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    Dur(beat,div) => now;
+                    Dur(convert(Tempo),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => osc[activeOsc].freq;
                     envelope.keyOn();
-                    Dur(beat,div) => now;
+                    Dur(convert(Tempo),Division) => now;
                     envelope.keyOff();
                 }
             }          
@@ -261,27 +228,14 @@ public class Melody extends CHmUsiCK
     }
     public void synth()
     {
-        synth(convert(Tempo),Division,Notes);
+        synth(Division,Notes);
     }
     public void synth(int notes[])
     {
-        synth(convert(Tempo),Division,notes);
+        synth(Division,notes);
     }
-    public void synth(float beat,int notes[])
+    public void synth(int div,int notes[])
     {
-        synth(convert(beat),Division,notes);
-    }
-    public void synth(dur beat,int notes[])
-    {
-        synth(beat,Division,notes);
-    }
-    public void synth(float beat,int div,int notes[])
-    {
-        synth(convert(beat),div,notes);
-    }
-    public void synth(dur beat,int div,int notes[])
-    {
-        convertD(beat) => Tempo;
         div => Division;
         setNotes(notes);
         
@@ -294,14 +248,14 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     inst[activeInst].noteOff;
-                    Dur(beat,div) => now;
+                    Dur(convert(Tempo),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => inst[activeInst].freq;
                     1 => inst[activeInst].noteOn;
                     inst[activeInst].noteOn;
-                    Dur(beat,div) => now;
+                    Dur(convert(Tempo),Division) => now;
                     inst[activeInst].noteOff;
                 }
             }          

@@ -42,55 +42,24 @@ public class Band extends CHmUsiCK
     {
         return Key;
     }
-    private dur convert(float beat)
-    {
-        60/beat => float tempo;
-        return tempo::second;
-    }
-    private float convertD(dur beat)
-    {
-        ((60::second/beat)$float) => float tempo;
-        return tempo;
-    }
     public void randomBand()
     {
-        randomBand(convert(Tempo),Beats,Division,notes.randomNote());
+        randomBand(Beats,Division,notes.randomNote());
     }
     public void randomBand(string key)
     {
-        randomBand(convert(Tempo),Beats,Division,key);
+        randomBand(Beats,Division,key);
     }
-    public void randomBand(float beat)
+    public void randomBand(int beats)
     {
-        randomBand(convert(beat),Beats,Division,notes.randomNote());
+        randomBand(beats,Division,notes.randomNote());
     }
-    public void randomBand(dur beat)
+    public void randomBand(int beats, int div)
     {
-        randomBand(beat,Beats,Division,notes.randomNote());
+        randomBand(beats,div,notes.randomNote());
     }
-    public void randomBand(float beat, int beats)
+    public void randomBand(int beats, int div, string key)
     {
-        randomBand(convert(beat),beats,Division,notes.randomNote());
-    }
-    public void randomBand(dur beat, int beats)
-    {
-        randomBand(beat,beats,Division,notes.randomNote());
-    }
-    public void randomBand(float beat, int beats, int div)
-    {
-        randomBand(convert(beat),beats,div,notes.randomNote());
-    }
-    public void randomBand(dur beat, int beats, int div)
-    {
-        randomBand(beat,beats,div,notes.randomNote());
-    }
-    public void randomBand(float beat, int beats, int div, string key)
-    {
-        randomBand(convert(beat),beats,div,key);
-    }
-    public void randomBand(dur beat, int beats, int div, string key)
-    {
-        convertD(beat) => Tempo;
         div => Division;
         key => Key;
         
@@ -99,12 +68,12 @@ public class Band extends CHmUsiCK
         
         10::ms => now;
         
-        spork~ harmony.sinOsc(beat,chords,4);
-        spork~ drum.randomDrum(beat,Division, (beats*2));
-        spork~ bass.bass(beat,(notes.stom(Key)),note,4);
-        spork~ melody.randomMelody(beat,(Division * 2),(beats*8),Key);
-        spork~ fm.randomFM(beat,Division,(beats*4),Key);
-        spork~ fm1.randomFM(beat,Division,(beats*4),Key);
+        spork~ harmony.sinOsc(chords,4);
+        spork~ drum.randomDrum(Division, (beats*2));
+        spork~ bass.bass((notes.stom(Key)),note,4);
+        spork~ melody.randomMelody((Division * 2),(beats*8),Key);
+        spork~ fm.randomFM(Division,(beats*4),Key);
+        spork~ fm1.randomFM(Division,(beats*4),Key);
         while(true) 1::second => now;
     }
 }

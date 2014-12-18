@@ -2,16 +2,21 @@ public class CHmUsiCK extends Chubgraph
 {
     Gain Master => Dyno Processor => outlet;
     
-    120 => float Tempo;
+    120 => static float Tempo;
     4 => int OverallDivision;
     
-    0 => int numBeats;
-    0 => int numMeasures;
-    4 => int Measure;
+    0 => int numBeats; //TODO: counter.
+    0 => int numMeasures; //TODO: counter.
+    4 => static int Measure;
     
     public float tempo(float t)
     {
         t => Tempo;
+        return Tempo;
+    }
+    public float tempo(dur t)
+    {
+        convertD(t) => Tempo;
         return Tempo;
     }
     public float tempo()
@@ -131,6 +136,8 @@ public class CHmUsiCK extends Chubgraph
     }
     private dur convert(float beat)
     {
+        Std.fabs(beat) => beat;
+        
         60/beat => float tempo;
         return tempo::second;
     }
@@ -141,7 +148,9 @@ public class CHmUsiCK extends Chubgraph
     }
     private dur Dur(dur beat, int div)
     {
-        (div / 4) => float factor;
+        Std.abs(div) => div;
+        
+        (div / 4.0) => float factor;
         (beat / factor) => dur tempo;
         return tempo;
     }

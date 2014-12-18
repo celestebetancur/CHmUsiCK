@@ -27,6 +27,12 @@ public class Audio extends CHmUsiCK
         dDelay => delaY.delay;
         return delay;
     }
+    public dur delay(float delay)
+    {
+        convert(delay) => dDelay;
+        dDelay => delaY.delay;
+        return convert(delay);
+    }
     public dur delay()
     {
         return delaY.delay();

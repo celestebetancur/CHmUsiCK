@@ -41,7 +41,7 @@ public class FMSynth extends CHmUsiCK
     
     8 => int Division;
     
-    int Notes[0];
+    [60,0,0,0] @=> int Notes[];
     
     public int subdivision(int div)
     {
@@ -256,70 +256,36 @@ public class FMSynth extends CHmUsiCK
     public void randomFM()
     {
         Math.random2(0,Math.random2(0,64)) => int capacity;
-        fmBass(convert(Tempo),Division,random(capacity));
+        fmBass(random(capacity));
     }
     public void randomFM(int capacity)
     {
-        fmBass(convert(Tempo),Division,random(capacity));
+        fmBass(random(capacity));
     }
-    public void randomFM(float beat ,int capacity)
+    public void randomFM(int capacity, string key)
     {
-        fmBass(convert(beat),Division,random(capacity));
+        fmBass(random(key,capacity));
     }
-    public void randomFM(dur beat ,int capacity)
+    public void randomFM(int div,int capacity, string key)
     {
-        fmBass(beat,Division,random(capacity));
-    }
-    public void randomFM(float beat, int div ,int capacity)
-    {
-        fmBass(convert(beat),Division,random(capacity));
-    }
-    public void randomFM(dur beat, int div ,int capacity)
-    {
-        fmBass(beat,div,random(capacity));
-    }
-    public void randomFM(float beat, int div ,int capacity, string key)
-    {
-        fmBass(convert(beat),div,random(key,capacity));
-    }
-    public void randomFM(dur beat, int div ,int capacity, string key)
-    {
-        fmBass(beat,div,random(key,capacity));
+        fmBass(div,random(key,capacity));
     }
     public void fmBass()
     {
-        fmBass(convert(Tempo),Division,Notes);
+        fmBass(Notes);
+    }
+    public void fmBass(int div)
+    {
+        fmBass(div,Notes);
     }
     public void fmBass(int notes[])
     {
-        setNotes(notes);
-        fmBass(convert(Tempo),Division,Notes);
+        fmBass(Division,notes);
     }
-    public void fmBass(float beat, int notes[])
+    public void fmBass(int div, int notes[])
     {
-        beat => Tempo;
-        setNotes(notes);
-        fmBass(convert(beat),Division,Notes);
-    }
-    public void fmBass(dur beat,int notes[])
-    {
-        convertD(beat) => Tempo;
-        setNotes(notes);
-        fmBass(beat,Division,Notes);
-    }
-    public void fmBass(float beat,int div,int notes[])
-    {
-        beat => Tempo;
-        setNotes(notes);
         div => Division;
-        fmBass(convert(beat),Division,Notes);
-    }
-    public void fmBass(dur beat,int div,int notes[])
-    {
-        convertD(beat) => Tempo;
         setNotes(notes);
-        div => Division;
-        Dur(beat,div) => dur temp;
         
         while(true)
         {
@@ -328,7 +294,7 @@ public class FMSynth extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    temp => now;
+                    Dur(convert(Tempo),Division) => now;
                 }
                 else
                 {
@@ -337,7 +303,7 @@ public class FMSynth extends CHmUsiCK
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
                     envelope.keyOn();
-                    temp => now;
+                    Dur(convert(Tempo),Division) => now;
                     envelope.keyOff();
                 }
             }          

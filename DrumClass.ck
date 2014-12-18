@@ -75,9 +75,9 @@ public class Drum extends CHmUsiCK
 
     8 => int Division;
     
-    int hhGlobal[0];
-    int snGlobal[0];
-    int bdGlobal[0];
+    [1] @=> int hhGlobal[];
+    [1] @=> int snGlobal[];
+    [1] @=> int bdGlobal[];
     
     int rythym[0][0];
     
@@ -223,25 +223,13 @@ public class Drum extends CHmUsiCK
     public void randomDrum()
     {
         Math.random2(0,Math.random2(0,32)) => int capacity;
-        randomDrum(Tempo,Division,capacity);
+        randomDrum(Division,capacity);
     }
     public void randomDrum(int capacity)
     {
-        randomDrum(Tempo,Division,capacity);
+        randomDrum(Division,capacity);
     }
-    public void randomDrum(dur beat, int capacity)
-    {
-        randomDrum(beat,Division,capacity);
-    }
-    public void randomDrum(float beat, int capacity)
-    {
-        randomDrum(convert(beat),Division,capacity);
-    }
-    public void randomDrum(float beat, int div, int capacity)
-    {
-        randomDrum(convert(beat),div,capacity);
-    }
-    public void randomDrum(dur beat, int div, int capacity)
+    public void randomDrum(int div, int capacity)
     {
         random(capacity) @=> int kick[];
         random(capacity) @=> int snare[];
@@ -251,64 +239,44 @@ public class Drum extends CHmUsiCK
         Math.random2(0,11) => int snsample; SNSound(snsample);
         Math.random2(0,8) => int hhsample; HHSound(hhsample);
         
-        spork~ drumF(beat,div,kick,snare,hh);
+        spork~ drumF(kick,snare,hh);
         spork~ event(kick,snare,hh);  
         while(true) 1::second => now;
     }
-    public void bdRandomFill(dur beat, int div, int capacity)
+    public void bdRandomFill(int capacity)
     {
         random(capacity) @=> int kick[];
         
-        bdFill(beat,div,kick);
+        bdFill(kick);
     }
-    public void bdRandomFill(float beat, int div, int capacity)
-    {
-        bdRandomFill(convert(beat),div,capacity);
-    }
-    public void hhRandomFill(dur beat, int div, int capacity)
+    public void hhRandomFill(int capacity)
     {
         random(capacity) @=> int hihat[];
         
-        hhFill(beat,div,hihat);
+        hhFill(hihat);
     }
-    public void hhRandomFill(float beat, int div, int capacity)
-    {
-        hhRandomFill(convert(beat),div,capacity);
-    }
-    public void snRandomFill(dur beat, int div, int capacity)
+    public void snRandomFill(int capacity)
     {
         random(capacity) @=> int snare[];
         
-        snFill(beat,div,snare);
+        snFill(snare);
     }
-    public void snRandomFill(float beat, int div, int capacity)
-    {
-        snRandomFill(convert(beat),div,capacity);
-    }
-    public void randomFill(dur beat, int div, int capacity, int capHH)
+    public void randomFill(int capacity, int capHH)
     {
         random(capacity) @=> int kick[];
         random(capacity) @=> int hh[];
         
-        fill(beat,div,kick,hh);
+        fill(kick,hh);
     }
-    public void randomFill(float beat, int div, int capacity, int capHH)
-    {
-        randomFill(convert(beat),div,capacity,capHH);
-    }
-    public void randomFill(dur beat, int div, int capacity, int capSnare, int capHH )
+    public void randomFill(int capacity)
     {
         random(capacity) @=> int kick[];
         random(capacity) @=> int snare[];
         random(capacity) @=> int hh[];
         
-        fill(beat,div,kick,snare,hh);
+        fill(kick,snare,hh);
     }
-    public void randomFill(float beat, int div, int capacity, int capSnare, int capHH )
-    {
-        randomFill(convert(beat),div,capacity,capSnare,capHH);
-    }
-    private void bdFill (dur beat,int div,int k[])
+    private void bdFill (int k[])
     {
         for(0 => int i; i < k.cap(); i++)
         {
@@ -316,10 +284,10 @@ public class Drum extends CHmUsiCK
             {
                 0 => Kick[bdSound].pos;
             }
-            Dur(beat,div) => now;
+            Dur(convert(Tempo),Division) => now;
         } 
     }
-    private void hhFill (dur beat,int div,int hh[])
+    private void hhFill (int hh[])
     {        
         for(0 => int i; i < hh.cap(); i++)
         {
@@ -327,10 +295,10 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(beat,div) => now;
+            Dur(convert(Tempo),Division) => now;
         } 
     }
-    private void snFill (dur beat,int div,int sn[])
+    private void snFill (int sn[])
     {        
         for(0 => int i; i < sn.cap(); i++)
         {
@@ -338,10 +306,10 @@ public class Drum extends CHmUsiCK
             {
                 0 => Snare[snSound].pos;
             }
-            Dur(beat,div) => now;
+            Dur(convert(Tempo),Division) => now;
         } 
     }
-    private void fill (dur beat,int div,int k[], int hh[])
+    private void fill (int k[], int hh[])
     {        
         for(0 => int i; i < k.cap() && i < hh.cap(); i++)
         {
@@ -353,10 +321,10 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(beat,div) => now;
+            Dur(convert(Tempo),Division) => now;
         } 
     }
-    private void fill (dur beat,int div,int k[],int s[],int hh[])
+    private void fill (int k[],int s[],int hh[])
     {        
         for(0 => int i; i < k.cap() && i < s.cap() && i < hh.cap(); i++)
         {
@@ -372,7 +340,7 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(beat,div) => now;
+            Dur(convert(Tempo),Division) => now;
         } 
     }
     //————————————————set Global variables————————————————//
@@ -394,272 +362,100 @@ public class Drum extends CHmUsiCK
     // ———————————————no argument funtion ———————————————//
     public void bd ()
     {
-        bassDrum(convert(Tempo),Division,bdGlobal);
+        bassDrum(bdGlobal);
     }
     public void bdF ()
     {
-        bassDrumF(convert(Tempo),Division,bdGlobal);
+        bassDrumF(bdGlobal);
     }
     public void sn ()
     {
-        snare(convert(Tempo),Division,snGlobal);
+        snare(snGlobal);
     }
     public void snF ()
     {
-        snareF(convert(Tempo),Division,snGlobal);
+        snareF(snGlobal);
     }
     public void hh ()
     {
-        hihat(convert(Tempo),Division,hhGlobal);
+        hihat(hhGlobal);
     }
     public void hhF ()
     {
-        hihatF(convert(Tempo),Division,hhGlobal);
+        hihatF(hhGlobal);
     }
     
     // ———————————————Drum with Fill———————————————//
     public void drumF (int k[])
     {
-        bassDrumF(convert(Tempo),Division,k);
-    }
-    public void drumF (dur beat,int k[])
-    {
-        bassDrumF(beat,Division,k);
-    }
-    public void drumF (float beat,int k[])
-    {
-        bassDrumF(convert(beat),Division,k);
-    }
-    public void drumF (float beat,int div,int k[])
-    {
-        bassDrumF(convert(beat),div,k);
+        bassDrumF(k);
     }
     public void drumF (int k[],int hh[])
     {
-        spork~ bassDrumF(convert(Tempo),Division,k);
-        spork~ hihatF(convert(Tempo),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int k[],int hh[])
-    {
-        spork~ bassDrumF(beat,Division,k);
-        spork~ hihatF(beat,Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat,int k[],int hh[])
-    {
-        spork~ bassDrumF(convert(beat),Division,k);
-        spork~ hihatF(convert(beat),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat,int div,int k[],int hh[])
-    {
-        spork~ bassDrumF(convert(beat),div,k);
-        spork~ hihatF(convert(beat),div,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int div,int k[],int hh[])
-    {
-        spork~ bassDrumF(beat,div,k);
-        spork~ hihatF(beat,div,hh);
+        spork~ bassDrumF(k);
+        spork~ hihatF(hh);
         while(true) 1::ms => now;
     }
     public void drumF (int k[],int s[],int hh[])
     {
-        spork~ bassDrumF(convert(Tempo),Division,k);
-        spork~ snareF(convert(Tempo),Division,s);
-        spork~ hihatF(convert(Tempo),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int k[],int s[],int hh[])
-    {
-        spork~ bassDrumF(beat,Division,k);
-        spork~ snareF(beat,Division,s);
-        spork~ hihatF(beat,Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat,int k[],int s[],int hh[])
-    {
-        spork~ bassDrumF(convert(beat),Division,k);
-        spork~ snareF(convert(beat),Division,s);
-        spork~ hihatF(convert(beat),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat,int div,int k[],int s[],int hh[])
-    {
-        spork~ bassDrumF(convert(beat),div,k);
-        spork~ snareF(convert(beat),div,s);
-        spork~ hihatF(convert(beat),div,hh);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int div,int k[],int s[],int hh[])
-    {
-        spork~ bassDrumF(beat,div,k);
-        spork~ snareF(beat,div,s);
-        spork~ hihatF(beat,div,hh);
+        spork~ bassDrumF(k);
+        spork~ snareF(s);
+        spork~ hihatF(hh);
         while(true) 1::ms => now;
     }
     public void drumF (int full[][])
-    {                
-        spork~ bassDrumF(convert(Tempo),Division,full[0]);
-        spork~ snareF(convert(Tempo),Division,full[1]);
-        spork~ hihatF(convert(Tempo),Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat, int full[][])
-    {                
-        spork~ bassDrumF(convert(beat),Division,full[0]);
-        spork~ snareF(convert(beat),Division,full[1]);
-        spork~ hihatF(convert(beat),Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int full[][])
-    {                
-        spork~ bassDrumF(beat,Division,full[0]);
-        spork~ snareF(beat,Division,full[1]);
-        spork~ hihatF(beat,Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drumF (float beat,int div, int full[][])
-    {                
-        spork~ bassDrumF(convert(beat),div,full[0]);
-        spork~ snareF(convert(beat),div,full[1]);
-        spork~ hihatF(convert(beat),div,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drumF (dur beat,int div, int full[][])
-    {                
-        spork~ bassDrumF(beat,div,full[0]);
-        spork~ snareF(beat,div,full[1]);
-        spork~ hihatF(beat,div,full[2]);
-        while(true) 1::ms => now;
+    {   
+        if(full.cap() == 3)
+        {             
+            spork~ bassDrumF(full[0]);
+            spork~ snareF(full[1]);
+            spork~ hihatF(full[2]);
+            while(true) 1::ms => now;
+        }
+        if(full.cap() == 2)
+        {             
+            spork~ bassDrumF(full[0]);
+            spork~ hihatF(full[1]);
+            while(true) 1::ms => now;
+        }
     }
     //———————————————————Drum without fill———————————————————//
     public void drum (int k[])
     {
-        bassDrum(convert(Tempo),Division,k);
-    }
-    public void drum (dur beat,int k[])
-    {
-        bassDrum(beat,Division,k);
-    }
-    public void drum (float beat,int k[])
-    {
-        bassDrum(convert(beat),Division,k);
-    }
-    public void drum (float beat,int div,int k[])
-    {
-        bassDrum(convert(beat),div,k);
-    }
-    public void drum (dur beat,int div,int k[])
-    {
-        bassDrum(beat,div,k);
+        bassDrum(k);
     }
     public void drum (int k[],int hh[])
     {
-        spork~ bassDrum(convert(Tempo),Division,k);
-        spork~ hihat(convert(Tempo),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int k[],int hh[])
-    {
-        spork~ drum(beat,Division,k);
-        spork~ hihat(beat,Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat,int k[],int hh[])
-    {
-        spork~ drum(convert(beat),Division,k);
-        spork~ hihat(convert(beat),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat,int div,int k[],int hh[])
-    {
-        spork~ drum(convert(beat),div,k);
-        spork~ hihat(convert(beat),div,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int div,int k[],int hh[])
-    {   
-        spork~ drum(beat,div,k);
-        spork~ hihat(beat,div,hh);
+        spork~ bassDrum(k);
+        spork~ hihat(hh);
         while(true) 1::ms => now;
     }
     public void drum (int k[],int s[],int hh[])
     {
-        spork~ bassDrum(convert(Tempo),Division,k);
-        spork~ snare(convert(Tempo),Division,s);
-        spork~ hihat(convert(Tempo),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int k[],int s[],int hh[])
-    {
-        spork~ bassDrum(beat,Division,k);
-        spork~ snare(beat,Division,s);
-        spork~ hihat(beat,Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat,int k[],int s[],int hh[])
-    {
-        spork~ bassDrum(convert(beat),Division,k);
-        spork~ snare(convert(beat),Division,s);
-        spork~ hihat(convert(beat),Division,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat,int div,int k[],int s[],int hh[])
-    {
-        spork~ bassDrum(convert(beat),div,k);
-        spork~ snare(convert(beat),div,s);
-        spork~ hihat(convert(beat),div,hh);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int div,int k[],int s[],int hh[])
-    {   
-        spork~ bassDrum(beat,div,k);
-        spork~ snare(beat,div,s);
-        spork~ hihat(beat,div,hh);
+        spork~ bassDrum(k);
+        spork~ snare(s);
+        spork~ hihat(hh);
         while(true) 1::ms => now;
     }
     public void drum (int full[][])
     {                
-        spork~ bassDrum(convert(Tempo),Division,full[0]);
-        spork~ snare(convert(Tempo),Division,full[1]);
-        spork~ hihat(convert(Tempo),Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat, int full[][])
-    {                
-        spork~ bassDrum(convert(beat),Division,full[0]);
-        spork~ snare(convert(beat),Division,full[1]);
-        spork~ hihat(convert(beat),Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int full[][])
-    {                
-        spork~ bassDrum(beat,Division,full[0]);
-        spork~ snare(beat,Division,full[1]);
-        spork~ hihat(beat,Division,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drum (float beat,int div, int full[][])
-    {                
-        spork~ bassDrum(convert(beat),div,full[0]);
-        spork~ snare(convert(beat),div,full[1]);
-        spork~ hihat(convert(beat),div,full[2]);
-        while(true) 1::ms => now;
-    }
-    public void drum (dur beat,int div, int full[][])
-    {                
-        spork~ bassDrum(beat,div,full[0]);
-        spork~ snare(beat,div,full[1]);
-        spork~ hihat(beat,div,full[2]);
-        while(true) 1::ms => now;
+        if(full.cap() == 3)
+        {             
+            spork~ bassDrum(full[0]);
+            spork~ snare(full[1]);
+            spork~ hihat(full[2]);
+            while(true) 1::ms => now;
+        }
+        if(full.cap() == 2)
+        {             
+            spork~ bassDrum(full[0]);
+            spork~ hihat(full[1]);
+            while(true) 1::ms => now;
+        }
     }
     //——————————————————Basic Functions————————————————————//
-    private void bassDrumF (dur beat,int div,int k[])
+    private void bassDrumF (int k[])
     {
-        convertD(beat) => Tempo;
-        div => Division;
         k @=> bdGlobal;
         
         0 => int count;
@@ -672,21 +468,19 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Kick[bdSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             }
             count ++;
             
             if(count == Refill) 
             {
-                bdRandomFill(beat,div,k.cap());
+                bdRandomFill(k.cap());
                 0 => count;
             }
         }
     }
-    private void bassDrum (dur beat,int div,int k[])
+    private void bassDrum (int k[])
     {        
-        convertD(beat) => Tempo;
-        div => Division;
         k @=> bdGlobal;
         
         while(true)
@@ -697,14 +491,12 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Kick[bdSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             }
         }
     }
-    private void hihat (dur beat,int div,int hh[])
+    private void hihat (int hh[])
     {       
-        convertD(beat) => Tempo;
-        div => Division;
         hh @=> hhGlobal;
         
         while(true)
@@ -715,14 +507,12 @@ public class Drum extends CHmUsiCK
                 {
                     0 => HH[hhSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             }
         }
     }
-    private void hihatF (dur beat,int div,int hh[])
+    private void hihatF (int hh[])
     {
-        convertD(beat) => Tempo;
-        div => Division;
         hh @=> hhGlobal;
         
         0 => int count;
@@ -735,21 +525,19 @@ public class Drum extends CHmUsiCK
                 {
                     0 => HH[hhSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             }
             count ++;
             
             if(count == Refill) 
             {
-                hhRandomFill(beat,div,hh.cap());
+                hhRandomFill(hh.cap());
                 0 => count;
             }
         }
     }
-    private void snare (dur beat,int div,int sn[])
+    private void snare (int sn[])
     {        
-        convertD(beat) => Tempo;
-        div => Division;
         sn @=> snGlobal;
         
         while(true)
@@ -760,14 +548,12 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Snare[snSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             } 
         }
     }
-    private void snareF (dur beat,int div,int sn[])
+    private void snareF (int sn[])
     {
-        convertD(beat) => Tempo;
-        div => Division;
         sn @=> snGlobal;
         
         0 => int count;
@@ -780,13 +566,13 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Snare[snSound].pos;
                 }
-                Dur(beat,div) => now;
+                Dur(convert(Tempo),Division) => now;
             }
             count ++;
             
             if(count == Refill) 
             {
-                snRandomFill(beat,div,sn.cap());
+                snRandomFill(sn.cap());
                 0 => count;
             }
         }
