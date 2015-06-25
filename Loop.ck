@@ -14,16 +14,27 @@ sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
+<<<"Eight (8) seconds wait...">>>;
+
+8::second => now;
+
+spork~loopTrigger();
 spork~beatCounter();
 
-while(true)
-{ 
-    (extractor.convert(CHmUsiCK.Tempo) * Sync.tSync) => now;
-    if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
-    {
-        Machine.remove(fileID);
-        Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
+while(true){1::second => now;}
+
+public int loopTrigger()
+{
+    while(true)
+    { 
+        if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
+        {
+            Machine.remove(fileID);
+            Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
+        }
+        (extractor.convert(CHmUsiCK.Tempo) * Sync.tSync) => now;
     }
+    return fileID;
 }
 
 public static int beatCounter()
