@@ -4,6 +4,7 @@ public class CHmUsiCK extends Chubgraph
     
     120 => static float Tempo;  
     convert(Tempo) => static dur ConvertedTempo;
+    
     4 => int OverallDivision;
     
     4 => static int Measure;
@@ -34,12 +35,12 @@ public class CHmUsiCK extends Chubgraph
     {
         return OverallDivision;
     }
-    public int measure(int m)
+    public static int measure(int m)
     {
         m => Measure;
         return Measure;
     }
-    public int measure()
+    public static int measure()
     {
         return Measure;
     }
