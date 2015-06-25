@@ -8,8 +8,8 @@
 
 public class Sync
 {
-    static float tSync; 
     4 => static int NUMMEASURES;
+    (Sync.NUMMEASURES * CHmUsiCK.Measure) => static float tSync; 
     
     public float sync() 
     {

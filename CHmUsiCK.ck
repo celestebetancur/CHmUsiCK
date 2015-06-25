@@ -8,6 +8,9 @@ public class CHmUsiCK extends Chubgraph
     
     4 => static int Measure;
     
+    static float MASTER;
+    MASTER => Master.gain;
+    
     public static float tempo(float t)
     {
         t => Tempo;
@@ -40,10 +43,10 @@ public class CHmUsiCK extends Chubgraph
     {
         return Measure;
     }
-    public float master(float Mgain)
+    public static float master(float Mgain)
     {
-        Mgain => Master.gain;
-        return Mgain;
+        Mgain => MASTER;
+        return MASTER;
     }
     public float master()
     {

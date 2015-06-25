@@ -7,7 +7,6 @@
 //  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-
 CHmUsiCK extractor;
 
 Sync sync;
@@ -27,7 +26,7 @@ while(true)
     }
 }
 
-public int beatCounter()
+public static int beatCounter()
 {
     while(true)
     {
@@ -39,22 +38,25 @@ public int beatCounter()
         
         extractor.convert(extractor.tempo(extractor.Tempo)) => now;
     }
+    return STATIC.BEATS;
 }
 
-public int measureCounter()
+public static int measureCounter()
 {
     if(STATIC.BEATS % CHmUsiCK.Measure == 0)
     {
         STATIC.MEASURES++;
         <<<STATIC.MEASURES, "Measures">>>;
     }
+    return STATIC.MEASURES;
 }
 
-public int phraseCounter()
+public static int phraseCounter()
 {
     if(STATIC.BEATS % (Sync.NUMMEASURES * CHmUsiCK.Measure) == 0)
     {
         STATIC.PHRASES++;
         <<<STATIC.PHRASES, "Phrases">>>;
     }
+    return STATIC.PHRASES;
 }

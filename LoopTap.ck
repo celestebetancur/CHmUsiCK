@@ -10,7 +10,7 @@ Tap tap;
 tap.tap();
 
 Sync sync;
-sync.sync(4,4);
+sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
