@@ -10,9 +10,9 @@ public class Drum extends CHmUsiCK
 {
     FileIO rythyms;
     
-    Gain Normalize => Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master;
     
-    0.22 => Normalize.gain; //don't change this
+    0.55 => Normalize.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
@@ -344,45 +344,54 @@ public class Drum extends CHmUsiCK
         } 
     }
     //————————————————set Global variables————————————————//
-    public void bd(int bd[])
+    public int[] bd(int bd[])
     {
         bd.size() => bdGlobal.size;
         bd @=> bdGlobal;
+        return bdGlobal;
     }
-    public void hh(int hh[])
+    public int[] hh(int hh[])
     {
         hh.size() => hhGlobal.size;
         hh @=> hhGlobal;
+        return hhGlobal;
     }
-    public void sn(int sn[])
+    public int[] sn(int sn[])
     {
         sn.size() => snGlobal.size;
         sn @=> snGlobal;
+        return snGlobal;
     }
     // ———————————————no argument funtion ———————————————//
-    public void bd ()
+    public int[] bd ()
     {
         bassDrum(bdGlobal);
+        return bdGlobal;
     }
-    public void bdF ()
+    public int[] bdF ()
     {
         bassDrumF(bdGlobal);
+        return bdGlobal;
     }
-    public void sn ()
+    public int[] sn ()
     {
         snare(snGlobal);
+        return snGlobal;
     }
-    public void snF ()
+    public int[] snF ()
     {
         snareF(snGlobal);
+        return snGlobal;
     }
-    public void hh ()
+    public int[] hh ()
     {
         hihat(hhGlobal);
+        return hhGlobal;
     }
-    public void hhF ()
+    public int[] hhF ()
     {
         hihatF(hhGlobal);
+        return hhGlobal;
     }
     
     // ———————————————Drum with Fill———————————————//
@@ -420,24 +429,27 @@ public class Drum extends CHmUsiCK
         }
     }
     //———————————————————Drum without fill———————————————————//
-    public void drum (int k[])
+    public int[] drum (int k[])
     {
         bassDrum(k);
+        return k;
     }
-    public void drum (int k[],int hh[])
+    public int[] drum (int k[],int hh[])
     {
         spork~ bassDrum(k);
         spork~ hihat(hh);
         while(true) 1::ms => now;
+        return k,hh;
     }
-    public void drum (int k[],int s[],int hh[])
+    public int[] drum (int k[],int s[],int hh[])
     {
         spork~ bassDrum(k);
         spork~ snare(s);
         spork~ hihat(hh);
         while(true) 1::ms => now;
+        return k,s,hh;
     }
-    public void drum (int full[][])
+    public int[] drum (int full[][])
     {                
         if(full.cap() == 3)
         {             
@@ -452,9 +464,10 @@ public class Drum extends CHmUsiCK
             spork~ hihat(full[1]);
             while(true) 1::ms => now;
         }
+        return full[0],full[1],full[2];
     }
     //——————————————————Basic Functions————————————————————//
-    private void bassDrumF (int k[])
+    private int[] bassDrumF (int k[])
     {
         k @=> bdGlobal;
         
@@ -478,8 +491,9 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return k;
     }
-    private void bassDrum (int k[])
+    private int[] bassDrum (int k[])
     {        
         k @=> bdGlobal;
         
@@ -494,8 +508,9 @@ public class Drum extends CHmUsiCK
                 Dur(convert(Tempo),Division) => now;
             }
         }
+        return k;
     }
-    private void hihat (int hh[])
+    private int[] hihat (int hh[])
     {       
         hh @=> hhGlobal;
         
@@ -510,8 +525,9 @@ public class Drum extends CHmUsiCK
                 Dur(convert(Tempo),Division) => now;
             }
         }
+        return hh;
     }
-    private void hihatF (int hh[])
+    private int[] hihatF (int hh[])
     {
         hh @=> hhGlobal;
         
@@ -535,8 +551,9 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return hh;
     }
-    private void snare (int sn[])
+    private int[] snare (int sn[])
     {        
         sn @=> snGlobal;
         
@@ -551,8 +568,9 @@ public class Drum extends CHmUsiCK
                 Dur(convert(Tempo),Division) => now;
             } 
         }
+        return sn;
     }
-    private void snareF (int sn[])
+    private int[] snareF (int sn[])
     {
         sn @=> snGlobal;
         
@@ -576,5 +594,6 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return sn;
     }
 }

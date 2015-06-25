@@ -309,4 +309,19 @@ public class FMSynth extends CHmUsiCK
             }          
         }
     }
+    public int[] granularize(int array[], int howmany)
+    {
+        subdivision(howmany * 4);
+        
+        int granularized[0];
+        
+        for(0 => int count; count < array.cap(); count++)
+        {
+            for(0 => int i; i < howmany; i++)
+            {
+                granularized << array[count];
+            }
+        }
+        return granularized;
+    }
 }

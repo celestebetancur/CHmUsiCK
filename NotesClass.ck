@@ -51,6 +51,11 @@ public class Notes
             }
         }
     }
+    public int stom(string notes, int octave)
+    {
+        stom(notes) + (octave*12) => int converted;
+        return converted;
+    }
     public string mtos(int notes) // midi note to string notation
     {
         if(notes < 12) 
@@ -62,6 +67,16 @@ public class Notes
             notes % 12 => int pos;
             return AllNotes()[pos][0];
         }
+    }
+    public float[] mtof(int notes[])
+    {
+        float converted[0];
+        
+        for(0 => int i; i < notes.cap(); i++ )
+        {
+            converted << Std.mtof(notes[i]);
+        }
+        return converted;
     }
     public int[] stodArray(string Key, string notes[]) //string to degree
     {

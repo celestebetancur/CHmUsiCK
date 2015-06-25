@@ -1,25 +1,24 @@
 public class CHmUsiCK extends Chubgraph
-{
+{        
     Gain Master => Dyno Processor => outlet;
     
-    120 => static float Tempo;
+    120 => static float Tempo;  
+    convert(Tempo) => static dur ConvertedTempo;
     4 => int OverallDivision;
     
-    0 => int numBeats; //TODO: counter.
-    0 => int numMeasures; //TODO: counter.
     4 => static int Measure;
     
-    public float tempo(float t)
+    public static float tempo(float t)
     {
         t => Tempo;
         return Tempo;
     }
-    public float tempo(dur t)
+    public float tempoD(dur t)
     {
         convertD(t) => Tempo;
         return Tempo;
     }
-    public float tempo()
+    public static float tempo()
     {
         return Tempo;
     }
@@ -69,6 +68,61 @@ public class CHmUsiCK extends Chubgraph
     public void duck()
     {
         Processor.duck();
+    }
+    public dur fadeIn(dur d)
+    {
+        0 => Master.gain;
+        
+        while(Master.gain() <= 1)
+        {
+            Master.gain() + 0.01 => Master.gain;
+            (d/100) => now;
+        }
+        return d;
+    }
+    public dur fadeOut(dur d)
+    {
+        Master.gain() => Master.gain;
+        (Master.gain()*100) => float div;
+        
+        while(Master.gain() >= 0)
+        {
+            Master.gain() - 0.01 => Master.gain;
+            (d/div) => now;
+        }
+        0 => Master.gain;
+        return d;
+    }
+    public float density(float limit)
+    {
+        if(tempo() < limit)
+        {
+            while(tempo() < limit)
+            {
+                tempo() + 0.1 => Tempo;
+                convert(Tempo) * 0.25 => now;
+            }
+        }
+        else
+        { 
+            while(tempo() > limit)
+            {
+                tempo() - 0.1 => Tempo;
+                convert(Tempo) * 0.25 => now;
+            }
+        }
+        return limit;
+    }
+    public int[] trunc(int pattern[], float howmany)
+    {
+        (pattern.size() * howmany)$int => int newsize;
+        int truncated[newsize];
+        
+        for(0 => int i; i < newsize; i++)
+        {
+            pattern[i] => truncated[i];
+        }
+        return truncated;
     }
     public int[] reverse(int pattern[])
     {
@@ -130,7 +184,7 @@ public class CHmUsiCK extends Chubgraph
         repeat(move)
         {
             rotate(pattern) @=> newPattern;
-             newPattern @=> pattern;
+            newPattern @=> pattern;
         }
         return pattern;
     }

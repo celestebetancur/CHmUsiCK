@@ -1,10 +1,21 @@
-Notes chords;
+FMSynth fm => Audio a => dac; 
+FMSynth fm1 => a => dac; 
+Melody melody => dac;
 Drum drum => dac;
-Harmony pad => dac;
+Bass bass => dac;
 
-3 => pad.measure;
+(1,2) => fm.ratio;
+(4,3) => fm1.ratio;
 
-spork~drum.drum([1,0,0],[0,1,1],[1,1,1]);
-spork~ pad.sinOsc(chords.ptos(chords.progression(3),"C"));
+[60,59,0,57,62,0,0,64,65,0,72] @=> int mel[];
+4 => melody.controlChange;
+120 => fm.tempo;
+
+//spork~fm.fmBass(fm.trunc(mel,0.8));
+//spork~fm1.fmBass(fm.trunc(mel,0.6));
+//spork~fm1.fmBass(fm.rotate(mel,3));
+//spork~melody.synth(fm.rotate(fm.rotate(mel),3));
+spork~drum.drumF(drum.favorite(0));
+//spork~bass.techBass("c");
 
 1::day => now;

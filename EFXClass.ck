@@ -10,7 +10,7 @@ public class EFX extends CHmUsiCK
 {     
     Gain Normalize; Gain vol;
     
-    0.1 => Normalize.gain; //don't change this
+    0.08 => Normalize.gain; //don't change this
     
     float t;
     

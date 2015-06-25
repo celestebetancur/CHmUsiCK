@@ -13,7 +13,7 @@ public class Bass extends CHmUsiCK
     TriOsc Bass => ADSR e => Gain Normalize => Gain bassGain => Master => outlet;
     e.set(10::ms, 8::ms, .5, 5::ms);
     
-    0.25 => Normalize.gain; //don't change this
+    0.45 => Normalize.gain; //don't change this
     
     0 => int Key;    
     1 => int Pattern;

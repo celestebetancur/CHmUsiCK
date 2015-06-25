@@ -118,24 +118,24 @@ public class Melody extends CHmUsiCK
     }
     public int controlChange(int parameter)
     {
-        if(parameter == 0) 0.25 => Normalize.gain;
-        if(parameter == 1) 4.5 => Normalize.gain;
-        if(parameter == 2) 0.35 => Normalize.gain;
-        if(parameter == 3) 0.35 => Normalize.gain;
-        if(parameter == 4) 3 => Normalize.gain;
-        if(parameter == 5) 0.45 => Normalize.gain;
-        if(parameter == 6) 0.45 => Normalize.gain;
-        if(parameter == 7) 0.3 => Normalize.gain;
-        if(parameter == 8) 0.35 => Normalize.gain;
-        if(parameter == 9) 0.4 => Normalize.gain;
-        if(parameter == 10) 1 => Normalize.gain;
-        if(parameter == 11) 1 => Normalize.gain;
-        if(parameter == 12) 0.2 => Normalize.gain;
-        if(parameter == 13) 0.8 => Normalize.gain;
-        if(parameter == 14) 0.35 => Normalize.gain;
-        if(parameter == 15) 0.35 => Normalize.gain;
-        if(parameter == 16) 0.25 => Normalize.gain;
-        if(parameter == 17) 0.35 => Normalize.gain;
+        if(parameter == 0) 0.2 => Normalize.gain;
+        if(parameter == 1) 4 => Normalize.gain;
+        if(parameter == 2) 0.3 => Normalize.gain;
+        if(parameter == 3) 0.3 => Normalize.gain;
+        if(parameter == 4) 2.3 => Normalize.gain;
+        if(parameter == 5) 0.4 => Normalize.gain;
+        if(parameter == 6) 0.4 => Normalize.gain;
+        if(parameter == 7) 0.25 => Normalize.gain;
+        if(parameter == 8) 0.3 => Normalize.gain;
+        if(parameter == 9) 0.35 => Normalize.gain;
+        if(parameter == 10) 0.9 => Normalize.gain;
+        if(parameter == 11) 0.9 => Normalize.gain;
+        if(parameter == 12) 0.17 => Normalize.gain;
+        if(parameter == 13) 0.7 => Normalize.gain;
+        if(parameter == 14) 0.3 => Normalize.gain;
+        if(parameter == 15) 0.3 => Normalize.gain;
+        if(parameter == 16) 0.2 => Normalize.gain;
+        if(parameter == 17) 0.3 => Normalize.gain;
 
         parameter => activeInst;
         return activeInst;
