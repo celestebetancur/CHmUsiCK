@@ -37,15 +37,6 @@ public class Harmony extends CHmUsiCK
     {
         return voices(numVoices);
     }
-    public int measure(int num)
-    {
-        num => Measure;
-        return Measure;
-    }
-    public int measure()
-    {
-        return measure(Measure);
-    }
     public string[] setNotes(string notes[])
     {
         notes @=> Notes;

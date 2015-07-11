@@ -235,10 +235,6 @@ public class Drum extends CHmUsiCK
         random(capacity) @=> int snare[];
         random(capacity) @=> int hh[];
         
-        Math.random2(0,7) => int bdsample; BDSound(bdsample);
-        Math.random2(0,11) => int snsample; SNSound(snsample);
-        Math.random2(0,8) => int hhsample; HHSound(hhsample);
-        
         spork~ drumF(kick,snare,hh);
         spork~ event(kick,snare,hh);  
         while(true) 1::second => now;
