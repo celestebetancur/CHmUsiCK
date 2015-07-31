@@ -155,19 +155,6 @@ public class Drum extends CHmUsiCK
     {
         return Array.Drum[num];
     }
-    public int[] every(int parameter)
-    {
-        int everyArray[parameter];
-        
-        1 => everyArray[0];
-        
-        for(1 => int i; i < everyArray.cap(); i++)
-        {
-            0 => everyArray[i];
-        }
-        
-        return everyArray;
-    }
     private void saveFavorite(int k[], int sn[], int hh[])
     {
         rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.WRITE);
@@ -425,6 +412,14 @@ public class Drum extends CHmUsiCK
         }
     }
     //———————————————————Drum without fill———————————————————//
+    public int[] drum ()
+    {
+        spork~ bassDrum(bdGlobal);
+        spork~ snare(snGlobal);
+        spork~ hihat(hhGlobal);
+        while(true) 1::ms => now;
+        return bdGlobal,snGlobal,hhGlobal;
+    }
     public int[] drum (int k[])
     {
         bassDrum(k);

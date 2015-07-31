@@ -169,6 +169,32 @@ public class CHmUsiCK extends Chubgraph
         }
         return pattern;
     }
+    public int[] every(int parameter)
+    {
+        int everyArray[parameter];
+        
+        1 => everyArray[0];
+        
+        for(1 => int i; i < everyArray.cap(); i++)
+        {
+            0 => everyArray[i];
+        }
+        
+        return everyArray;
+    }
+    public int[] every(int note, int parameter)
+    {
+        int everyArray[parameter];
+        
+        note => everyArray[0];
+        
+        for(1 => int i; i < everyArray.cap(); i++)
+        {
+            0 => everyArray[i];
+        }
+        
+        return everyArray;
+    }
     public int[] rotate(int pattern[])
     {
         int newPattern[pattern.cap()];

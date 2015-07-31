@@ -1,27 +1,29 @@
-FMSynth fm => Audio audio => dac; 
-FMSynth fm1 => audio => dac; 
-Melody melody => dac;
-Drum drum => dac;
-Bass bass => dac;
-Harmony har => audio => dac;
+Gain gate => dac;
+
+FMSynth fm => Audio audio => gate; 
+FMSynth fm1 => audio => gate; 
+Melody melody => gate;
+Drum drum => gate;
+Bass bass => gate;
+Harmony har => audio => gate;
 
 (1,1) => fm.ratio;
 (6,3) => fm1.ratio;
 
-fm.random("c",16) @=> int mel[];
+fm.random("eb",16) @=> int mel[];
 2 => melody.controlChange;
 
-140 => CHmUsiCK.Tempo;
+123 => CHmUsiCK.Tempo;
 1 => audio.master;
 
 
 
-spork~fm.fmBass(fm.granularize(mel,16));
-//spork~fm1.fmBass(fm.trunc(mel,0.8)); fm1.gain(0.5);
+spork~fm.fmBass(fm.every(60,16));
+//spork~fm1.fmBass(fm.trunc(mel,0.8)); fm1.gain(0.3);
 //spork~fm.fmBass(fm.rotate(mel,3));
-//spork~melody.synth(melody.granularize(mel,16));
-spork~drum.randomDrum(4);
-//spork~bass.techBass(2);
-spork~har.sinOsc(["c","f"],4); har.gain(0.4);
+spork~melody.synth(fm.rotate(fm.every(63,16),2));
+spork~drum.drumF(drum.every(4));
+spork~bass.techBass(2);
+spork~har.sawOsc(["cm"],4); har.gain(0.1);
 
 1::day => now;
