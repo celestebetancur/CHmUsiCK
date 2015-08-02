@@ -13,7 +13,7 @@ Harmony har => audio => gate;
 fm.random("eb",16) @=> int mel[];
 2 => melody.controlChange;
 
-123 => CHmUsiCK.Tempo;
+120 => CHmUsiCK.Tempo;
 1 => audio.master;
 
 
@@ -22,8 +22,8 @@ spork~fm.fmBass(fm.every(60,16));
 //spork~fm1.fmBass(fm.trunc(mel,0.8)); fm1.gain(0.3);
 //spork~fm.fmBass(fm.rotate(mel,3));
 spork~melody.synth(fm.rotate(fm.every(63,16),2));
-spork~drum.drumF(drum.every(4));
+spork~drum.drumF(drum.densify(drum.every(16)));
 spork~bass.techBass(2);
 spork~har.sawOsc(["cm"],4); har.gain(0.1);
 
-1::day => now;
+day => now;
