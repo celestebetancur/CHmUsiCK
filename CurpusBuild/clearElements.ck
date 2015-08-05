@@ -1,0 +1,2 @@
+CorpusBuild cb;
+cb.clear();
