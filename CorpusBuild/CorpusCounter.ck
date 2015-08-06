@@ -44,32 +44,42 @@ for(0 => int counter;counter < (array.cap()/limit); counter++)
         if((limit*counter) <= i && i < ((limit*counter)+STEP))
         {
             kick << array[i];
-            <<<"k "+array[i]+" "+i>>>;
+            //<<<"k "+array[i]+" "+i>>>;
             i++;
         }
         if((limit*counter)+STEP <= i && i < ((limit*counter)+(STEP*2)))
         {
             snare << array[i];
-            <<<"s "+array[i]+" "+i>>>;
+            //<<<"s "+array[i]+" "+i>>>;
             i++;
         }
         if(((limit*counter)+(STEP*2)) <= i && i < ((limit*counter)+(STEP*3)))
         {
             hh << array[i];
-            <<<"h "+array[i]+" "+i>>>;
+            //<<<"h "+array[i]+" "+i>>>;
             i++;
         }
         [kick,snare,hh] @=> drum;
         DrumFull << drum;
-        <<<kick.cap()>>>;
     }
     cb.kick(kick);
     cb.snare(snare);
     cb.HH(hh);
+    
     kick.clear();
     snare.clear();
     hh.clear();
-    <<<"test">>>;
 }
+Secuences s;
+s.totalSecuences();
+<<< Secuences.TOTAL>>>;
 
-
+public class Secuences
+{
+    static int TOTAL;
+    
+    public void totalSecuences()
+    {
+        DrumFull.cap() / (3*STEP) => TOTAL;
+    }
+}

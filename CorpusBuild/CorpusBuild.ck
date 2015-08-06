@@ -52,13 +52,13 @@ public class CorpusBuild {
         for(0 => int i; i < STEPS; i++)
         {
             kickTxt.write(0);
-            kickTxt.write("\n");
+            kickTxt.write(" ");
             
             snareTxt.write(0);
-            snareTxt.write("\n");
+            snareTxt.write(" ");
             
             hhTxt.write(0);
-            hhTxt.write("\n");
+            hhTxt.write(" ");
         }
         kickTxt.close();
         snareTxt.close();
@@ -83,12 +83,12 @@ public class CorpusBuild {
                 {
                     1 +=> Kick[i];
                     kickTxt.write(Kick[i]);
-                    kickTxt.write("\n");
+                    kickTxt.write(" ");
                 }
                 if(k[i] == 0)
                 {
                     kickTxt.write(Kick[i]);
-                    kickTxt.write("\n");
+                    kickTxt.write(" ");
                 }
                 if(k[i] != 1 && k[i] != 0)
                 {
@@ -118,12 +118,12 @@ public class CorpusBuild {
                 {
                     1 +=> Snare[i];
                     snareTxt.write(Snare[i]);
-                    snareTxt.write("\n");
+                    snareTxt.write(" ");
                 }
                 if(s[i] == 0)
                 {
                     snareTxt.write(Snare[i]);
-                    snareTxt.write("\n");
+                    snareTxt.write(" ");
                 }
                 if(s[i] != 1 && s[i] != 0)
                 {
@@ -152,12 +152,12 @@ public class CorpusBuild {
                 {
                     1 +=> HiHat[i];
                     hhTxt.write(HiHat[i]);
-                    hhTxt.write("\n");
+                    hhTxt.write(" ");
                 }
                 if(hh[i] == 0)
                 {
                     hhTxt.write(HiHat[i]);
-                    hhTxt.write("\n");
+                    hhTxt.write(" ");
                 }
                 if(hh[i] != 1 && hh[i] != 0)
                 {

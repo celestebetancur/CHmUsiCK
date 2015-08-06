@@ -170,8 +170,8 @@ public class Drum extends CHmUsiCK
                 for(0 => int iii; iii < Array.Drum[i][ii].cap(); iii++)
                 {
                     rythyms <= Array.Drum[i][ii][iii];
+                    rythyms <= " ";
                 }
-                rythyms <= " ";
             }
             rythyms <= "\n";
         }
