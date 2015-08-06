@@ -276,4 +276,9 @@ public class Melody extends CHmUsiCK
         }
         return granularized;
     }
+    public void metronome(float tempo,int div,int each)
+    {
+        tempo => CHmUsiCK.Tempo;
+        synthOsc(div,every(100,each));
+    }
 }

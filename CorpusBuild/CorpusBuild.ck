@@ -168,5 +168,4 @@ public class CorpusBuild {
         }
         return HiHat;
     }
-    
 }

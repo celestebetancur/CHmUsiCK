@@ -7,8 +7,11 @@
 //  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 public class Drum extends CHmUsiCK
-{
+{   
+    
     FileIO rythyms;
+    
+    rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     
     Gain Normalize => Gain vol => Master;
     
