@@ -8,7 +8,7 @@
 //
 public class Drum extends CHmUsiCK
 {   
-    
+
     FileIO rythyms;
     
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
@@ -73,7 +73,7 @@ public class Drum extends CHmUsiCK
     0 => int randomSize;
     
     4 => int bdSound;
-    3 => int snSound;
+    9 => int snSound;
     8 => int hhSound;
 
     8 => int Division;
@@ -149,6 +149,12 @@ public class Drum extends CHmUsiCK
             Math.random2(0,1) => random[i];
         }
         return random;
+    }
+    public int[] randomMaybe() // look for a better name
+    {
+        spork~ drumF(Array.CORPUSKICK,Array.CORPUSSNARE,Array.CORPUSHIHAT);
+        spork~ event(Array.CORPUSKICK,Array.CORPUSSNARE,Array.CORPUSHIHAT);  
+        while(true) 1::second => now;
     }
     public int[][] favorite(int num)
     {

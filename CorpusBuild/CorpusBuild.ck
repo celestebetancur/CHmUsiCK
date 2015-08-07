@@ -2,6 +2,8 @@ public class CorpusBuild {
     
     8 => static int STEPS; 
     
+    100 => int density;
+    
     int Kick[STEPS];
     int Snare[STEPS];
     int HiHat[STEPS];
@@ -26,7 +28,7 @@ public class CorpusBuild {
     kickTxt.close();
     
     snareTxt.open(me.dir() + "Snare.txt",FileIO.READ);
-
+    
     while(snareTxt => num)
     {
         num <= Std.atoi(IO.newline());
@@ -68,7 +70,7 @@ public class CorpusBuild {
     public int[] kick(int k[])
     {
         kickTxt.close();
-
+        
         kickTxt.open(me.dir() + "/Kick.txt", FileIO.WRITE);
         
         if(k.cap() != STEPS)
@@ -99,11 +101,11 @@ public class CorpusBuild {
         }
         return Kick;
     }
-
+    
     public int[] snare(int s[])
     {
         snareTxt.close();
-
+        
         snareTxt.open(me.dir() + "/Snare.txt", FileIO.WRITE);
         
         if(s.cap() != STEPS)
@@ -137,7 +139,7 @@ public class CorpusBuild {
     public int[] HH(int hh[])
     {
         hhTxt.close();
-
+        
         hhTxt.open(me.dir() + "/HH.txt", FileIO.WRITE);
         
         if(hh.cap() != STEPS)
@@ -167,5 +169,31 @@ public class CorpusBuild {
             hhTxt.close();
         }
         return HiHat;
+    }
+    public int percentChange(float percentage)
+    {
+        // Almost copied from class Generator by son0p - Federico Lopez
+        
+        int percentArray[density];
+    
+        for(0 => int i; i < (percentage*density); i++)
+        {
+            1 => percentArray[i];
+        } 
+     
+        percentArray[Math.random2( 0, percentArray.cap()-1 )] => int selected;
+    
+    return selected;
+    }
+    public int randomDensity(float d) //TODO : is not workin'
+    {
+        if(d > 1 || d < 0)
+        {
+            <<<"Parameter between 0 and 1">>>;
+        }
+        else
+        {
+            (d * 100)$int => density;
+        }
     }
 }

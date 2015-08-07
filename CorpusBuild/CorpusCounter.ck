@@ -70,9 +70,9 @@ for(0 => int counter;counter < (array.cap()/limit); counter++)
     snare.clear();
     hh.clear();
 }
+
 Secuences s;
 s.totalSecuences();
-<<< Secuences.TOTAL>>>;
 
 public class Secuences
 {

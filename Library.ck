@@ -7,9 +7,16 @@
 //
 
 //Library
+Machine.add(me.dir() + "/Array.ck");
+Machine.add(me.dir() + "/CorpusBuild/CorpusBuild.ck");
+Machine.add(me.dir() + "/CorpusBuild/clearElements.ck");
+second => now;
+Machine.add(me.dir() + "/CorpusBuild/CorpusCounter.ck");
+second => now;
+Machine.add(me.dir() + "/CorpusBuild/setPercentages.ck");
+second => now;
 Machine.add(me.dir() + "/CHmUsiCK.ck");
 Machine.add(me.dir() + "/FavoriteArray.ck");
-Machine.add(me.dir() + "/Array.ck");
 Machine.add(me.dir() + "/STATIC.ck");
 Machine.add(me.dir() + "/AudioClass.ck");
 Machine.add(me.dir() + "/TempoTap.ck");

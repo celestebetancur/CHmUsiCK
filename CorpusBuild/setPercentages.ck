@@ -1,5 +1,4 @@
 CorpusBuild cb;
-Secuences s;
 
 int Kick[cb.STEPS];
 int Snare[cb.STEPS];
@@ -42,11 +41,24 @@ while(hhTxt => num)
 }
 hhTxt.close();
 
-calculePercentage(Kick);
-calculePercentage(Snare);
-calculePercentage(HiHat);
+second => now;
+calculePercentage(Kick) @=> float KICK[];
+calculePercentage(Snare) @=> float SNARE[];
+calculePercentage(HiHat) @=> float HIHAT[];
+second => now;
 
-public int[] calculePercentage(int toCalculate[])
+Array.CORPUSKICK.clear();
+Array.CORPUSSNARE.clear();
+Array.CORPUSHIHAT.clear();
+
+for(0 => int i; i < KICK.cap(); i++)
+{
+    Array.CORPUSKICK << cb.percentChange(KICK[i]);
+    Array.CORPUSSNARE << cb.percentChange(SNARE[i]);
+    Array.CORPUSHIHAT << cb.percentChange(HIHAT[i]);
+}
+
+public float[] calculePercentage(int toCalculate[])
 {
     float decisionArray[0];
     
@@ -58,3 +70,8 @@ public int[] calculePercentage(int toCalculate[])
     }
     return decisionArray;
 }
+
+ 
+
+
+
