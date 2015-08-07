@@ -174,7 +174,7 @@ public class CorpusBuild {
     {
         // Almost copied from class Generator by son0p - Federico Lopez
         
-        int percentArray[density];
+        int percentArray[100];
     
         for(0 => int i; i < (percentage*density); i++)
         {
@@ -185,7 +185,7 @@ public class CorpusBuild {
     
     return selected;
     }
-    public int randomDensity(float d) //TODO : is not workin'
+    public int randomDensity(float d)
     {
         if(d > 1 || d < 0)
         {

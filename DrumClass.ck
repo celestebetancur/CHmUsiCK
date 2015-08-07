@@ -8,7 +8,6 @@
 //
 public class Drum extends CHmUsiCK
 {   
-
     FileIO rythyms;
     
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
