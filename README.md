@@ -7,3 +7,5 @@ _______________
 (beta version)
 ---------------
 
+install chuck, clone this repo and run Library.ck
+
