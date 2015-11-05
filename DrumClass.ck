@@ -18,7 +18,7 @@ public class Drum extends CHmUsiCK
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
-    //——————samples for bass drum——————//
+    //??????samples for bass drum??????//
     me.dir() + "/Drum Kits/Electronica/Kick_Electronica (1).wav" => Kick[0].read; 
     me.dir() + "/Drum Kits/Electronica/Kick_Electronica (2).wav" => Kick[1].read; 
     me.dir() + "/Drum Kits/Electronica/Kick_Electronica (3).wav" => Kick[2].read; 
@@ -27,7 +27,7 @@ public class Drum extends CHmUsiCK
     me.dir() + "/Drum Kits/Hip Hop/Kick (3).wav" => Kick[5].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick a.wav" => Kick[6].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick b.wav" => Kick[7].read;
-    //——————samples for snare drum—————//
+    //??????samples for snare drum?????//
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (1).wav" => Snare[0].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (2).wav" => Snare[1].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (3).wav" => Snare[2].read;
@@ -40,7 +40,7 @@ public class Drum extends CHmUsiCK
     me.dir() + "/Drum Kits/Hip Hop/Snare - Clap (4).wav" => Snare[9].read;
     me.dir() + "/Drum Kits/Vintage Drum/snare a.wav" => Snare[10].read;
     me.dir() + "/Drum Kits/Vintage Drum/snare b.wav" => Snare[11].read;
-    //——————sample for hhSounds—————————//
+    //??????sample for hhSounds?????????//
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (1).wav" => HH[0].read;
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (2).wav" => HH[1].read;
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (3).wav" => HH[2].read;
@@ -74,7 +74,7 @@ public class Drum extends CHmUsiCK
     4 => int bdSound;
     9 => int snSound;
     8 => int hhSound;
-
+    
     8 => int Division;
     
     [1] @=> int hhGlobal[];
@@ -148,12 +148,6 @@ public class Drum extends CHmUsiCK
             Math.random2(0,1) => random[i];
         }
         return random;
-    }
-    public int[] randomMaybe() // look for a better name
-    {
-        spork~ drumF(Array.CORPUSKICK,Array.CORPUSSNARE,Array.CORPUSHIHAT);
-        spork~ event(Array.CORPUSKICK,Array.CORPUSSNARE,Array.CORPUSHIHAT);  
-        while(true) 1::second => now;
     }
     public int[][] favorite(int num)
     {
@@ -334,7 +328,7 @@ public class Drum extends CHmUsiCK
             Dur(convert(Tempo),Division) => now;
         } 
     }
-    //————————————————set Global variables————————————————//
+    //????????????????set Global variables????????????????//
     public int[] bd(int bd[])
     {
         bd.size() => bdGlobal.size;
@@ -353,7 +347,7 @@ public class Drum extends CHmUsiCK
         sn @=> snGlobal;
         return snGlobal;
     }
-    // ———————————————no argument funtion ———————————————//
+    // ???????????????no argument funtion ???????????????//
     public int[] bd ()
     {
         bassDrum(bdGlobal);
@@ -385,7 +379,7 @@ public class Drum extends CHmUsiCK
         return hhGlobal;
     }
     
-    // ———————————————Drum with Fill———————————————//
+    // ???????????????Drum with Fill???????????????//
     public void drumF (int k[])
     {
         bassDrumF(k);
@@ -419,7 +413,7 @@ public class Drum extends CHmUsiCK
             while(true) 1::ms => now;
         }
     }
-    //———————————————————Drum without fill———————————————————//
+    //???????????????????Drum without fill???????????????????//
     public int[] drum ()
     {
         spork~ bassDrum(bdGlobal);
@@ -465,7 +459,7 @@ public class Drum extends CHmUsiCK
         }
         return full[0],full[1],full[2];
     }
-    //——————————————————Basic Functions————————————————————//
+    //??????????????????Basic Functions????????????????????//
     private int[] bassDrumF (int k[])
     {
         k @=> bdGlobal;

@@ -7,9 +7,10 @@ public class CHmUsiCK extends Chubgraph
     
     4 => int OverallDivision;
     
-    4 => static int Measure;
+    1 => static int Measure;
     
-    static float MASTER;
+    1 => static float MASTER;
+    
     MASTER => Master.gain;
     
     public static float tempo(float t)
@@ -97,7 +98,7 @@ public class CHmUsiCK extends Chubgraph
         0 => Master.gain;
         return d;
     }
-    public float density(float limit)
+    public float accel(float limit)
     {
         if(tempo() < limit)
         {
@@ -217,6 +218,103 @@ public class CHmUsiCK extends Chubgraph
             newPattern @=> pattern;
         }
         return pattern;
+    }
+    public int counter(int pattern[])
+    {
+        0 => int notesOn;
+        
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] != 0)
+            {
+                1 +=> notesOn; 
+            }
+        }
+        return notesOn;
+    }
+    public int counter(float pattern[])
+    {
+        0 => int notesOn;
+        
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            if(pattern[i] != 0)
+            {
+                1 +=> notesOn; 
+            }
+        }
+        return notesOn;
+    }
+    public int[] density(int pattern[], float parameter)
+    //densify or degrade an array with a float parameter as percentage
+    {   
+        int toReturn[pattern.cap()];
+        pattern.cap() => float size;
+        
+        if(parameter >= 0 && parameter <= 1)
+        {
+            Std.ftoi(size * parameter) => int toAdd;
+            
+            if(counter(pattern) == toAdd) pattern @=> toReturn;
+            
+            else
+            {
+                if(counter(pattern) > toAdd)
+                {
+                    counter(pattern) - toAdd => int c;
+                    
+                    while(c > 0) 
+                    {
+                        for(0 => int i; i < pattern.cap(); i++)
+                        {
+                            if(pattern[i] != 0 && maybe)
+                            {
+                                0 => pattern[i];
+                                1 -=> c;
+                            }
+                            if(c == 0) break;
+                        }
+                    }
+                    pattern @=> toReturn;
+                }
+                if(counter(pattern) < toAdd)
+                {
+                    toAdd - counter(pattern) => int c;
+                    
+                    while(c > 0) 
+                    {
+                        for(0 => int i; i < pattern.cap(); i++)
+                        {
+                            if(pattern[i] == 0 && maybe)
+                            {
+                                1 => pattern[i];
+                                1 -=> c;
+                            }
+                            if(c == 0) break;
+                        }
+                    }
+                    pattern @=> toReturn;
+                }
+            }
+        }
+        else
+        {
+            <<< "Parameter must be a number between 0 and 1">>>;  
+        }
+        return toReturn;
+    }
+    public int[] palindrome(int pattern[])
+    {
+        int toReturn[(pattern.cap()*2)];
+        (pattern.cap()*2) -1 => int countDown; 
+        
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            pattern[i] => toReturn[i];
+            pattern[i] => toReturn[countDown];
+            1 -=> countDown;
+        }
+        return toReturn;
     }
     private dur convert(float beat)
     {

@@ -400,7 +400,7 @@ public class Notes
         }
         if( input == 7 )
         {
-            [0, 1, 3, 5, 6, 8, 10] @=> notes; //locyan
+            [0, 1, 3, 5, 6, 8, 10] @=> notes; //locryan
             return notes;
         }
         if( input == 8 )

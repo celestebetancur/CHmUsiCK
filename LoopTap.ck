@@ -14,12 +14,14 @@ sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
+8::second => now;
+
 while(true)
 {
-    (Tap.beat * Sync.tSync) => now;
     if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
     {
         Machine.remove(fileID);
         Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
     }
+    (Tap.beat * Sync.tSync) => now;
 }

@@ -8,13 +8,6 @@
 
 //Library
 Machine.add(me.dir() + "/Array.ck");
-Machine.add(me.dir() + "/CorpusBuild/CorpusBuild.ck");
-Machine.add(me.dir() + "/CorpusBuild/clearElements.ck");
-second => now;
-Machine.add(me.dir() + "/CorpusBuild/CorpusCounter.ck");
-second => now;
-Machine.add(me.dir() + "/CorpusBuild/setPercentages.ck");
-second => now;
 Machine.add(me.dir() + "/CHmUsiCK.ck");
 Machine.add(me.dir() + "/FavoriteArray.ck");
 Machine.add(me.dir() + "/STATIC.ck");
@@ -33,6 +26,7 @@ Machine.add(me.dir() + "/EFXClass.ck");
 Machine.add(me.dir() + "/RecSession.ck");
 Machine.add(me.dir() + "/Looper.ck");
 Machine.add(me.dir() + "/Pan.ck");
-//Machine.add(me.dir() + "/LoopTap.ck");
 Machine.add(me.dir() + "/Loop.ck");
+//Machine.add(me.dir() + "/LoopTap.ck");
+
 

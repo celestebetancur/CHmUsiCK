@@ -188,7 +188,7 @@ public class Melody extends CHmUsiCK
     }
     public void randomMelody(int div ,int capacity, string key)
     {
-        controlChange(Math.random2(0,17));
+        //controlChange(Math.random2(0,17));
         synth(div,random(key,capacity));
     }
     //———————————————synth——————————————//

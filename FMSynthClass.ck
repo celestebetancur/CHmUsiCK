@@ -11,7 +11,7 @@ public class FMSynth extends CHmUsiCK
 {
     SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
     
-    0.09 => Normalize.gain; //don't change this
+    0.08 => Normalize.gain; //don't change this
     
     SinOsc carrier2;
     8 => float C2f;
