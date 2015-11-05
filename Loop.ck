@@ -13,11 +13,7 @@ Sync sync;
 sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
-/*
-<<<"Eight (8) seconds wait...">>>;
 
-8::second => now;
-*/
 spork~loopTrigger();
 spork~beatCounter();
 

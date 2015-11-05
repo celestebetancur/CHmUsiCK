@@ -8,7 +8,7 @@
 
 public class Melody extends CHmUsiCK
 {   
-    Gain Normalize => Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master;
     
     0.25 => Normalize.gain; //don't change this
     
