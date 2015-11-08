@@ -38,7 +38,7 @@ public static int beatCounter()
     while(true)
     {
         STATIC.BEATS++;
-        <<<STATIC.BEATS, "Beats">>>; //uncomment to see # of beats
+        //<<<STATIC.BEATS, "Beats">>>; //uncomment to see # of beats
         
         measureCounter();
         phraseCounter();
@@ -53,7 +53,7 @@ public static int measureCounter()
     if(STATIC.BEATS % CHmUsiCK.Measure == 0)
     {
         STATIC.MEASURES++;
-        <<<STATIC.MEASURES, "Measures">>>; //uncomment to see # of measures
+        //<<<STATIC.MEASURES, "Measures">>>; //uncomment to see # of measures
     }
     return STATIC.MEASURES;
 }
@@ -63,7 +63,7 @@ public static int phraseCounter()
     if(STATIC.BEATS % (Sync.NUMMEASURES * CHmUsiCK.Measure) == 0)
     {
         STATIC.PHRASES++;
-        <<<STATIC.PHRASES, "Phrases">>>; //uncomment to see # of phrases
+        //<<<STATIC.PHRASES, "Phrases">>>; //uncomment to see # of phrases
     }
     return STATIC.PHRASES;
 }

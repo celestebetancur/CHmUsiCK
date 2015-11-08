@@ -118,6 +118,16 @@ public class CHmUsiCK extends Chubgraph
         }
         return limit;
     }
+    public int[] rand(int capacity)
+    {
+        int random[capacity];
+        
+        for(0 => int i; i < random.cap(); i ++)
+        {
+            Math.random2(0,1) => random[i];
+        }
+        return random;
+    }
     public int[] trunc(int pattern[], float howmany)
     {
         (pattern.size() * howmany)$int => int newsize;

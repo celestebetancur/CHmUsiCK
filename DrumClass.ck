@@ -137,18 +137,6 @@ public class Drum extends CHmUsiCK
     {
         return fillEach(Refill);
     }
-    public int[] random(int capacity)
-    {
-        capacity => randomSize;
-        
-        int random[capacity];
-        
-        for(0 => int i; i < random.cap(); i ++)
-        {
-            Math.random2(0,1) => random[i];
-        }
-        return random;
-    }
     public int[][] favorite(int num)
     {
         return FavoriteArray.Drum[num];
