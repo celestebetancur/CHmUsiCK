@@ -7,7 +7,7 @@ public class CHmUsiCK extends Chubgraph
     
     4 => int OverallDivision;
     
-    1 => static int Measure;
+    4 => static int Measure;
     
     1 => static float MASTER;
     
