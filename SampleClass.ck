@@ -1,7 +1,7 @@
 public class Sampler extends CHmUsiCK
 {
     
-    SndBuf buffer => Echo echo => Gain Normalize => Gain vol =>Master;
+    SndBuf buffer => Echo echo => Gain Normalize => Gain vol => Envelope envelope => Master;
     
     1.5 => Normalize.gain;
     
@@ -10,12 +10,23 @@ public class Sampler extends CHmUsiCK
     8 => int Division;
     
     "Drum kits/bajo.wav" => string fileName;
+    
+    [0] @=> int gains[];
 	
     public string file(string name)
     {
-        "Drum kits/" + name + ".wav" => fileName;
+        "Samples/" + name + ".wav" => fileName;
         
         return fileName;
+    }
+    public int[] changeStress(int parameters[])
+    {
+        int toReturn[parameters.cap()];
+        
+        parameters.cap() => gains.size;
+        parameters @=> gains;
+        
+        return gains;
     }
     public int[] accelerate(int patterns[], int parameter)
     {
@@ -37,15 +48,15 @@ public class Sampler extends CHmUsiCK
             {
                 if (sample[i] == 1)
                 {
-                    1 => buffer.gain;
+                    stress(sample.cap(),gains)[i] => buffer.gain;
+                    envelope.keyOn();
                     me.dir() + fileName => buffer.read;
-					stress(sample.cap(),[0])[i] => buffer.gain;
                 }
                 Dur(convert(Tempo),Division) => now;
                 
                 if (sample[i] == 0)
                 {
-                    0 => buffer.gain;
+                    envelope.keyOff();
                 }
                 Dur(convert(Tempo),Division) => now;
             }

@@ -19,7 +19,7 @@
 (defvar chuck-exec "chuck")
 
 ;;; CHANGE THIS to list of commonly required classes
-(defvar chuck-lib (list "fade.ck" "scale.ck" "tg.ck")) 
+(defvar chuck-lib (list "Library.ck")) 
 
 ;; call chuck with some arguments
 (defun run-chuck (ch-action &rest args)
@@ -147,6 +147,7 @@
     (define-key chuck-mode-map [menu-bar chuck chuck-remove-all]
       '("Remove all shreds from running ChucK" . chuck-remove-all))
 
+    (define-key chuck-mode-map "\M-l" 'chuck-add-library)
     (define-key chuck-mode-map [menu-bar chuck chuck-add-library]
       '("Add library to running ChucK" . chuck-add-library))
                                                  
@@ -225,7 +226,7 @@
 		"\\<CHmUsiCK\\>\\|"
 		"\\<Drum\\>\\|" "\\<FMSynth\\>\\|" "\\<Audio\\>\\|"
 		"\\<Bass\\>\\|" "\\<Harmony\\>\\|" "\\<Notes\\>\\|"
-		"\\<Melody\\>\\|" "\\<Rec\\>\\|"
+		"\\<Melody\\>\\|" "\\<Rec\\>\\|" "\\<Sampler\\>\\|"
 	    "\\<blackhole\\>\\|" "\\<Gain\\>\\|" "\\<Noise\\>\\|"
 	    "\\<Impulse\\>\\|" "\\<Step\\>\\|" "\\<HalfRect\\>\\|"
 	    "\\<fullrect\\>\\|" "\\<zerox\\>\\|" "\\<delayp\\>\\|"

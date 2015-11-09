@@ -124,7 +124,7 @@ public class CHmUsiCK extends Chubgraph
 
 		for(0 => int i; i < toReturn.cap(); i++)
 		{
-			0.6 => toReturn[i];
+			0.4 => toReturn[i];
 		}
 		for(0 => int i; i < positions.cap(); i++)
 		{

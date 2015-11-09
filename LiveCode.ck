@@ -2,7 +2,8 @@ Sampler  s => dac;
 
 //spork~s.sound(s.every(8));
 s.file("hola");
-spork~s.sound(s.rotate(s.every(2)));
+s.changeStress([0,3]);
+spork~s.sound([1,0,0,1,1,0,1,0]);
 //q.file("sometimes");
 //spork~q.sound(q.accelerate(q.every(4),12));
 
