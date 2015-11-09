@@ -118,6 +118,20 @@ public class CHmUsiCK extends Chubgraph
         }
         return limit;
     }
+	public float[] stress(int capacity, int positions[])
+	{
+		float toReturn[capacity];
+
+		for(0 => int i; i < toReturn.cap(); i++)
+		{
+			0.6 => toReturn[i];
+		}
+		for(0 => int i; i < positions.cap(); i++)
+		{
+			1.0 => toReturn[positions[i]];
+		}
+		return toReturn;
+	}
     public int[] rand(int capacity)
     {
         int random[capacity];

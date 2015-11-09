@@ -1,15 +1,15 @@
-Sampler s => dac;
-Sampler p => dac;
-Sampler q => dac;
-Drum drum => dac;
+Sampler  s => dac;
 
 //spork~s.sound(s.every(8));
-//p.file("hey");
-//spork~p.sound(p.rotate(p.every(2)));
+s.file("hola");
+spork~s.sound(s.rotate(s.every(2)));
 //q.file("sometimes");
 //spork~q.sound(q.accelerate(q.every(4),12));
 
-spork~drum.drumF(drum.favorite(1));
+//s.stress(4,[0,2]) @=> float g[];
+
+//for(0 => int i; i < g.cap(); i++) <<< g[i] >>>;
+
 
 
 day => now;

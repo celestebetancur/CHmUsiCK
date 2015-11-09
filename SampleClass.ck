@@ -10,7 +10,7 @@ public class Sampler extends CHmUsiCK
     8 => int Division;
     
     "Drum kits/bajo.wav" => string fileName;
-    
+	
     public string file(string name)
     {
         "Drum kits/" + name + ".wav" => fileName;
@@ -39,6 +39,7 @@ public class Sampler extends CHmUsiCK
                 {
                     1 => buffer.gain;
                     me.dir() + fileName => buffer.read;
+					stress(sample.cap(),[0])[i] => buffer.gain;
                 }
                 Dur(convert(Tempo),Division) => now;
                 

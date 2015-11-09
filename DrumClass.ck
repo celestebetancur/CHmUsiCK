@@ -7,7 +7,7 @@
 //  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 public class Drum extends CHmUsiCK
-{   
+{
     FileIO rythyms;
     
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
@@ -208,9 +208,9 @@ public class Drum extends CHmUsiCK
     }
     public void randomDrum(int div, int capacity)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int snare[];
-        random(capacity) @=> int hh[];
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int snare[];
+        rand(capacity) @=> int hh[];
         
         spork~ drumF(kick,snare,hh);
         spork~ event(kick,snare,hh);  
@@ -218,34 +218,34 @@ public class Drum extends CHmUsiCK
     }
     public void bdRandomFill(int capacity)
     {
-        random(capacity) @=> int kick[];
+        rand(capacity) @=> int kick[];
         
         bdFill(kick);
     }
     public void hhRandomFill(int capacity)
     {
-        random(capacity) @=> int hihat[];
+        rand(capacity) @=> int hihat[];
         
         hhFill(hihat);
     }
     public void snRandomFill(int capacity)
     {
-        random(capacity) @=> int snare[];
+        rand(capacity) @=> int snare[];
         
         snFill(snare);
     }
     public void randomFill(int capacity, int capHH)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int hh[];
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int hh[];
         
         fill(kick,hh);
     }
     public void randomFill(int capacity)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int snare[];
-        random(capacity) @=> int hh[];
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int snare[];
+        rand(capacity) @=> int hh[];
         
         fill(kick,snare,hh);
     }
