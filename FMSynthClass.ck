@@ -7,7 +7,7 @@
 //
 
 
-public class FMSynth extends CHmUsiCK
+public class FMSynth extends Chmusick
 {
     SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
     
@@ -294,7 +294,7 @@ public class FMSynth extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
@@ -303,7 +303,7 @@ public class FMSynth extends CHmUsiCK
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
                     envelope.keyOn();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
                 }
             }          

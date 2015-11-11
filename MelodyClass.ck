@@ -3,10 +3,9 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 18/10/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-public class Melody extends CHmUsiCK
+public class Melody extends Chmusick
 {   
     Gain Normalize => Gain vol => Master;
     
@@ -214,13 +213,13 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => osc[activeOsc].freq;
                     envelope.keyOn();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
                 }
             }          
@@ -248,14 +247,14 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     inst[activeInst].noteOff;
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => inst[activeInst].freq;
                     1 => inst[activeInst].noteOn;
                     inst[activeInst].noteOn;
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                     inst[activeInst].noteOff;
                 }
             }          
@@ -278,7 +277,7 @@ public class Melody extends CHmUsiCK
     }
     public void metronome(float tempo,int div,int each)
     {
-        tempo => CHmUsiCK.Tempo;
+        tempo => Chmusick.TEMPO;
         synthOsc(div,every(100,each));
     }
 }

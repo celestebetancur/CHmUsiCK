@@ -1,4 +1,4 @@
-CHmUsiCK tempo; 
+Chmusick tempo; 
 
 TheCooker  s => dac;
 Drum drum => dac;
@@ -12,7 +12,7 @@ Rec r;
 0.5 => rev.mix;
 0.6 => echo.mix;
 
-170 => tempo.Tempo;
+170 => tempo.TEMPO;
 
 spork~drum.drum(drum.favorite(5));
 spork~h.sinOsc(["Cm","Cm","Ab","Ab"]);

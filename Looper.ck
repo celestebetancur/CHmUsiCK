@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-public class Looper extends CHmUsiCK
+public class Looper extends Chmusick
 {
     Gain Normalize;
     LiSa Looper;
     
     0.6 => Normalize.gain;
     
-    (convert(Tempo)*4) => dur Dura; 
+    (convert(TEMPO)*4) => dur Dura; 
     1 => float Rate;
     1 => int Play;
     1 => int Loop;

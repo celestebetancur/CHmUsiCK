@@ -4,13 +4,12 @@
 //
 //  Created by Esteban Betancur on 18/10/14.
 //  Modified 24/06/15.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-CHmUsiCK extractor;
+Chmusick extractor;
 
 Sync sync;
-sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
+sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
@@ -22,13 +21,15 @@ while(true){1::second => now;}
 public int loopTrigger()
 {
     while(true)
-    { 
+    {
+		sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
+		
         if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
         {
             Machine.remove(fileID);
             Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
         }
-        (extractor.convert(CHmUsiCK.Tempo) * Sync.tSync) => now;
+        (extractor.convert(Chmusick.TEMPO) * Sync.tSync) => now;
     }
     return fileID;
 }
@@ -43,14 +44,14 @@ public static int beatCounter()
         measureCounter();
         phraseCounter();
         
-        extractor.convert(extractor.tempo(extractor.Tempo)) => now;
+        extractor.convert(extractor.tempo(extractor.TEMPO)) => now;
     }
     return STATIC.BEATS;
 }
 
 public static int measureCounter()
 {
-    if(STATIC.BEATS % CHmUsiCK.Measure == 0)
+    if(STATIC.BEATS % Chmusick.MEASURE == 0)
     {
         STATIC.MEASURES++;
         //<<<STATIC.MEASURES, "Measures">>>; //uncomment to see # of measures
@@ -60,7 +61,7 @@ public static int measureCounter()
 
 public static int phraseCounter()
 {
-    if(STATIC.BEATS % (Sync.NUMMEASURES * CHmUsiCK.Measure) == 0)
+    if(STATIC.BEATS % (Sync.NUMMEASURES * Chmusick.MEASURE) == 0)
     {
         STATIC.PHRASES++;
         //<<<STATIC.PHRASES, "Phrases">>>; //uncomment to see # of phrases

@@ -3,10 +3,9 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 10/12/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-public class Pan extends CHmUsiCK
+public class Pan extends Chmusick
 {
     inlet => Pan2 p => Master => outlet;
     
@@ -26,17 +25,17 @@ public class Pan extends CHmUsiCK
         while(true)
         {
             Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 
-            Dur(convert(Tempo),Division) => now; 
+            Dur(convert(TEMPO),Division) => now; 
         }
     }
     public void randomPan(float t)
     {
-        t => Tempo;
+        t => TEMPO;
         
         while(true)
         {
             Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 
-            Dur(convert(Tempo),Division) => now; 
+            Dur(convert(TEMPO),Division) => now; 
         }
     }
     public void circularPan(float t)

@@ -1,4 +1,4 @@
-public class TheCooker extends CHmUsiCK
+public class TheCooker extends Chmusick
 //SynthDef using Perry Cook's example and STK BlitSaw implementation
 {
     10 => int partial;

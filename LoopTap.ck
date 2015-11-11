@@ -4,13 +4,12 @@
 //
 //  Created by Esteban Betancur on 18/10/14.
 //  Modified 23/11/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 Tap tap;
 tap.tap();
 
 Sync sync;
-sync.sync(CHmUsiCK.Measure, Sync.NUMMEASURES);
+//sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
 
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
@@ -18,6 +17,8 @@ Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
 while(true)
 {
+	sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
+	
     if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
     {
         Machine.remove(fileID);

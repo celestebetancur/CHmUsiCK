@@ -1,4 +1,4 @@
-public class Sampler extends CHmUsiCK
+public class Sampler extends Chmusick
 {
     
     SndBuf buffer => Echo echo => Gain Normalize => Gain vol => Envelope envelope => Master;
@@ -52,13 +52,13 @@ public class Sampler extends CHmUsiCK
                     envelope.keyOn();
                     me.dir() + fileName => buffer.read;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
                 
                 if (sample[i] == 0)
                 {
                     envelope.keyOff();
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
         }
     }

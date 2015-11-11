@@ -3,11 +3,10 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 18/10/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
 
-public class Harmony extends CHmUsiCK
+public class Harmony extends Chmusick
 {  
     Gain Normalize => Gain vol => Master => outlet;
     
@@ -109,7 +108,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                (convert(Tempo) * Measure) => now;  
+                (convert(TEMPO) * MEASURE) => now;  
             }
         }
     }
@@ -137,7 +136,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                (convert(Tempo) * Measure) => now;  
+                (convert(TEMPO) * MEASURE) => now;  
             }
         }
     }
@@ -165,7 +164,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                (convert(Tempo) * Measure) => now;  
+                (convert(TEMPO) * MEASURE) => now;  
             }
         }
     }
@@ -193,7 +192,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                (convert(Tempo) * Measure) => now;  
+                (convert(TEMPO) * MEASURE) => now;  
             }
         }
     }
@@ -221,7 +220,7 @@ public class Harmony extends CHmUsiCK
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
                 }
-                (convert(Tempo) * Measure) => now;  
+                (convert(TEMPO) * MEASURE) => now;  
             }
         }
     }

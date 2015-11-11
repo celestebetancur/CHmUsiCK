@@ -223,14 +223,14 @@
 	    "\\<send\\>\\|" "\\<bind\\>\\|" "\\<connect\\>") 
 	 'font-lock-function-name-face)
    (cons (concat "\\<dac\\>\\|" "\\<adc\\>\\|"
-		"\\<CHmUsiCK\\>\\|"
+		"\\<Chmusick\\>\\|"
 		"\\<Drum\\>\\|" "\\<FMSynth\\>\\|" "\\<Audio\\>\\|"
 		"\\<Bass\\>\\|" "\\<Harmony\\>\\|" "\\<Notes\\>\\|"
 		"\\<Melody\\>\\|" "\\<Rec\\>\\|" "\\<Sampler\\>\\|"
 	    "\\<blackhole\\>\\|" "\\<Gain\\>\\|" "\\<Noise\\>\\|"
 	    "\\<Impulse\\>\\|" "\\<Step\\>\\|" "\\<HalfRect\\>\\|"
 	    "\\<fullrect\\>\\|" "\\<zerox\\>\\|" "\\<delayp\\>\\|"
-	    "\\<SndBuf\\>\\|" "\\<phasor\\>\\|"
+	    "\\<SndBuf\\>\\|" "\\<phasor\\>\\|" "\\<Rhythm\\>"
 	    "\\<SinOsc\\>\\|" "\\<PulseOsc\\>\\|" "\\<SqrOsc\\>\\|"
 	    "\\<TriOsc\\>\\|" "\\<SawOsc\\>\\|" "\\<netout\\>\\|"
 	    "\\<netin\\>\\|" "\\<BandedWG\\>\\|" "\\<BlowBotl\\>\\|"

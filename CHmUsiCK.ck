@@ -1,13 +1,13 @@
-public class CHmUsiCK extends Chubgraph
+public class Chmusick extends Chubgraph
 {        
     Gain Master => Dyno Processor => outlet;
     
-    120 => static float Tempo;  
-    convert(Tempo) => static dur ConvertedTempo;
+    120 => static float TEMPO;  
+    convert(TEMPO) => static dur DTEMPO;
     
     4 => int OverallDivision;
     
-    4 => static int Measure;
+    4 => static int MEASURE;
     
     1 => static float MASTER;
     
@@ -15,17 +15,17 @@ public class CHmUsiCK extends Chubgraph
     
     public static float tempo(float t)
     {
-        t => Tempo;
-        return Tempo;
+        t => TEMPO;
+        return TEMPO;
     }
     public float tempoD(dur t)
     {
-        convertD(t) => Tempo;
-        return Tempo;
+        convertD(t) => TEMPO;
+        return TEMPO;
     }
     public static float tempo()
     {
-        return Tempo;
+        return TEMPO;
     }
     public int overallDivision(int div)
     {
@@ -38,12 +38,12 @@ public class CHmUsiCK extends Chubgraph
     }
     public static int measure(int m)
     {
-        m => Measure;
-        return Measure;
+        m => MEASURE;
+        return MEASURE;
     }
     public static int measure()
     {
-        return Measure;
+        return MEASURE;
     }
     public static float master(float Mgain)
     {
@@ -104,16 +104,16 @@ public class CHmUsiCK extends Chubgraph
         {
             while(tempo() < limit)
             {
-                tempo() + 0.1 => Tempo;
-                convert(Tempo) * 0.25 => now;
+                tempo() + 0.1 => TEMPO;
+                convert(TEMPO) * 0.25 => now;
             }
         }
         else
         { 
             while(tempo() > limit)
             {
-                tempo() - 0.1 => Tempo;
-                convert(Tempo) * 0.25 => now;
+                tempo() - 0.1 => TEMPO;
+                convert(TEMPO) * 0.25 => now;
             }
         }
         return limit;

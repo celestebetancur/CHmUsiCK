@@ -4,9 +4,8 @@
 //
 //  Created by Esteban Betancur on 18/10/14.
 //  Modified on 19/11/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
-public class Drum extends CHmUsiCK
+public class Drum extends Chmusick
 {
     FileIO rythyms;
     
@@ -257,7 +256,7 @@ public class Drum extends CHmUsiCK
             {
                 0 => Kick[bdSound].pos;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void hhFill (int hh[])
@@ -268,7 +267,7 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void snFill (int sn[])
@@ -279,7 +278,7 @@ public class Drum extends CHmUsiCK
             {
                 0 => Snare[snSound].pos;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void fill (int k[], int hh[])
@@ -294,7 +293,7 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void fill (int k[],int s[],int hh[])
@@ -313,10 +312,10 @@ public class Drum extends CHmUsiCK
             {
                 0 => HH[hhSound].pos;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
-    //????????????????set Global variables????????????????//
+    //------------------set Global variables--------------------//
     public int[] bd(int bd[])
     {
         bd.size() => bdGlobal.size;
@@ -447,7 +446,7 @@ public class Drum extends CHmUsiCK
         }
         return full[0],full[1],full[2];
     }
-    //??????????????????Basic Functions????????????????????//
+    //-----------------Basic Functions---------------------//
     private int[] bassDrumF (int k[])
     {
         k @=> bdGlobal;
@@ -462,7 +461,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Kick[bdSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
@@ -486,7 +485,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Kick[bdSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
         }
         return k;
@@ -503,7 +502,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => HH[hhSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
         }
         return hh;
@@ -522,7 +521,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => HH[hhSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
@@ -546,7 +545,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Snare[snSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             } 
         }
         return sn;
@@ -565,7 +564,7 @@ public class Drum extends CHmUsiCK
                 {
                     0 => Snare[snSound].pos;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
