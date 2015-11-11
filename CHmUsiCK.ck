@@ -1,4 +1,13 @@
+//
+// Chmusick.ck
+// CHmUsiCK
+// Created in 2014 by Esteban Betancur
+//
+// Medellín - Colombia
+//
+
 public class Chmusick extends Chubgraph
+//every class that uses CHmUsiCK members must extend this class
 {        
     Gain Master => Dyno Processor => outlet;
     
@@ -119,6 +128,7 @@ public class Chmusick extends Chubgraph
         return limit;
     }
 	public float[] stress(int capacity, int positions[])
+	// randomly fills an array with 0 to 1 float
 	{
 		float toReturn[capacity];
 
@@ -133,7 +143,8 @@ public class Chmusick extends Chubgraph
 		return toReturn;
 	}
     public int[] rand(int capacity)
-    {
+	// randomly fills an array with ones
+	{
         int random[capacity];
         
         for(0 => int i; i < random.cap(); i ++)
@@ -143,7 +154,8 @@ public class Chmusick extends Chubgraph
         return random;
     }
     public int[] trunc(int pattern[], float howmany)
-    {
+	// truncates an array pattern by howmany
+	{
         (pattern.size() * howmany)$int => int newsize;
         int truncated[newsize];
         
@@ -154,7 +166,8 @@ public class Chmusick extends Chubgraph
         return truncated;
     }
     public int[] reverse(int pattern[])
-    {
+	// reverse an array
+	{
         int reversed[0];
         
         for((pattern.cap()-1) => int i; i >= 0 ; i - 1 => i)
@@ -164,7 +177,8 @@ public class Chmusick extends Chubgraph
         return reversed;
     }
     public int[] densify(int pattern[])
-    {
+	// ramdomly add ones to an int array
+	{
         int notes[0];
         
         for(0 => int i; i < pattern.cap(); i++)
@@ -184,7 +198,8 @@ public class Chmusick extends Chubgraph
         return pattern;
     }
     public int[] degrade(int pattern[])
-    {
+	// randomly removes non zero events of an int array
+	{
         for(0 => int i; i < pattern.cap(); i++)
         {
             if(pattern[i] != 0 && maybe)
@@ -195,7 +210,8 @@ public class Chmusick extends Chubgraph
         return pattern;
     }
     public int[] every(int parameter)
-    {
+	// fills an array of parameter size with ones
+	{
         int everyArray[parameter];
         
         1 => everyArray[0];
@@ -208,7 +224,8 @@ public class Chmusick extends Chubgraph
         return everyArray;
     }
     public int[] every(int note, int parameter)
-    {
+	// fills an array -parameter sized-  with note 
+	{
         int everyArray[parameter];
         
         note => everyArray[0];
@@ -221,7 +238,8 @@ public class Chmusick extends Chubgraph
         return everyArray;
     }
     public int[] rotate(int pattern[])
-    {
+	// rotates int array pattern by one
+	{
         int newPattern[pattern.cap()];
         
         pattern[pattern.cap()-1] => newPattern[0];
@@ -233,7 +251,8 @@ public class Chmusick extends Chubgraph
         return newPattern;
     }
     public int[] rotate(int pattern[], int move)
-    {
+	// rotates int array pattern by move positions
+	{
         int newPattern[pattern.cap()];
         
         repeat(move)
@@ -244,7 +263,8 @@ public class Chmusick extends Chubgraph
         return pattern;
     }
     public int counter(int pattern[])
-    {
+	// retunrs the number of non zero positions in int array
+	{
         0 => int notesOn;
         
         for(0 => int i; i < pattern.cap(); i++)
@@ -257,7 +277,8 @@ public class Chmusick extends Chubgraph
         return notesOn;
     }
     public int counter(float pattern[])
-    {
+	// returns the number of non zero positions in float array
+	{
         0 => int notesOn;
         
         for(0 => int i; i < pattern.cap(); i++)
@@ -328,7 +349,8 @@ public class Chmusick extends Chubgraph
         return toReturn;
     }
     public int[] palindrome(int pattern[])
-    {
+	// returns the same patern and the reversed appended
+	{
         int toReturn[(pattern.cap()*2)];
         (pattern.cap()*2) -1 => int countDown; 
         
@@ -340,8 +362,10 @@ public class Chmusick extends Chubgraph
         }
         return toReturn;
     }
+//------------- time convertion functions ----------------//
     private dur convert(float beat)
-    {
+	// ftod - beat(float) convertion to dur
+	{
         Std.fabs(beat) => beat;
         
         60/beat => float tempo;

@@ -31,4 +31,4 @@ Machine.add(me.dir() + "/TheCooker.ck");
 Machine.add(me.dir() + "/Loop.ck");
 //Machine.add(me.dir() + "/LoopTap.ck");
 
-
+<<< "CHmUsiCK\n\tCHmUsiCK\n\t\tCHmUsiCK !!!" >>>;

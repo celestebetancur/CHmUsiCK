@@ -29,7 +29,7 @@ public int loopTrigger()
             Machine.remove(fileID);
             Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
         }
-        (extractor.convert(Chmusick.TEMPO) * Sync.tSync) => now;
+        (extractor.convert(Chmusick.TEMPO) * sync.tsync()) => now;
     }
     return fileID;
 }

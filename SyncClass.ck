@@ -26,4 +26,8 @@ public class Sync
         (beat * measures) => tSync;  
         return tSync;
     }
+	public static float tsync()
+	{
+		return tSync;
+	}
 }
