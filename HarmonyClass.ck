@@ -10,11 +10,13 @@ public class Harmony extends Chmusick
 {  
     Gain Normalize => Gain vol => Master => outlet;
     
-    0.035 => Normalize.gain; // don't change this
+    1 => Normalize.gain; // don't change this
     
     Notes chords;
 
     3 => int numVoices;
+    
+    (1.0 / numVoices) => float partialGain;
     
     string Notes[0];
 
@@ -93,9 +95,11 @@ public class Harmony extends Chmusick
         setNotes(note);
 
         SinOsc polyphony[voices];
+        
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
+            partialGain => polyphony[i].gain;
         }  
         
         while(true)

@@ -11,13 +11,13 @@ FMSynth fm => Echo echo => NRev rev => dac;
 0.5 => rev.mix;
 0.6 => echo.mix;
 
-162 => tempo.tempo;
-4 => tempo.cycles;
+160 => tempo.tempo;
+8 => tempo.cycles;
 
-spork~drum.drum(drum.favorite(5));
+//spork~drum.drum(drum.favorite(5));
 spork~h.sinOsc(["Cm","Cm","Ab","Ab"]);
 //spork~h.sinOsc(["Bb"]);
-//spork~fm.fmBass([48,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+spork~fm.fmBass([48,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0]);
 
 //spork~s.fadeIn(8::second);
 

@@ -118,7 +118,7 @@ public class Chmusick extends Chubgraph
         0 => Master.gain;
         return d;
     }
-    public float accel(float limit)
+    public float accelerate(float limit)
     {
         if(tempo() < limit)
         {
