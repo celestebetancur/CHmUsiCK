@@ -1,16 +1,28 @@
+//
+// TheCooker.ck
+// CHmUsiCK
+// Created in 2015 by Esteban Betancur
+//
+// Medellin - Colombia
+//
+
 public class TheCooker extends Chmusick
 //SynthDef using Perry Cook's example and STK BlitSaw implementation
 {
     10 => int partial;
    
     BlitSaw s[partial];      
-    Gain Normalize => Gain volum => NRev rev => Master;  
+    Gain Normalize => Gain volum => NRev rev => Envelope env => Master;  
     
     0.2 => rev.mix;
     
     1.2/partial => Normalize.gain;  
     
-    400 => float frq;
+    440 => float frq;
+    
+    8 => int Division;
+    
+    0.1 => float Factor;
     
     for (int i; i < partial; i++) 
     {
@@ -35,11 +47,47 @@ public class TheCooker extends Chmusick
     {
         return frq;
     }
-    public void sound()
+    public float factor(float f)
+    {
+        f => Factor;
+        return Factor;
+    }
+    public float factor()
+    {
+        return Factor;
+    }
+    public void freqAssign()
     {
         for (int i; i < partial; i++) 
         {                   
-            (freq() + (0.1*i)) => s[i].freq;
+            (freq() + (factor() * i)) => s[i].freq;
+        }
+    }
+    public void sound(int notes[])
+    {
+        sound(Division, notes);
+    }
+    public void sound(int div,int notes[])
+    {
+        div => Division;
+        
+        while(true)
+        {
+            for(0 => int i; i < notes.cap(); i++)
+            {
+                if(notes[i] == 0)
+                {
+                    env.keyOff();
+                    Dur(convert(TEMPO),Division) => now;
+                }
+                else
+                {
+                    Std.mtof(notes[i]) => freq;
+                    freqAssign();
+                    env.keyOn();
+                    Dur(convert(TEMPO),Division) => now;
+                }
+            }          
         }
     }
 }
