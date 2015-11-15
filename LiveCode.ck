@@ -1,21 +1,34 @@
 Chmusick tempo; 
 
-Gain gate => Delay delay => dac;
+Gain gate => NRev rev => dac;
 
-TheCooker synth => gate;
-Drum drum => JCRev rev => gate;
+SinOsc sin => gate;
 
-180 => tempo.tempo;
-4 => tempo.cycles;
+Sampler r => gate;
+Sampler s => gate;
+Sampler t => gate;
+Sampler u => gate;
+
+Drum drum => gate;
 
 0.05 => rev.mix;
 
-60::ms => delay.delay;
+130 => tempo.tempo;
+2 => tempo.cycles;
 
-drum.fillEach(1);
+30 => sin.freq;
+0.75 => sin.gain;
 
-spork~drum.drumF(drum.favorite(5));
-spork~synth.sound([60,62,64,0,70,65,72]);
+r.file("83253__zgump__bass-0209");
+s.file("x");
+u.file("y");
+
+//spork~r.sound(s.every(7));
+//spork~s.sound(s.every(3));
+//spork~t.sound("v",t.rotate(r.every(3)));
+//spork~u.sound(u.rand(8));
+
+//spork~drum.drumF(drum.favorite(4));
 
 day => now;
 

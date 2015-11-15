@@ -3,20 +3,21 @@ public class Sampler extends Chmusick
     
     SndBuf buffer => Echo echo => Gain Normalize => Gain vol => Envelope envelope => Master;
     
-    1.5 => Normalize.gain;
+    0.6 => Normalize.gain;
     
     0.2 => echo.mix;
     
     8 => int Division;
     
-    "Drum kits/bajo.wav" => string fileName;
-    
+    "" => string fileName;
+	
     [0] @=> int gains[];
 	
     public string file(string name)
     {
         "Samples/" + name + ".wav" => fileName;
-        
+		fileName => buffer.read;
+		
         return fileName;
     }
     public int[] changeStress(int parameters[])
@@ -40,8 +41,14 @@ public class Sampler extends Chmusick
         
         return patterns;
     }
+	public void sound(string S, int sample[])
+	{
+		file(S);
+		sound(sample);
+	}
     public void sound(int sample[])
     {
+		
         while(true)
         {
             for(0 => int i; i < sample.cap(); i++)
@@ -50,7 +57,7 @@ public class Sampler extends Chmusick
                 {
                     stress(sample.cap(),gains)[i] => buffer.gain;
                     envelope.keyOn();
-                    me.dir() + fileName => buffer.read;
+                    0 => buffer.pos;
                 }
                 Dur(convert(TEMPO),Division) => now;
                 

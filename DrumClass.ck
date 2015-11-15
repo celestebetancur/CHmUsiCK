@@ -13,20 +13,20 @@ public class Drum extends Chmusick
     
     Gain Normalize => Gain vol => Master;
     
-    0.48 => Normalize.gain; //don't change this
+    0.52 => Normalize.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
-    //??????samples for bass drum??????//
-    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (1).wav" => Kick[0].read; 
-    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (2).wav" => Kick[1].read; 
+    //--------samples for bass drum------//
+    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (1).wav" => Kick[0].read;
+	me.dir() + "/Drum Kits/Electronica/Kick_Electronica (2).wav" => Kick[1].read; 
     me.dir() + "/Drum Kits/Electronica/Kick_Electronica (3).wav" => Kick[2].read; 
     me.dir() + "/Drum Kits/Hip Hop/Kick (1).wav" => Kick[3].read;
     me.dir() + "/Drum Kits/Hip Hop/Kick (2).wav" => Kick[4].read;
     me.dir() + "/Drum Kits/Hip Hop/Kick (3).wav" => Kick[5].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick a.wav" => Kick[6].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick b.wav" => Kick[7].read;
-    //??????samples for snare drum?????//
+	//??????samples for snare drum?????//
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (1).wav" => Snare[0].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (2).wav" => Snare[1].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (3).wav" => Snare[2].read;
@@ -49,7 +49,7 @@ public class Drum extends Chmusick
     me.dir() + "/Drum Kits/Hip Hop/Hihat (1).wav" => HH[6].read;
     me.dir() + "/Drum Kits/Hip Hop/Hihat (2).wav" => HH[7].read;
     me.dir() + "/Drum Kits/Hip Hop/Hihat (3).wav" => HH[8].read;
-    
+	
     for(0 => int i; i < Kick.cap(); i++)
     {
         Kick[i] => Normalize;
@@ -70,7 +70,7 @@ public class Drum extends Chmusick
     
     0 => int randomSize;
     
-    4 => int bdSound;
+    0 => int bdSound;
     9 => int snSound;
     8 => int hhSound;
     
@@ -80,8 +80,8 @@ public class Drum extends Chmusick
     [1] @=> int snGlobal[];
     [1] @=> int bdGlobal[];
     
-    int rythym[0][0];
-    
+    int rythym[0][0]; 
+	
     public float gain(float volum)
     {
         volum => vol.gain;
@@ -91,7 +91,7 @@ public class Drum extends Chmusick
     {
         return vol.gain();
     }
-    public int subdivision(int div)
+     public int subdivision(int div)
     {
         div => Division;
         return Division;
