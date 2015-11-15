@@ -19,8 +19,6 @@ spork~h.sinOsc(["Cm","Cm","Ab","Ab"]);
 //spork~h.sinOsc(["Bb"]);
 spork~fm.fmBass([48,0,48,0,0,0,0,0,0,0,0,0,0,0,0,0]);
 
-//spork~r.recDAC("Pequeño_Vuelo_A_Tu_Alrededor_LiveCode_Session");
-
 while(true)
 {
     for(0 => int i; i< notes.cap(); i++)

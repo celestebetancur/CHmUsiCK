@@ -235,7 +235,7 @@
 	    "\\<TriOsc\\>\\|" "\\<SawOsc\\>\\|" "\\<netout\\>\\|"
 	    "\\<netin\\>\\|" "\\<BandedWG\\>\\|" "\\<BlowBotl\\>\\|"
 	    "\\<BlowHole\\>\\|" "\\<Bowed\\>\\|" "\\<Brass\\>\\|"
-	    "\\<Clarinet\\>\\|" "\\<Flute\\>\\|"
+	    "\\<Clarinet\\>\\|" "\\<Flute\\>\\|" "\\<TheCooker\\>\\|"
 	    "\\<Mandolin\\>\\|" "\\<ModalBar\\>\\|" "\\<Moog\\>\\|"
 	    "\\<Saxofony\\>\\|" "\\<Shakers\\>\\|" "\\<Sitar\\>\\|"
 	    "\\<StifKarp\\>\\|" "\\<VoicForm\\>\\|" "\\<FM\\>\\|"
