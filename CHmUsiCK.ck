@@ -16,6 +16,8 @@ public class Chmusick extends Chubgraph
     
     4 => int OverallDivision;
     
+    4 => static int CYCLES;
+    
     4 => static int MEASURE;
     
     1 => static float MASTER;
@@ -53,6 +55,15 @@ public class Chmusick extends Chubgraph
     public static int measure()
     {
         return MEASURE;
+    }
+    public static int cycles(int c)
+    {
+        c => CYCLES;
+        return CYCLES;
+    }
+    public static int cycles()
+    {
+        return CYCLES;
     }
     public static float master(float Mgain)
     {
@@ -107,7 +118,7 @@ public class Chmusick extends Chubgraph
         0 => Master.gain;
         return d;
     }
-    public float accel(float limit)
+    public float accelerate(float limit)
     {
         if(tempo() < limit)
         {
