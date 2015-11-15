@@ -10,7 +10,7 @@ public class Harmony extends Chmusick
 {  
     Gain Normalize => Gain vol => Master => outlet;
     
-    1 => Normalize.gain; // don't change this
+    0.15 => Normalize.gain; // don't change this
     
     Notes chords;
 
@@ -129,6 +129,7 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
+			partialGain => polyphony[i].gain;
         }   
         while(true)
         {
@@ -157,6 +158,7 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
+			partialGain => polyphony[i].gain;
         }  
         while(true)
         {
@@ -185,6 +187,7 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
+			partialGain => polyphony[i].gain;
         }  
         while(true)
         {
@@ -213,6 +216,7 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
+			partialGain => polyphony[i].gain;
         }
         while(true)
         {

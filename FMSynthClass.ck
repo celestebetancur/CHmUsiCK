@@ -299,6 +299,7 @@ public class FMSynth extends Chmusick
                 else
                 {
                     Std.mtof(notes[i]) => carrier.freq;
+					Math.random2f(0.5,1) => carrier.gain;
                     carrier.freq() * mf => modulator.freq;
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;

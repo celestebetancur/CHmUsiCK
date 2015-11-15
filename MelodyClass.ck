@@ -218,7 +218,8 @@ public class Melody extends Chmusick
                 else
                 {
                     Std.mtof(notes[i]) => osc[activeOsc].freq;
-                    envelope.keyOn();
+					Math.random2f(0.5,1) => osc[activeOsc].gain;
+					envelope.keyOn();
                     Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
                 }
@@ -252,6 +253,7 @@ public class Melody extends Chmusick
                 else
                 {
                     Std.mtof(notes[i]) => inst[activeInst].freq;
+					Math.random2f(0.5,1) => inst[activeInst].gain;
                     1 => inst[activeInst].noteOn;
                     inst[activeInst].noteOn;
                     Dur(convert(TEMPO),Division) => now;

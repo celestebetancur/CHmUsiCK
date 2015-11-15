@@ -255,6 +255,7 @@ public class Drum extends Chmusick
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
             Dur(convert(TEMPO),Division) => now;
         } 
@@ -266,6 +267,7 @@ public class Drum extends Chmusick
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
             Dur(convert(TEMPO),Division) => now;
         } 
@@ -277,6 +279,7 @@ public class Drum extends Chmusick
             if (sn[i] == 1)
             {
                 0 => Snare[snSound].pos;
+				Math.random2f(0.5,1) => Snare[snSound].gain;
             }
             Dur(convert(TEMPO),Division) => now;
         } 
@@ -288,10 +291,12 @@ public class Drum extends Chmusick
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
             Dur(convert(TEMPO),Division) => now;
         } 
@@ -303,14 +308,17 @@ public class Drum extends Chmusick
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
             if (s[i] == 1)
             {
                 0 => Snare[snSound].pos;
+				Math.random2f(0.5,1) => Snare[snSound].gain;
             }
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
             Dur(convert(TEMPO),Division) => now;
         } 
@@ -334,7 +342,7 @@ public class Drum extends Chmusick
         sn @=> snGlobal;
         return snGlobal;
     }
-    // ???????????????no argument funtion ???????????????//
+    //--------------------no argument funtion ----------------------//
     public int[] bd ()
     {
         bassDrum(bdGlobal);
@@ -366,7 +374,7 @@ public class Drum extends Chmusick
         return hhGlobal;
     }
     
-    // ???????????????Drum with Fill???????????????//
+    //--------------------Drum with Fill-------------------------//
     public void drumF (int k[])
     {
         bassDrumF(k);
@@ -400,7 +408,7 @@ public class Drum extends Chmusick
             while(true) 1::ms => now;
         }
     }
-    //???????????????????Drum without fill???????????????????//
+    //--------------------Drum without fill------------------------//
     public int[] drum ()
     {
         spork~ bassDrum(bdGlobal);
@@ -460,6 +468,7 @@ public class Drum extends Chmusick
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
+					Math.random2f(0.5,1) => Kick[bdSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -484,6 +493,7 @@ public class Drum extends Chmusick
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
+					Math.random2f(0.5,1) => Kick[bdSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -501,6 +511,7 @@ public class Drum extends Chmusick
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
+					Math.random2f(0.5,1) => HH[hhSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -520,6 +531,7 @@ public class Drum extends Chmusick
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
+					Math.random2f(0.5,1) => HH[hhSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -544,6 +556,7 @@ public class Drum extends Chmusick
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
+					Math.random2f(0.5,1) => Snare[snSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             } 
@@ -563,6 +576,7 @@ public class Drum extends Chmusick
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
+					Math.random2f(0.5,1) => Snare[snSound].gain;
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
