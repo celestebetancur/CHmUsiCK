@@ -13,13 +13,18 @@ public class Sampler extends Chmusick
 	
     [0] @=> int gains[];
 	
-    public string file(string name)
+    public string file(string name, int num)
     {
-        "Samples/" + name + ".wav" => fileName;
+        "Samples/" + name + "/" + num + ".wav" => fileName;
 		fileName => buffer.read;
 		
         return fileName;
     }
+	public string file(string name)
+	{
+		file(name, 1);
+		return fileName;
+	}
     public int[] changeStress(int parameters[])
     {
         int toReturn[parameters.cap()];
