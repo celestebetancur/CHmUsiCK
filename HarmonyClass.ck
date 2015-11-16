@@ -5,7 +5,6 @@
 //  Created by Esteban Betancur on 18/10/14.
 //
 
-
 public class Harmony extends Chmusick
 {  
     Gain Normalize => Gain vol => Master => outlet;
@@ -13,13 +12,13 @@ public class Harmony extends Chmusick
     0.15 => Normalize.gain; // don't change this
     
     Notes chords;
-
+    
     3 => int numVoices;
     
     (1.0 / numVoices) => float partialGain;
     
     string Notes[0];
-
+    
     public float gain(float volum)
     {
         volum => vol.gain;
@@ -93,21 +92,19 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-
-        SinOsc polyphony[voices];
         
+        SinOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
             partialGain => polyphony[i].gain;
-        }  
-        
+        }   
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 chords.voicing(note[i]) @=> int harmony[];
-                 
+                
                 for(0 => int i; i < polyphony.cap(); i++)
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
@@ -129,14 +126,14 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
-			partialGain => polyphony[i].gain;
+            partialGain => polyphony[i].gain;
         }   
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 chords.voicing(note[i]) @=> int harmony[];
-                 
+                
                 for(0 => int i; i < polyphony.cap(); i++)
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
@@ -158,14 +155,14 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
-			partialGain => polyphony[i].gain;
+            partialGain => polyphony[i].gain;
         }  
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 chords.voicing(note[i]) @=> int harmony[];
-                   
+                
                 for(0 => int i; i < polyphony.cap(); i++)
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
@@ -187,14 +184,14 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
-			partialGain => polyphony[i].gain;
+            partialGain => polyphony[i].gain;
         }  
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 chords.voicing(note[i]) @=> int harmony[];
-                   
+                
                 for(0 => int i; i < polyphony.cap(); i++)
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
@@ -216,14 +213,14 @@ public class Harmony extends Chmusick
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
-			partialGain => polyphony[i].gain;
+            partialGain => polyphony[i].gain;
         }
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 chords.voicing(note[i]) @=> int harmony[];
-                   
+                
                 for(0 => int i; i < polyphony.cap(); i++)
                 {
                     Std.mtof(harmony[i]) => polyphony[i].freq;                
