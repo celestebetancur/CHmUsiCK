@@ -13,6 +13,14 @@ public class Sampler extends Chmusick
 	
     [0] @=> int gains[];
 	
+    public string file(string name, string letter)
+    {
+        me.dir() + "Samples/" + name + "/" + letter + ".wav" => fileName; //Mac/Linux conflict with path
+        //"Samples/" + name + "/" + letter + ".wav" => fileName; //Mac/Linux conflict with path
+        fileName => buffer.read;
+        
+        return fileName;
+    }
     public string file(string name, int num)
     {
         me.dir() + "Samples/" + name + "/" + num + ".wav" => fileName; //Mac/Linux conflict with path
