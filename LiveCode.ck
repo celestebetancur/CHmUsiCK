@@ -12,18 +12,18 @@ Drum drum => gate;
 0.05 => rev.mix;
 
 130 => tempo.tempo;
-1 => tempo.cycles;
+2 => tempo.cycles;
 
-//r.file("83253__zgump__bass-0209");
-//s.file("x");
+r.file("rave");
+s.file("f");
 u.file("moog",3);
 
-//spork~r.sound(s.every(7));
-//spork~s.sound(s.every(3));
-//spork~t.sound("bd",t.rotate(r.every(3)));
-spork~u.sound(u.every(3));
+spork~r.sound(s.every(5));
+spork~s.sound(s.every(3));
+spork~t.sound("birds3",t.rotate(r.every(3)));
+spork~u.sound(u.every(7));
 
-//spork~drum.drumF(drum.favorite(4));
+spork~drum.drumF(drum.favorite(0));
 
 day => now;
 

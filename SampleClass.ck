@@ -15,8 +15,9 @@ public class Sampler extends Chmusick
 	
     public string file(string name, int num)
     {
-        "Samples/" + name + "/" + num + ".wav" => fileName;
-		fileName => buffer.read;
+        me.dir() + "Samples/" + name + "/" + num + ".wav" => fileName; //Mac/Linux conflict with path
+		//"Samples/" + name + "/" + num + ".wav" => fileName; //Mac/Linux conflict with path
+        fileName => buffer.read;
 		
         return fileName;
     }

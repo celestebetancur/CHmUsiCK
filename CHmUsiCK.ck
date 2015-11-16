@@ -11,14 +11,12 @@ public class Chmusick extends Chubgraph
 {        
     Gain Master => Dyno Processor => outlet;
     
-    120 => static float TEMPO;  
-    convert(TEMPO) => static dur DTEMPO;
+    120 => static float TEMPO; // Change this to the BPM you want to CHmUsiCK!
     
     4 => int OverallDivision;
     
     4 => static int CYCLES;
-    
-    4 => static int MEASURE;
+    4 => static int MEASURE; 
     
     1 => static float MASTER;
     
