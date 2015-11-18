@@ -264,7 +264,7 @@ public class Melody extends Chmusick
     }
     public int[] granularize(int array[], int howmany)
     {
-        subdivision(howmany * 4);
+        (howmany * 8) => Division;
         
         int granularized[0];
         

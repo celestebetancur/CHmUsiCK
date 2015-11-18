@@ -7,9 +7,10 @@
 
 public class Harmony extends Chmusick
 {  
-    Gain Normalize => Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => NRev rev => Master => outlet;
     
-    0.15 => Normalize.gain; // don't change this
+    0.08 => Normalize.gain; // don't change this
+    0.4 => rev.mix;
     
     Notes chords;
     
