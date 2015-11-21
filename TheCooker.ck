@@ -14,7 +14,7 @@ public class TheCooker extends Chmusick
     BlitSaw s[partial];      
     Gain Normalize => Gain volum => NRev rev => Envelope env => Master;  
     
-    0.2 => rev.mix;
+    0.15 => rev.mix;
     
     1.2/partial => Normalize.gain;  
     

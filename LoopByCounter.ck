@@ -28,7 +28,7 @@ public static int beatCounter()
             if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
             {
                 Machine.remove(fileID);
-                Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
+                Machine.add(me.dir()+"/LiveCode.ck") => fileID;
             }
         }
         

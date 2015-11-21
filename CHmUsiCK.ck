@@ -119,20 +119,20 @@ public class Chmusick extends Chubgraph
     }
     public float accelerate(float limit)
     {
-        if(tempo() < limit)
+        if(TEMPO < limit)
         {
-            while(tempo() < limit)
+            while(TEMPO < limit)
             {
-                tempo() + 0.1 => TEMPO;
-                convert(TEMPO) * 0.25 => now;
+                TEMPO + 0.1 => TEMPO;
+                convert(TEMPO) => now;
             }
         }
         else
         { 
-            while(tempo() > limit)
+            while(TEMPO > limit)
             {
-                tempo() - 0.1 => TEMPO;
-                convert(TEMPO) * 0.25 => now;
+                TEMPO - 0.1 => TEMPO;
+                convert(TEMPO) => now;
             }
         }
         return limit;
@@ -175,6 +175,25 @@ public class Chmusick extends Chubgraph
         }
         return truncated;
     }
+	public int[] trunc(int pattern[], int from, int to)
+	// cuts an array from - to // idea: Santiago Beta
+	{
+		if(from >= 0 && to <= pattern.cap() && from < to)
+		{
+			int truncated[0];
+
+			for(from => int i; i < to; i++)
+			{
+				truncated << pattern[i];
+	 		}
+			return truncated;
+		}
+		else
+		{
+	        <<< "something is wrong, check trunc() parameters" >>>;
+			return pattern;
+        }
+	}
     public int[] reverse(int pattern[])
 	// reverse an array
 	{
@@ -222,15 +241,22 @@ public class Chmusick extends Chubgraph
     public int[] every(int parameter)
 	// fills an array of parameter size with ones
 	{
-        int everyArray[parameter];
+		int everyArray[parameter];
+		
+		if(parameter == 0)
+		{
+			everyArray << 0;
+			return everyArray;
+		}
+        else
+		{
+			1 => everyArray[0];
         
-        1 => everyArray[0];
-        
-        for(1 => int i; i < everyArray.cap(); i++)
-        {
-            0 => everyArray[i];
+			for(1 => int i; i < everyArray.cap(); i++)
+			{
+				0 => everyArray[i];
+			}
         }
-        
         return everyArray;
     }
     public int[] every(int note, int parameter)

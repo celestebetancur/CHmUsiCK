@@ -11,8 +11,9 @@ public class Pan extends Chmusick
     
     8 => int Division;
     
-    public void jux(int pattern[], FMSynth l)
+    public void jux(int pattern[])
     {
+		FMSynth l;
         FMSynth r;
         l => dac.left;
         r => dac.right;
@@ -45,7 +46,6 @@ public class Pan extends Chmusick
             for(0 => float i;true; i + 0.1 => i)
             {
                 Math.sin(i) => p.pan; 
-                <<<Math.sin(i)>>>;
                 t::ms => now; 
             }
         }
