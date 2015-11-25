@@ -73,7 +73,7 @@ En la cuarta linea añadimos la palabra ```spork~```que es la forma de decirle
 a chucK que queremos que ejecute la linea en comcurrencia (ya entenderemos esto), y 
 tenemos varios llamados a funciones, algunos que ya hemos explicado y la nueva
 función ```rotate()``` que desplaza en este caso 2 posiciones el resultado de
-```every(4)```.
+```every(4)``` .
 
 La quinta linea empieza con ```//``` lo que la hace un comentario, esta linea
 no es ejecutada por la maquina virtual, pero muestra una forma alternativa de
