@@ -107,59 +107,57 @@ principal se controla todo el envio del codigo a la Maquina virtual de chucK.
 
 #### Métodos de la clase principal Chmusick
 
-##### Arrays de 0 y 1
+#### Arrays de 0 y 1
 
 Todos los objetos, pueden usar los métodos de esta clase:
 
+Random ```rand()```
 
-```rand()```
-
-
-Esta función recibe un ```int``` como parametro, y retorna un array de tamaño ```int``` 
+Esta función recibe un  int como parametro, y retorna un array de tamaño ```int``` 
 lleno de 0 o 1 distribuidos de manera aleatoria.
 
-```trunc()```
+Trunc ```trunc()```
 
 Trunca un array usando un ```float``` como porcentaje de 0 a 1.
 
 Esta función tambien recibe dos ```int``` para cortar el array desde el primer parámetro
 hasta el segundo.
 
-```reverse()``` 
+Reverse ```reverse()``` 
 
 Retorna el array invertido.
 
-```densify()```
+Densify ```densify()```
 
 Pone 1 aleatoriamente donde encuentra 0.
 
-```degrade()```
+Degrade ```degrade()```
 
 Cambia 1 por 0 aleatoriamente.
 
-```every()```
+Every ```every()```
 
 Retorna un array con 1 en la primera posición y 0 el resto de la capacidad.
 
 Esta funcion tambien recibe un parámetro ```ínt``` para ser puesto en la primera
 posición en vez de 1.
 
-```rotate()```
+Rotate ```rotate()```
 
 Sin argumentos desplaza a la derecha una posición en un array.
 
 En general, desplaza ```ínt``` posiciones a la derecha el array.
 
-```counter()```
+Counter ```counter()```
 
 Retorna la cantidad de elementos diferentes a 0.
 
-```density()```
+Density ```density()```
 
 Usa un parametro ```float``` para hacer ```densify()``` ó ```degrade()``` 
 según el conteo de eventos diferentes a 0 en un array.
 
-```palindrome()```
+Paindrome ```palindrome()```
 
 Retorna el array mas una copia de si mismo reversado al final.
 
@@ -191,26 +189,26 @@ ritmos pre-escritos.
 
 #### Métodos de la clase Drum
 
-´´´bdSound(), snSound(), hhSound()´´´
+```bdSound(), snSound(), hhSound()```
 
-Cambian el sample que ejecuta la función ´´´drum()´´´.
+Cambian el sample que ejecuta la función ```drum()```.
 
-´´´fillEach()´´´
+Fill Each ```fillEach()```
 
-Determina el momento de refrescar el ritmo de ´´´drumF()´´´.
+Determina el momento de refrescar el ritmo de ```drumF()```.
 
-´´´favorite()´´´
+Favorite ```favorite()```
 
 Extrae los ritmos pre escritos del archivo FavoriteArray.ck
 
-´´´randomDrum()´´´
+RandomDrum ```randomDrum()```
 
-Lanza la función ´´´drum()´´´ con arrays aleatorios, puede recibir un ´´ínt´´´
+Lanza la función ```drum()``` con arrays aleatorios, puede recibir un ```ínt```
 para determinar el número de eventos.
 
-´´´bd([]) , bd(), sn([]), sn(), hh([]), hh()´´´
+Single func ```bd([]) , bd(), sn([]), sn(), hh([]), hh()```
 
-Estas funciones trabajan en parejas, son otra forma de implementar ´´´drum()´´´
+Estas funciones trabajan en parejas, son otra forma de implementar ```drum()```
 pero de manera independiente.
 
 ### Melody, FMSynth y TheCooker
