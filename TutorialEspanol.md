@@ -111,53 +111,53 @@ principal se controla todo el envio del codigo a la Maquina virtual de chucK.
 
 Todos los objetos, pueden usar los métodos de esta clase:
 
-´´´ rand() ´´´ 
+``` rand()``` 
 
-Esta función recibe un ´´´ int ´´´ como parametro, y retorna un array de tamaño ´´´int´´´ 
+Esta función recibe un ``` int `` como parametro, y retorna un array de tamaño ```int`` 
 lleno de 0 o 1 distribuidos de manera aleatoria.
 
-´´´ trunc() ´´´ 
+``` trunc() `` 
 
-Trunca un array usando un ´´´ float ´´´ como porcentaje de 0 a 1.
+Trunca un array usando un ``` float ``` como porcentaje de 0 a 1.
 
-Esta función tambien recibe dos ´´´int´´´ para cortar el array desde el primer parámetro
+Esta función tambien recibe dos ```int``` para cortar el array desde el primer parámetro
 hasta el segundo.
 
-´´´reverse()´´´ 
+```reverse()``` 
 
 Retorna el array invertido.
 
-´´´ densify()´´´
+``` densify()```
 
 Pone 1 aleatoriamente donde encuentra 0.
 
-´´´ degrade()´´´
+``` degrade()```
 
 Cambia 1 por 0 aleatoriamente.
 
-´´´every()´´´
+```every()```
 
 Retorna un array con 1 en la primera posición y 0 el resto de la capacidad.
 
-Esta funcion tambien recibe un parámetro ´´ínt´´´para ser puesto en la primera
+Esta funcion tambien recibe un parámetro ```ínt``` para ser puesto en la primera
 posición en vez de 1.
 
-´´´rotate()´´´
+```rotate()```
 
 Sin argumentos desplaza a la derecha una posición en un array.
 
-En general, desplaza ´´ínt´´´ posiciones a la derecha el array.
+En general, desplaza ```ínt``` posiciones a la derecha el array.
 
-´´´counter()´´´
+```counter()```
 
 Retorna la cantidad de elementos diferentes a 0.
 
-´´´density()´´´
+```density()```
 
-Usa un parametro ´´´float´´´ para hacer ´´´densify()´´´ ó ´´´degrade()´´´ 
+Usa un parametro ```float``` para hacer ```densify()``` ó ```degrade()``` 
 según el conteo de eventos diferentes a 0 en un array.
 
-´´´palindrome()´´´
+```palindrome()```
 
 Retorna el array mas una copia de si mismo reversado al final.
 
