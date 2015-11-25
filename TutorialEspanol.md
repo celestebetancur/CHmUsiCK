@@ -111,7 +111,9 @@ principal se controla todo el envio del codigo a la Maquina virtual de chucK.
 
 Todos los objetos, pueden usar los métodos de esta clase:
 
-```rand()``` 
+
+```rand()```
+
 
 Esta función recibe un ```int``` como parametro, y retorna un array de tamaño ```int``` 
 lleno de 0 o 1 distribuidos de manera aleatoria.
