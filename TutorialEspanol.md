@@ -96,7 +96,70 @@ que nos permiten jugar con beats.
 
 ### Chmusick
 
+TEMPO es un miembro de esta clase que controla el tempo general de los ciclos.
+Por defecto es 120 bpm.
+
+CYCLES es otro miembro de esta clase, determina el número de ciclos antes de 
+relanzar el codigo.
+
+MEASURE determina el número de beats por ciclo; con estos tres miembros de la clase
+principal se controla todo el envio del codigo a la Maquina virtual de chucK.
+
 #### Métodos de la clase principal Chmusick
+
+##### Arrays de 0 y 1
+
+Todos los objetos, pueden usar los métodos de esta clase:
+
+´´´ rand() ´´´ 
+
+Esta función recibe un ´´´ int ´´´ como parametro, y retorna un array de tamaño ´´´int´´´ 
+lleno de 0 o 1 distribuidos de manera aleatoria.
+
+´´´ trunc() ´´´ 
+
+Trunca un array usando un ´´´ float ´´´ como porcentaje de 0 a 1.
+
+Esta función tambien recibe dos ´´´int´´´ para cortar el array desde el primer parámetro
+hasta el segundo.
+
+´´´reverse()´´´ 
+
+Retorna el array invertido.
+
+´´´ densify()´´´
+
+Pone 1 aleatoriamente donde encuentra 0.
+
+´´´ degrade()´´´
+
+Cambia 1 por 0 aleatoriamente.
+
+´´´every()´´´
+
+Retorna un array con 1 en la primera posición y 0 el resto de la capacidad.
+
+Esta funcion tambien recibe un parámetro ´´ínt´´´para ser puesto en la primera
+posición en vez de 1.
+
+´´´rotate()´´´
+
+Sin argumentos desplaza a la derecha una posición en un array.
+
+En general, desplaza ´´ínt´´´ posiciones a la derecha el array.
+
+´´´counter()´´´
+
+Retorna la cantidad de elementos diferentes a 0.
+
+´´´density()´´´
+
+Usa un parametro ´´´float´´´ para hacer ´´´densify()´´´ ó ´´´degrade()´´´ 
+según el conteo de eventos diferentes a 0 en un array.
+
+´´´palindrome()´´´
+
+Retorna el array mas una copia de si mismo reversado al final.
 
 ### Drum
 
@@ -126,7 +189,27 @@ ritmos pre-escritos.
 
 #### Métodos de la clase Drum
 
+´´´bdSound(), snSound(), hhSound()´´´
 
+Cambian el sample que ejecuta la función ´´´drum()´´´.
+
+´´´fillEach()´´´
+
+Determina el momento de refrescar el ritmo de ´´´drumF()´´´.
+
+´´´favorite()´´´
+
+Extrae los ritmos pre escritos del archivo FavoriteArray.ck
+
+´´´randomDrum()´´´
+
+Lanza la función ´´´drum()´´´ con arrays aleatorios, puede recibir un ´´ínt´´´
+para determinar el número de eventos.
+
+´´´bd([]) , bd(), sn([]), sn(), hh([]), hh()´´´
+
+Estas funciones trabajan en parejas, son otra forma de implementar ´´´drum()´´´
+pero de manera independiente.
 
 ### Melody, FMSynth y TheCooker
 
