@@ -83,4 +83,30 @@ public class Sampler extends Chmusick
             }
         }
     }
+    public void sound(string sample[])
+    {
+        60 => TEMPO;
+        1 => CYCLES;
+        
+        while(true)
+        {
+            for(0 => int i; i < sample.cap(); i++)
+            {
+                if (sample[i] != "~")
+                {
+                    file(sample[i]);
+                    stress(sample.cap(),gains)[i] => buffer.gain;
+                    envelope.keyOn();
+                    0 => buffer.pos;
+                }
+                Dur(convert(TEMPO),Division)/sample.cap() => now;
+                
+                if (sample[i] == "~")
+                {
+                    envelope.keyOff();
+                }
+                Dur(convert(TEMPO),Division)/sample.cap() => now;
+            }
+        }
+    }
 }
