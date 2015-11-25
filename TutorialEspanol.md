@@ -111,14 +111,14 @@ principal se controla todo el envio del codigo a la Maquina virtual de chucK.
 
 Todos los objetos, pueden usar los métodos de esta clase:
 
-``` rand()``` 
+```rand()``` 
 
-Esta función recibe un ``` int `` como parametro, y retorna un array de tamaño ```int`` 
+Esta función recibe un ```int``` como parametro, y retorna un array de tamaño ```int``` 
 lleno de 0 o 1 distribuidos de manera aleatoria.
 
-``` trunc() `` 
+```trunc()```
 
-Trunca un array usando un ``` float ``` como porcentaje de 0 a 1.
+Trunca un array usando un ```float``` como porcentaje de 0 a 1.
 
 Esta función tambien recibe dos ```int``` para cortar el array desde el primer parámetro
 hasta el segundo.
@@ -127,11 +127,11 @@ hasta el segundo.
 
 Retorna el array invertido.
 
-``` densify()```
+```densify()```
 
 Pone 1 aleatoriamente donde encuentra 0.
 
-``` degrade()```
+```degrade()```
 
 Cambia 1 por 0 aleatoriamente.
 
