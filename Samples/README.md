@@ -1,5 +1,8 @@
 # Dirt Samples
 
+(c) Alex McLean and contributors, 2015
+Released under the GNU Public Licence version 3 
+
 ## CHmUsiCK/Samples:
 ```
 ab ade ades2 ades3 ades4 alex alphabet amencutup armora arp arpy auto baa baa2 bass bass0 bass1

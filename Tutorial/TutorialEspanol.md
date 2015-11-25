@@ -225,4 +225,17 @@ pero de manera independiente.
 
 ### Rec
 
+Rec from dac ```recDAC()```
+
+```string``` como nombre del archivo.
+
+Rec from adc ```recADC()```
+
+```string```como nombre del archivo.
+
 ### Tools
+
+Rec es un patch para grabar preescrito.
+
+Tap print imprime en consola un bpm según la velocidad con la se haga tap
+en la barra espaciadora.

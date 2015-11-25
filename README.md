@@ -1,10 +1,10 @@
 #CHmUsiCK
 ========
-________
-(under construction)
+
 _______________
 ##Musical Simple Interface 
-(beta version)
+
+CHmUsick 0.01 (beta version)
 ---------------
 
 install chuck, clone this repo and run Library.ck
