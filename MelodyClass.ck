@@ -277,6 +277,18 @@ public class Melody extends Chmusick
         }
         return granularized;
     }
+    public void jux(int pattern[])
+    {
+        Melody l;
+        Melody r;
+        controlChange() => l.controlChange;
+        controlChange() => r.controlChange;
+        l => dac.left;
+        r => dac.right;
+        spork~l.synth(pattern);
+        spork~r.synth(r.reverse(pattern));
+        while(true) 1::second => now;
+    }
     public void metronome(float tempo,int div,int each)
     {
         tempo => Chmusick.TEMPO;
