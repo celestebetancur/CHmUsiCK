@@ -11,16 +11,6 @@ public class Pan extends Chmusick
     
     8 => int Division;
     
-    public void jux(int pattern[])
-    {
-		FMSynth l;
-        FMSynth r;
-        l => dac.left;
-        r => dac.right;
-        spork~l.fmBass(pattern);
-        spork~r.fmBass(r.reverse(pattern));
-        while(true) 1::second => now;
-    }
     public void randomPan()
     {        
         while(true)

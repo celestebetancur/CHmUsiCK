@@ -325,4 +325,14 @@ public class FMSynth extends Chmusick
         }
         return granularized;
     }
+    public void jux(int pattern[])
+    {
+        FMSynth l;
+        FMSynth r;
+        l => dac.left;
+        r => dac.right;
+        spork~l.fmBass(pattern);
+        spork~r.fmBass(r.reverse(pattern));
+        while(true) 1::second => now;
+    }
 }
