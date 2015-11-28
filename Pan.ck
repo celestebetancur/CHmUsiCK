@@ -19,10 +19,8 @@ public class Pan extends Chmusick
             Dur(convert(TEMPO),Division) => now; 
         }
     }
-    public void randomPan(float t)
-    {
-        t => TEMPO;
-        
+    public void randomPan()
+    {        
         while(true)
         {
             Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 

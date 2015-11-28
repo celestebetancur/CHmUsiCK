@@ -137,6 +137,10 @@ public class Chmusick extends Chubgraph
         }
         return limit;
     }
+    public int[] melodies(int pos)
+    {
+        return MelodyArray.Melodies[pos];
+    }
 	public float[] stress(int capacity, int positions[])
 	// randomly fills an array with 0 to 1 float
 	{

@@ -7,7 +7,8 @@ public class Sampler extends Chmusick
     
     0.2 => echo.mix;
     
-    8 => int Division;
+    //8 => int Division;
+    32 => int Division;
     
     "" => string fileName;
 	

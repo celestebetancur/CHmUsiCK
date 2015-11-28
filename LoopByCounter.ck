@@ -35,7 +35,7 @@ public static int beatCounter()
         measureCounter();
         phraseCounter();
         
-        extractor.convert(extractor.tempo(extractor.TEMPO)) => now;
+        extractor.convert(extractor.tempo()) => now;
     }
     return STATIC.BEATS;
 }

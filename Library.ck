@@ -7,6 +7,7 @@
 //
 
 //Library
+Machine.add(me.dir() + "/MelodyArray.ck");
 Machine.add(me.dir() + "/Array.ck");
 Machine.add(me.dir() + "/CHmUsiCK.ck");
 Machine.add(me.dir() + "/FavoriteArray.ck");
