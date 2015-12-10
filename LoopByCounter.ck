@@ -10,6 +10,7 @@ Chmusick extractor;
 Sync sync;
 sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
 
+//Std.system("./CMKlang CMKbridge");
 Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
 
 spork~beatCounter();
@@ -25,8 +26,10 @@ public static int beatCounter()
         
         if(STATIC.BEATS % (extractor.MEASURE * extractor.CYCLES) == 0)
         {
+			//Std.system("./CMKlang CMKbridge");
             if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
             {
+				//Std.system("./CMKlang CMKbridge");
                 Machine.remove(fileID);
                 Machine.add(me.dir()+"/LiveCode.ck") => fileID;
             }

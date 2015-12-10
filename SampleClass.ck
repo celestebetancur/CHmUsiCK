@@ -5,10 +5,10 @@ public class Sampler extends Chmusick
     
     0.6 => Normalize.gain;
     
-    0.2 => echo.mix;
+    0.05 => echo.mix;
     
-    //8 => int Division;
-    32 => int Division;
+    16 => int Division;
+    //32 => int Division; midi map
     
     "" => string fileName;
 	
@@ -63,6 +63,7 @@ public class Sampler extends Chmusick
 	}
     public void sound(int sample[])
     {
+		2 => CYCLES;
 		
         while(true)
         {
