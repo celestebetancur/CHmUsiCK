@@ -1,4 +1,7 @@
-
+Chmusick config;
+120 => config.TEMPO;
+4 => config.MEASURE;
+2 => config.CYCLES;
 Notes chords;
 Drum drum => dac;
 Harmony pad => dac;
