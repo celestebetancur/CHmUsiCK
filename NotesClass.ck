@@ -51,6 +51,11 @@ public class Notes
             }
         }
     }
+    public int stom(string notes, int octave)
+    {
+        stom(notes) + (octave*12) => int converted;
+        return converted;
+    }
     public string mtos(int notes) // midi note to string notation
     {
         if(notes < 12) 
@@ -62,6 +67,16 @@ public class Notes
             notes % 12 => int pos;
             return AllNotes()[pos][0];
         }
+    }
+    public float[] mtofArray(int notes[])
+    {
+        float converted[0];
+        
+        for(0 => int i; i < notes.cap(); i++ )
+        {
+            converted << Std.mtof(notes[i]);
+        }
+        return converted;
     }
     public int[] stodArray(string Key, string notes[]) //string to degree
     {
@@ -385,7 +400,7 @@ public class Notes
         }
         if( input == 7 )
         {
-            [0, 1, 3, 5, 6, 8, 10] @=> notes; //locyan
+            [0, 1, 3, 5, 6, 8, 10] @=> notes; //locryan
             return notes;
         }
         if( input == 8 )
@@ -451,7 +466,7 @@ public class Notes
     }
     public int[] randomProgression()
     {
-        return progression(Math.random2(1,7));
+        return progression(Math.random2(1,12));
     }
     public int[] progression(int input)
     {
@@ -459,37 +474,62 @@ public class Notes
         
         if(input == 1)
         {
-            [0,4] @=> prog;
+            [5,5,2,2] @=> prog;
             return prog;
         }
         if(input == 2)
         {
-            [0,3] @=> prog;
+            [5,5,4,4] @=> prog;
             return prog;
         }
         if(input == 3)
         {
-            [0,5] @=> prog;
+            [5,3,4,2] @=> prog;
             return prog;
         }
         if(input == 4)
         {
-            [0,4,5,3] @=> prog;
+            [0,0,4,4] @=> prog;
             return prog;
         }
         if(input == 5)
         {
-            [0,4,3,4] @=> prog;
+            [0,0,3,3] @=> prog;
             return prog;
         }
         if(input == 6)
         {
-            [5,3,0,4] @=> prog;
+            [0,0,5,5] @=> prog;
             return prog;
         }
         if(input == 7)
         {
+            [0,4,5,3] @=> prog;
+            return prog;
+        }
+        if(input == 8)
+        {
+            [0,4,3,4] @=> prog;
+            return prog;
+        }
+        if(input == 9)
+        {
+            [5,3,0,4] @=> prog;
+            return prog;
+        }
+        if(input == 10)
+        {
             [5,4,3,4] @=> prog;
+            return prog;
+        }
+        if(input == 11)
+        {
+            [3,3,4,4] @=> prog;
+            return prog;
+        }
+        if(input == 12)
+        {
+            [1,4,0,5] @=> prog;
             return prog;
         }
     }

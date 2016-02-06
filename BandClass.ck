@@ -1,4 +1,4 @@
-public class Band extends CHmUsiCK
+public class Band extends Chmusick
 {
     Notes notes;
     

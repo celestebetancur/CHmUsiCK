@@ -4,28 +4,29 @@
 //
 //  Created by Esteban Betancur on 18/10/14.
 //  Modified on 19/11/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
-public class Drum extends CHmUsiCK
+public class Drum extends Chmusick
 {
     FileIO rythyms;
     
-    Gain Normalize => Gain vol => Master => outlet;
+    rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     
-    0.22 => Normalize.gain; //don't change this
+    Gain Normalize => Gain vol => Master;
+    
+    0.6 => Normalize.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
-    //——————samples for bass drum——————//
-    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (1).wav" => Kick[0].read; 
-    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (2).wav" => Kick[1].read; 
+    //--------samples for bass drum------//
+    me.dir() + "/Drum Kits/Electronica/Kick_Electronica (1).wav" => Kick[0].read;
+	me.dir() + "/Drum Kits/Electronica/Kick_Electronica (2).wav" => Kick[1].read; 
     me.dir() + "/Drum Kits/Electronica/Kick_Electronica (3).wav" => Kick[2].read; 
     me.dir() + "/Drum Kits/Hip Hop/Kick (1).wav" => Kick[3].read;
     me.dir() + "/Drum Kits/Hip Hop/Kick (2).wav" => Kick[4].read;
     me.dir() + "/Drum Kits/Hip Hop/Kick (3).wav" => Kick[5].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick a.wav" => Kick[6].read;
     me.dir() + "/Drum Kits/Vintage Drum/kick b.wav" => Kick[7].read;
-    //——————samples for snare drum—————//
+	//??????samples for snare drum?????//
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (1).wav" => Snare[0].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (2).wav" => Snare[1].read;
     me.dir() + "/Drum Kits/Electronica/Claps and Snare_Electronica (3).wav" => Snare[2].read;
@@ -38,7 +39,7 @@ public class Drum extends CHmUsiCK
     me.dir() + "/Drum Kits/Hip Hop/Snare - Clap (4).wav" => Snare[9].read;
     me.dir() + "/Drum Kits/Vintage Drum/snare a.wav" => Snare[10].read;
     me.dir() + "/Drum Kits/Vintage Drum/snare b.wav" => Snare[11].read;
-    //——————sample for hhSounds—————————//
+    //??????sample for hhSounds?????????//
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (1).wav" => HH[0].read;
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (2).wav" => HH[1].read;
     me.dir() + "/Drum Kits/Electronica/Hit_Hat_Electronica (3).wav" => HH[2].read;
@@ -48,7 +49,7 @@ public class Drum extends CHmUsiCK
     me.dir() + "/Drum Kits/Hip Hop/Hihat (1).wav" => HH[6].read;
     me.dir() + "/Drum Kits/Hip Hop/Hihat (2).wav" => HH[7].read;
     me.dir() + "/Drum Kits/Hip Hop/Hihat (3).wav" => HH[8].read;
-    
+	
     for(0 => int i; i < Kick.cap(); i++)
     {
         Kick[i] => Normalize;
@@ -69,18 +70,18 @@ public class Drum extends CHmUsiCK
     
     0 => int randomSize;
     
-    4 => int bdSound;
-    3 => int snSound;
+    0 => int bdSound;
+    9 => int snSound;
     8 => int hhSound;
-
+    
     8 => int Division;
     
     [1] @=> int hhGlobal[];
     [1] @=> int snGlobal[];
     [1] @=> int bdGlobal[];
     
-    int rythym[0][0];
-    
+    int rythym[0][0]; 
+	
     public float gain(float volum)
     {
         volum => vol.gain;
@@ -90,7 +91,7 @@ public class Drum extends CHmUsiCK
     {
         return vol.gain();
     }
-    public int subdivision(int div)
+     public int subdivision(int div)
     {
         div => Division;
         return Division;
@@ -135,18 +136,6 @@ public class Drum extends CHmUsiCK
     {
         return fillEach(Refill);
     }
-    public int[] random(int capacity)
-    {
-        capacity => randomSize;
-        
-        int random[capacity];
-        
-        for(0 => int i; i < random.cap(); i ++)
-        {
-            Math.random2(0,1) => random[i];
-        }
-        return random;
-    }
     public int[][] favorite(int num)
     {
         return FavoriteArray.Drum[num];
@@ -154,19 +143,6 @@ public class Drum extends CHmUsiCK
     public int[][] randomFavorite(int num)
     {
         return Array.Drum[num];
-    }
-    public int[] every(int parameter)
-    {
-        int everyArray[parameter];
-        
-        1 => everyArray[0];
-        
-        for(1 => int i; i < everyArray.cap(); i++)
-        {
-            0 => everyArray[i];
-        }
-        
-        return everyArray;
     }
     private void saveFavorite(int k[], int sn[], int hh[])
     {
@@ -180,8 +156,8 @@ public class Drum extends CHmUsiCK
                 for(0 => int iii; iii < Array.Drum[i][ii].cap(); iii++)
                 {
                     rythyms <= Array.Drum[i][ii][iii];
+                    rythyms <= " ";
                 }
-                rythyms <= " ";
             }
             rythyms <= "\n";
         }
@@ -231,13 +207,9 @@ public class Drum extends CHmUsiCK
     }
     public void randomDrum(int div, int capacity)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int snare[];
-        random(capacity) @=> int hh[];
-        
-        Math.random2(0,7) => int bdsample; BDSound(bdsample);
-        Math.random2(0,11) => int snsample; SNSound(snsample);
-        Math.random2(0,8) => int hhsample; HHSound(hhsample);
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int snare[];
+        rand(capacity) @=> int hh[];
         
         spork~ drumF(kick,snare,hh);
         spork~ event(kick,snare,hh);  
@@ -245,34 +217,34 @@ public class Drum extends CHmUsiCK
     }
     public void bdRandomFill(int capacity)
     {
-        random(capacity) @=> int kick[];
+        rand(capacity) @=> int kick[];
         
         bdFill(kick);
     }
     public void hhRandomFill(int capacity)
     {
-        random(capacity) @=> int hihat[];
+        rand(capacity) @=> int hihat[];
         
         hhFill(hihat);
     }
     public void snRandomFill(int capacity)
     {
-        random(capacity) @=> int snare[];
+        rand(capacity) @=> int snare[];
         
         snFill(snare);
     }
     public void randomFill(int capacity, int capHH)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int hh[];
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int hh[];
         
         fill(kick,hh);
     }
     public void randomFill(int capacity)
     {
-        random(capacity) @=> int kick[];
-        random(capacity) @=> int snare[];
-        random(capacity) @=> int hh[];
+        rand(capacity) @=> int kick[];
+        rand(capacity) @=> int snare[];
+        rand(capacity) @=> int hh[];
         
         fill(kick,snare,hh);
     }
@@ -283,8 +255,9 @@ public class Drum extends CHmUsiCK
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void hhFill (int hh[])
@@ -294,8 +267,9 @@ public class Drum extends CHmUsiCK
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void snFill (int sn[])
@@ -305,8 +279,9 @@ public class Drum extends CHmUsiCK
             if (sn[i] == 1)
             {
                 0 => Snare[snSound].pos;
+				Math.random2f(0.5,1) => Snare[snSound].gain;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void fill (int k[], int hh[])
@@ -316,12 +291,14 @@ public class Drum extends CHmUsiCK
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
     private void fill (int k[],int s[],int hh[])
@@ -331,61 +308,73 @@ public class Drum extends CHmUsiCK
             if (k[i] == 1)
             {
                 0 => Kick[bdSound].pos;
+				Math.random2f(0.5,1) => Kick[bdSound].gain;
             }
             if (s[i] == 1)
             {
                 0 => Snare[snSound].pos;
+				Math.random2f(0.5,1) => Snare[snSound].gain;
             }
             if (hh[i] == 1)
             {
                 0 => HH[hhSound].pos;
+				Math.random2f(0.5,1) => HH[hhSound].gain;
             }
-            Dur(convert(Tempo),Division) => now;
+            Dur(convert(TEMPO),Division) => now;
         } 
     }
-    //————————————————set Global variables————————————————//
-    public void bd(int bd[])
+    //------------------set Global variables--------------------//
+    public int[] bd(int bd[])
     {
         bd.size() => bdGlobal.size;
         bd @=> bdGlobal;
+        return bdGlobal;
     }
-    public void hh(int hh[])
+    public int[] hh(int hh[])
     {
         hh.size() => hhGlobal.size;
         hh @=> hhGlobal;
+        return hhGlobal;
     }
-    public void sn(int sn[])
+    public int[] sn(int sn[])
     {
         sn.size() => snGlobal.size;
         sn @=> snGlobal;
+        return snGlobal;
     }
-    // ———————————————no argument funtion ———————————————//
-    public void bd ()
+    //--------------------no argument funtion ----------------------//
+    public int[] bd ()
     {
         bassDrum(bdGlobal);
+        return bdGlobal;
     }
-    public void bdF ()
+    public int[] bdF ()
     {
         bassDrumF(bdGlobal);
+        return bdGlobal;
     }
-    public void sn ()
+    public int[] sn ()
     {
         snare(snGlobal);
+        return snGlobal;
     }
-    public void snF ()
+    public int[] snF ()
     {
         snareF(snGlobal);
+        return snGlobal;
     }
-    public void hh ()
+    public int[] hh ()
     {
         hihat(hhGlobal);
+        return hhGlobal;
     }
-    public void hhF ()
+    public int[] hhF ()
     {
         hihatF(hhGlobal);
+        return hhGlobal;
     }
     
-    // ———————————————Drum with Fill———————————————//
+    //--------------------Drum with Fill-------------------------//
     public void drumF (int k[])
     {
         bassDrumF(k);
@@ -419,25 +408,36 @@ public class Drum extends CHmUsiCK
             while(true) 1::ms => now;
         }
     }
-    //———————————————————Drum without fill———————————————————//
-    public void drum (int k[])
+    //--------------------Drum without fill------------------------//
+    public int[] drum ()
+    {
+        spork~ bassDrum(bdGlobal);
+        spork~ snare(snGlobal);
+        spork~ hihat(hhGlobal);
+        while(true) 1::ms => now;
+        return bdGlobal,snGlobal,hhGlobal;
+    }
+    public int[] drum (int k[])
     {
         bassDrum(k);
+        return k;
     }
-    public void drum (int k[],int hh[])
+    public int[] drum (int k[],int hh[])
     {
         spork~ bassDrum(k);
         spork~ hihat(hh);
         while(true) 1::ms => now;
+        return k,hh;
     }
-    public void drum (int k[],int s[],int hh[])
+    public int[] drum (int k[],int s[],int hh[])
     {
         spork~ bassDrum(k);
         spork~ snare(s);
         spork~ hihat(hh);
         while(true) 1::ms => now;
+        return k,s,hh;
     }
-    public void drum (int full[][])
+    public int[] drum (int full[][])
     {                
         if(full.cap() == 3)
         {             
@@ -452,9 +452,10 @@ public class Drum extends CHmUsiCK
             spork~ hihat(full[1]);
             while(true) 1::ms => now;
         }
+        return full[0],full[1],full[2];
     }
-    //——————————————————Basic Functions————————————————————//
-    private void bassDrumF (int k[])
+    //-----------------Basic Functions---------------------//
+    private int[] bassDrumF (int k[])
     {
         k @=> bdGlobal;
         
@@ -467,8 +468,9 @@ public class Drum extends CHmUsiCK
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
+					Math.random2f(0.5,1) => Kick[bdSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
@@ -478,8 +480,9 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return k;
     }
-    private void bassDrum (int k[])
+    private int[] bassDrum (int k[])
     {        
         k @=> bdGlobal;
         
@@ -490,12 +493,14 @@ public class Drum extends CHmUsiCK
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
+					Math.random2f(0.5,1) => Kick[bdSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
         }
+        return k;
     }
-    private void hihat (int hh[])
+    private int[] hihat (int hh[])
     {       
         hh @=> hhGlobal;
         
@@ -506,12 +511,14 @@ public class Drum extends CHmUsiCK
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
+					Math.random2f(0.5,1) => HH[hhSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
         }
+        return hh;
     }
-    private void hihatF (int hh[])
+    private int[] hihatF (int hh[])
     {
         hh @=> hhGlobal;
         
@@ -524,8 +531,9 @@ public class Drum extends CHmUsiCK
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
+					Math.random2f(0.5,1) => HH[hhSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
@@ -535,8 +543,9 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return hh;
     }
-    private void snare (int sn[])
+    private int[] snare (int sn[])
     {        
         sn @=> snGlobal;
         
@@ -547,12 +556,14 @@ public class Drum extends CHmUsiCK
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
+					Math.random2f(0.5,1) => Snare[snSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             } 
         }
+        return sn;
     }
-    private void snareF (int sn[])
+    private int[] snareF (int sn[])
     {
         sn @=> snGlobal;
         
@@ -565,8 +576,9 @@ public class Drum extends CHmUsiCK
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
+					Math.random2f(0.5,1) => Snare[snSound].gain;
                 }
-                Dur(convert(Tempo),Division) => now;
+                Dur(convert(TEMPO),Division) => now;
             }
             count ++;
             
@@ -576,5 +588,6 @@ public class Drum extends CHmUsiCK
                 0 => count;
             }
         }
+        return sn;
     }
 }

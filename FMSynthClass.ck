@@ -7,11 +7,11 @@
 //
 
 
-public class FMSynth extends CHmUsiCK
+public class FMSynth extends Chmusick
 {
     SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
     
-    0.09 => Normalize.gain; //don't change this
+    0.08 => Normalize.gain; //don't change this
     
     SinOsc carrier2;
     8 => float C2f;
@@ -294,19 +294,45 @@ public class FMSynth extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => carrier.freq;
+					Math.random2f(0.5,1) => carrier.gain;
                     carrier.freq() * mf => modulator.freq;
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
                     envelope.keyOn();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
                 }
             }          
         }
+    }
+    public int[] granularize(int array[], int howmany)
+    {
+        (howmany * 8) => Division;
+        
+        int granularized[0];
+        
+        for(0 => int count; count < array.cap(); count++)
+        {
+            for(0 => int i; i < howmany; i++)
+            {
+                granularized << array[count];
+            }
+        }
+        return granularized;
+    }
+    public void jux(int pattern[])
+    {
+        FMSynth l;
+        FMSynth r;
+        l => dac.left;
+        r => dac.right;
+        spork~l.fmBass(pattern);
+        spork~r.fmBass(r.reverse(pattern));
+        while(true) 1::second => now;
     }
 }

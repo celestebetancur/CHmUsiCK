@@ -1,4 +1,4 @@
-public class Audio extends CHmUsiCK
+public class Audio extends Chmusick
 {
     JCRev reverb;
     Delay delaY;
