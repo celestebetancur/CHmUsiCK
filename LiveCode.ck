@@ -54,6 +54,6 @@ spork~ melody.synthOsc([104, 0,0,0, 104]);
 spork~ thecooker.sound([55,56,0]);
 
 spork~ sampler.sound([1,0,0,0]);
-sampler.file("nombreCarpeta", "nombreSample"); // estan en la carpeta de Dirt uno puede echar samples ahi
+sampler.file("nombreCarpeta", "nombreSample"); // estan en la carpeta de samples uno puede echar samples ahi
 
 1::day => now;
