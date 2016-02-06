@@ -4,12 +4,14 @@ Drum drum => dac;
 Harmony pad => dac;
 FMSynth fmsynth => dac;
 Melody melody => dac;
-//TheCooker thecooker => dac;
+TheCooker thecooker => dac;
+Sampler sampler => dac;
 
-/*
-spork~ thecooker.sound([55,56,0]);
 
-*/
+
+
+// mixer
+0.5 => melody.gain;
 
 
 
@@ -45,5 +47,10 @@ spork~ melody.synth([52,0,0,0]); // sonidos de chuck
 
 spork~ melody.synthOsc([104, 0,0,0, 104]);
 1 => melody.controlChangeOsc; // sin, sqr, pulse, saw, tri
+
+spork~ thecooker.sound([55,56,0]);
+
+spork~ sampler.sound([1,0,0,0]);
+sampler.file("nombreCarpeta", "nombreSample"); // estan en la carpeta de Dirt uno puede echar samples ahi
 
 1::day => now;
