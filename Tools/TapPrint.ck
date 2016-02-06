@@ -51,7 +51,7 @@ while (true)
             (memory[1]-memory[0])=> partial2;   
             (partial1 + partial2) / 2=> beat;     
         }
-        <<<((60::second/beat)$int),"beat","/",(60::second/beat),"beat","/",(beat/44.100),"ms","/",(beat/44100),"second">>>;
+        <<<((60::second/beat)$int),"bps","/",(60::second/beat),"bps","/",(beat/44.100),"ms","/",(beat/44100),"second",beat,"samp">>>;
         memory.clear();
     }
 }

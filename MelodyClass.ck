@@ -3,12 +3,11 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 18/10/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
-public class Melody extends CHmUsiCK
+public class Melody extends Chmusick
 {   
-    Gain Normalize => Gain vol => Master => outlet;
+    Gain Normalize => Gain vol => Master;
     
     0.25 => Normalize.gain; //don't change this
     
@@ -118,24 +117,24 @@ public class Melody extends CHmUsiCK
     }
     public int controlChange(int parameter)
     {
-        if(parameter == 0) 0.25 => Normalize.gain;
-        if(parameter == 1) 4.5 => Normalize.gain;
-        if(parameter == 2) 0.35 => Normalize.gain;
-        if(parameter == 3) 0.35 => Normalize.gain;
-        if(parameter == 4) 3 => Normalize.gain;
-        if(parameter == 5) 0.45 => Normalize.gain;
-        if(parameter == 6) 0.45 => Normalize.gain;
-        if(parameter == 7) 0.3 => Normalize.gain;
-        if(parameter == 8) 0.35 => Normalize.gain;
-        if(parameter == 9) 0.4 => Normalize.gain;
-        if(parameter == 10) 1 => Normalize.gain;
-        if(parameter == 11) 1 => Normalize.gain;
-        if(parameter == 12) 0.2 => Normalize.gain;
-        if(parameter == 13) 0.8 => Normalize.gain;
-        if(parameter == 14) 0.35 => Normalize.gain;
-        if(parameter == 15) 0.35 => Normalize.gain;
-        if(parameter == 16) 0.25 => Normalize.gain;
-        if(parameter == 17) 0.35 => Normalize.gain;
+        if(parameter == 0) 0.2 => Normalize.gain;
+        if(parameter == 1) 4 => Normalize.gain;
+        if(parameter == 2) 0.3 => Normalize.gain;
+        if(parameter == 3) 0.3 => Normalize.gain;
+        if(parameter == 4) 2.3 => Normalize.gain;
+        if(parameter == 5) 0.4 => Normalize.gain;
+        if(parameter == 6) 0.4 => Normalize.gain;
+        if(parameter == 7) 0.25 => Normalize.gain;
+        if(parameter == 8) 0.3 => Normalize.gain;
+        if(parameter == 9) 0.35 => Normalize.gain;
+        if(parameter == 10) 0.9 => Normalize.gain;
+        if(parameter == 11) 0.9 => Normalize.gain;
+        if(parameter == 12) 0.17 => Normalize.gain;
+        if(parameter == 13) 0.7 => Normalize.gain;
+        if(parameter == 14) 0.3 => Normalize.gain;
+        if(parameter == 15) 0.3 => Normalize.gain;
+        if(parameter == 16) 0.2 => Normalize.gain;
+        if(parameter == 17) 0.3 => Normalize.gain;
 
         parameter => activeInst;
         return activeInst;
@@ -188,7 +187,7 @@ public class Melody extends CHmUsiCK
     }
     public void randomMelody(int div ,int capacity, string key)
     {
-        controlChange(Math.random2(0,17));
+        //controlChange(Math.random2(0,17));
         synth(div,random(key,capacity));
     }
     //———————————————synth——————————————//
@@ -214,13 +213,14 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => osc[activeOsc].freq;
-                    envelope.keyOn();
-                    Dur(convert(Tempo),Division) => now;
+					Math.random2f(0.5,1) => osc[activeOsc].gain;
+					envelope.keyOn();
+                    Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
                 }
             }          
@@ -248,17 +248,50 @@ public class Melody extends CHmUsiCK
                 if(notes[i] == 0)
                 {
                     inst[activeInst].noteOff;
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => inst[activeInst].freq;
+					Math.random2f(0.5,1) => inst[activeInst].gain;
                     1 => inst[activeInst].noteOn;
                     inst[activeInst].noteOn;
-                    Dur(convert(Tempo),Division) => now;
+                    Dur(convert(TEMPO),Division) => now;
                     inst[activeInst].noteOff;
                 }
             }          
         }
+    }
+    public int[] granularize(int array[], int howmany)
+    {
+        (howmany * 8) => Division;
+        
+        int granularized[0];
+        
+        for(0 => int count; count < array.cap(); count++)
+        {
+            for(0 => int i; i < howmany; i++)
+            {
+                granularized << array[count];
+            }
+        }
+        return granularized;
+    }
+    public void jux(int pattern[])
+    {
+        Melody l;
+        Melody r;
+        controlChange() => l.controlChange;
+        controlChange() => r.controlChange;
+        l => dac.left;
+        r => dac.right;
+        spork~l.synth(pattern);
+        spork~r.synth(r.reverse(pattern));
+        while(true) 1::second => now;
+    }
+    public void metronome(float tempo,int div,int each)
+    {
+        tempo => Chmusick.TEMPO;
+        synthOsc(div,every(100,each));
     }
 }

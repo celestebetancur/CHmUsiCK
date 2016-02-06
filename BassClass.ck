@@ -4,16 +4,15 @@
 //
 //  Created by Esteban Betancur on 18/10/14.
 //  Modified on 10/12/14
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
 
-public class Bass extends CHmUsiCK
+public class Bass extends Chmusick
 {
     TriOsc Bass => ADSR e => Gain Normalize => Gain bassGain => Master => outlet;
     e.set(10::ms, 8::ms, .5, 5::ms);
     
-    0.25 => Normalize.gain; //don't change this
+    0.55 => Normalize.gain; //don't change this
     
     0 => int Key;    
     1 => int Pattern;
@@ -73,7 +72,7 @@ public class Bass extends CHmUsiCK
     }
     public void bass (int chords[])
     { 
-        bass(Key,chords,Measure);
+        bass(Key,chords,MEASURE);
     }
     public void bass (int chords[],int measure)
     { 
@@ -81,19 +80,19 @@ public class Bass extends CHmUsiCK
     } 
     public void bass (string key,int chords[])
     { 
-        bass(modes.stom(key),chords,Measure);
+        bass(modes.stom(key),chords,MEASURE);
     } 
     public void bass (int key,int chords[])
     { 
-        bass(key,chords,Measure);
+        bass(key,chords,MEASURE);
     } 
     public void bass (string key,int chords[],int measure)
     { 
-        bass(modes.stom(key),chords,Measure);
+        bass(modes.stom(key),chords,MEASURE);
     }
     public void bass (int key,int chords[],int measure)
     { 
-        measure => Measure;
+        measure => MEASURE;
         key => Key;
         
         modes.modes(1) @=> int scale[];
@@ -111,14 +110,14 @@ public class Bass extends CHmUsiCK
                     {
                         Std.mtof(scale[chords[i]] + (octave + key)) => Bass.freq;
                         e.keyOn();
-                        (convert(Tempo) * r[ii]) => now;
+                        (convert(TEMPO) * r[ii]) => now;
                         e.keyOff();
                     }
                     else
                     {
                         Std.mtof(scale[Math.random2(0,(scale.cap()-1))] + (octave + key)) => Bass.freq;
                         e.keyOn();
-                        (convert(Tempo) * r[ii]) => now;
+                        (convert(TEMPO) * r[ii]) => now;
                         e.keyOff();
                     }
                 }
@@ -142,9 +141,9 @@ public class Bass extends CHmUsiCK
             {
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                convert(Tempo) * 2 => now;
+                DTEMPO * 2 => now;
                 e.keyOff();
-                convert(Tempo) * 2 => now; 
+                DTEMPO * 2 => now; 
             }
         }
         if(pattern == 2)
@@ -153,9 +152,9 @@ public class Bass extends CHmUsiCK
             {
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                convert(Tempo) => now;
+                convert(TEMPO) => now;
                 e.keyOff();
-                convert(Tempo) => now;
+                convert(TEMPO) => now;
             }
         }
         if(pattern == 3)
@@ -164,14 +163,14 @@ public class Bass extends CHmUsiCK
             {
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
                 Std.mtof(octave) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
             }
         }
         if(pattern == 4)
@@ -180,19 +179,19 @@ public class Bass extends CHmUsiCK
             {
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.5) => now;
+                (convert(TEMPO) * 0.5) => now;
                 Std.mtof(octave) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 Std.mtof(octave) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
             }
         }
         if(pattern == 5)
@@ -201,24 +200,24 @@ public class Bass extends CHmUsiCK
             {
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 Std.mtof(octave) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 Std.mtof(note) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 Std.mtof(octave) => Bass.freq;
                 e.keyOn();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
                 e.keyOff();
-                (convert(Tempo) * 0.25) => now;
+                (convert(TEMPO) * 0.25) => now;
             }
         }
     }

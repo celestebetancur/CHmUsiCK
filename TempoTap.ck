@@ -3,7 +3,6 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 03/11/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
 //
 
 public class Tap

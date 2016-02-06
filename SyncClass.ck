@@ -3,26 +3,31 @@
 //  CHmUsiCK
 //
 //  Created by Esteban Betancur on 04/11/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
+//  
 //
 
 public class Sync
 {
-    static float tSync; 
+    4 => static int NUMMEASURES;
+    (Sync.NUMMEASURES * Chmusick.MEASURE) => static float tSync; 
     
     public float sync() 
     {
         8.0 => tSync;
         return tSync;
     }
-    public float sync(float beats)
+    public float sync(float beat)
     {
-        beats => tSync;
+        beat => tSync;
         return tSync;
     }
-    public float sync(float beats, float measures)
+    public float sync(float beat, float measures)
     {
-        (beats * measures) => tSync;  
+        (beat * measures) => tSync;  
         return tSync;
     }
+	public static float tsync()
+	{
+		return tSync;
+	}
 }
