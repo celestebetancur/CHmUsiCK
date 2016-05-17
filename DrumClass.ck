@@ -7,8 +7,10 @@
 //
 public class Drum extends Chmusick
 {
+    OscOut oscout;
     FileIO rythyms;
     
+    oscout.dest("localhost",5000);
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     
     Gain Normalize => Gain vol => Master;
@@ -493,7 +495,10 @@ public class Drum extends Chmusick
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
-					Math.random2f(0.5,1) => Kick[bdSound].gain;
+		    Math.random2f(0.5,1) => Kick[bdSound].gain;
+		    oscout.start("/bd");
+                    oscout.add(1);
+                    oscout.send();
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -511,7 +516,10 @@ public class Drum extends Chmusick
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
-					Math.random2f(0.5,1) => HH[hhSound].gain;
+		    Math.random2f(0.5,1) => HH[hhSound].gain;
+		    oscout.start("/hh");
+                    oscout.add(1);
+                    oscout.send();
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -556,7 +564,10 @@ public class Drum extends Chmusick
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
-					Math.random2f(0.5,1) => Snare[snSound].gain;
+		    Math.random2f(0.5,1) => Snare[snSound].gain;
+		    oscout.start("/sn");
+                    oscout.add(1);
+                    oscout.send();
                 }
                 Dur(convert(TEMPO),Division) => now;
             } 
