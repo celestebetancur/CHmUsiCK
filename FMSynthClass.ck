@@ -12,7 +12,7 @@ public class FMSynth extends Chmusick
     OscOut oscout;
     SinOsc modulator => Envelope env =>SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
     
-    oscout.dest("localhost",5001);
+    oscout.dest(this.host(),this.port());
     0.08 => Normalize.gain; //don't change this
     
     SinOsc carrier2;

@@ -10,7 +10,7 @@ public class Drum extends Chmusick
     OscOut oscout;
     FileIO rythyms;
     
-    oscout.dest("localhost",5000);
+    oscout.dest(this.host(),this.port());
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     
     Gain Normalize => Gain vol => Master;
