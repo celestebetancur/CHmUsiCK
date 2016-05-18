@@ -495,12 +495,18 @@ public class Drum extends Chmusick
                 if (k[i] == 1)
                 {
                     0 => Kick[bdSound].pos;
-		    Math.random2f(0.5,1) => Kick[bdSound].gain;
-		    oscout.start("/bd");
+					Math.random2f(0.5,1) => Kick[bdSound].gain;
+                    oscout.start("/bd");
                     oscout.add(1);
                     oscout.send();
+                    Dur(convert(TEMPO),Division) => now;
                 }
-                Dur(convert(TEMPO),Division) => now;
+                if (k[i] == 0) {
+                    oscout.start("/bd");
+                    oscout.add(0);
+                    oscout.send();
+                    Dur(convert(TEMPO),Division) => now;
+                }
             }
         }
         return k;
@@ -516,8 +522,8 @@ public class Drum extends Chmusick
                 if (hh[i] == 1)
                 {
                     0 => HH[hhSound].pos;
-		    Math.random2f(0.5,1) => HH[hhSound].gain;
-		    oscout.start("/hh");
+					Math.random2f(0.5,1) => HH[hhSound].gain;
+                    oscout.start("/hh");
                     oscout.add(1);
                     oscout.send();
                 }
@@ -564,8 +570,8 @@ public class Drum extends Chmusick
                 if (sn[i] == 1)
                 {
                     0 => Snare[snSound].pos;
-		    Math.random2f(0.5,1) => Snare[snSound].gain;
-		    oscout.start("/sn");
+					Math.random2f(0.5,1) => Snare[snSound].gain;
+                    oscout.start("/sn");
                     oscout.add(1);
                     oscout.send();
                 }

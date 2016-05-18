@@ -9,8 +9,10 @@
 
 public class FMSynth extends Chmusick
 {
-    SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
+    OscOut oscout;
+    SinOsc modulator => Envelope env =>SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
     
+    oscout.dest("localhost",5001);
     0.08 => Normalize.gain; //don't change this
     
     SinOsc carrier2;
@@ -294,15 +296,21 @@ public class FMSynth extends Chmusick
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
+                    env.keyOff();
                     Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
+                    oscout.start("/notes");
+                    env.target(.5);
+                    env.time(.5);
                     Std.mtof(notes[i]) => carrier.freq;
 					Math.random2f(0.5,1) => carrier.gain;
                     carrier.freq() * mf => modulator.freq;
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
+                    oscout.add(carrier.freq());
+                    oscout.send();
                     envelope.keyOn();
                     Dur(convert(TEMPO),Division) => now;
                     envelope.keyOff();
