@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chuck --loop Library.ck &
+atom LiveCode.ck
