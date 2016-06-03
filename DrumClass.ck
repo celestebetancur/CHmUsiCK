@@ -523,9 +523,6 @@ public class Drum extends Chmusick
                 {
                     0 => HH[hhSound].pos;
 					Math.random2f(0.5,1) => HH[hhSound].gain;
-                    oscout.start("/hh");
-                    oscout.add(1);
-                    oscout.send();
                 }
                 Dur(convert(TEMPO),Division) => now;
             }
@@ -571,9 +568,6 @@ public class Drum extends Chmusick
                 {
                     0 => Snare[snSound].pos;
 					Math.random2f(0.5,1) => Snare[snSound].gain;
-                    oscout.start("/sn");
-                    oscout.add(1);
-                    oscout.send();
                 }
                 Dur(convert(TEMPO),Division) => now;
             } 
