@@ -292,6 +292,8 @@ public class FMSynth extends Chmusick
         
         while(true)
         {
+            envelope.set(A, D, S, R);
+            
             for(0 => int i; i < notes.cap(); i++)
             {
                 if(notes[i] == 0)
