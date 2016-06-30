@@ -66,6 +66,18 @@ public class Video
     {
         return "/1/cscale";
     }
+    public string source()
+    {
+        return "/source";
+    }
+    public string sin()
+    {
+        return "/1/sin";
+    }
+    public string cos()
+    {
+        return "/1/cos";
+    }
     public void send(string tag, int msg)
     {
         out.start(tag);
