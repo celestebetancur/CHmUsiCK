@@ -29,7 +29,7 @@ Machine.add(me.dir() + "/Looper.ck");
 Machine.add(me.dir() + "/Pan.ck");
 Machine.add(me.dir() + "/SampleClass.ck");
 Machine.add(me.dir() + "/TheCooker.ck");
-Machine.add(me.dir() + "/LoopByCounter.ck");
+//Machine.add(me.dir() + "/LoopByCounter.ck");
 //Machine.add(me.dir() + "/Loop.ck");
 //Machine.add(me.dir() + "/LoopTap.ck");
 Machine.add(me.dir() + "/VideoClass.ck");
