@@ -20,6 +20,7 @@ In another terminal
 ```$ chuck add Library.ck```
 
 Run an example
+
 ```$ chuck Library/Examples/<example name>.ck```
 
 Edit the file as you like and replace with:
