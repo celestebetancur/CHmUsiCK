@@ -7,7 +7,7 @@
 //
 
 //Library
-Machine.add(me.dir() + "/Library/MelodyArray.ck");
+Machine.add(me.dir() + "Library/MelodyArray.ck");
 Machine.add(me.dir() + "/Library/Array.ck");
 Machine.add(me.dir() + "/Library/CHmUsiCK.ck");
 Machine.add(me.dir() + "/Library/FavoriteArray.ck");
@@ -35,4 +35,3 @@ Machine.add(me.dir() + "/Library/TheCooker.ck");
 Machine.add(me.dir() + "/Library/VideoClass.ck");
 
 <<< "\n\nCHmUsiCK\n\tCHmUsiCK\n\t\tCHmUsiCK !\n\n\n" >>>;
-
