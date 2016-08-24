@@ -56,11 +56,19 @@ public class Sampler extends Chmusick
         
         return patterns;
     }
-	public void sound(string S, int sample[])
-	{
-		file(S);
-		sound(sample);
-	}
+    public void sound(string S, int sample[])
+    {
+	file(S);
+	sound(sample);
+    }
+	public void sound()
+    {
+        while(true) {
+            envelope.keyOn();
+            0 => buffer.pos;
+            buffer.length() => now;
+        }
+    }
     public void sound(int sample[])
     {
 		2 => CYCLES;

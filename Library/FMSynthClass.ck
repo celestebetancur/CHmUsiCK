@@ -9,8 +9,10 @@
 
 public class FMSynth extends Chmusick
 {
-    SinOsc modulator => SinOsc carrier => ADSR envelope => Gain Normalize => Master => outlet;
+    OscOut oscout;
+    SinOsc modulator => ADSR envelope => SinOsc carrier => Envelope env => Gain Normalize => Master => outlet;
     
+    oscout.dest(this.host(),this.port());
     0.08 => Normalize.gain; //don't change this
     
     SinOsc carrier2;
@@ -24,7 +26,7 @@ public class FMSynth extends Chmusick
     2 => modulator2.gain;
     
     2 => carrier.sync;
-    10000 => modulator.gain;
+    1 => modulator.gain;
     
     3 => float NUM;
     2 => float DEN;
@@ -61,6 +63,7 @@ public class FMSynth extends Chmusick
     {
         return Notes;
     }
+    
     public dur attack(dur attacK)
     {
         attacK => A;
@@ -117,7 +120,7 @@ public class FMSynth extends Chmusick
     }
     public float mgain(float mg)
     {
-        (mg * 10000) => modulator.gain;
+        mg => modulator.gain;
         return modulator.gain();
     }
     public float mgain()
@@ -231,7 +234,7 @@ public class FMSynth extends Chmusick
     }
     public float m2gain(float m2g)
     {
-        m2g * 10000 => modulator2.gain;
+        m2g => modulator2.gain;
         return modulator2.gain();
     }
     public float m2gain()
@@ -289,23 +292,31 @@ public class FMSynth extends Chmusick
         
         while(true)
         {
+            envelope.set(A, D, S, R);
+            
             for(0 => int i; i < notes.cap(); i++)
             {
                 if(notes[i] == 0)
                 {
                     envelope.keyOff();
+                    env.keyOff();
                     Dur(convert(TEMPO),Division) => now;
                 }
                 else
                 {
+                    oscout.start("/notes");
                     Std.mtof(notes[i]) => carrier.freq;
 					Math.random2f(0.5,1) => carrier.gain;
                     carrier.freq() * mf => modulator.freq;
                     carrier.freq() * C2f => carrier2.freq;
                     carrier.freq() * M2f => modulator2.freq;
+                    oscout.add(carrier.freq());
+                    oscout.send();
                     envelope.keyOn();
-                    Dur(convert(TEMPO),Division) => now;
-                    envelope.keyOff();
+                    env.keyOn();
+                    Dur(convert(TEMPO),Division)/2 => now;
+                    envelope.keyOn();
+                    Dur(convert(TEMPO),Division)/2 => now;
                 }
             }          
         }

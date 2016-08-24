@@ -11,9 +11,12 @@ Sync sync;
 sync.sync(Chmusick.MEASURE, Sync.NUMMEASURES);
 
 //Std.system("./CMKlang CMKbridge");
-Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
-
-spork~beatCounter();
+int fileID;
+if(Machine.add(me.dir()+"/LiveCode.ck") => fileID)
+    spork~beatCounter();
+else {
+    <<< "Check your LiveCode.ck file..." >>>;
+}
 
 while(true){second => now;}
 

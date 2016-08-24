@@ -19,10 +19,27 @@ public class Chmusick extends Chubgraph
     4 => static int CYCLES;
     4 => static int MEASURE; 
     
+    12000 => static int PORT;
+    "127.0.0.1" => string HOST;
+    
     1 => static float MASTER;
     
     MASTER => Master.gain;
     
+    public string host(string Host) {
+        Host => HOST;
+        return HOST;
+    }
+    public string host() {
+        return HOST;
+    }
+    public static int port(int Port) {
+        Port => PORT;
+        return PORT;
+    }
+    public static int port() {
+        return PORT;
+    }
     public static float tempo(float t)
     {
         t => TEMPO;
