@@ -262,6 +262,34 @@ public class Melody extends Chmusick
             }          
         }
     }
+    public void synthT(int times,int div,int notes[])
+    {
+        div => Division;
+        setNotes(notes);
+        
+        inst[activeInst] => Normalize;
+        
+        for(0 => int i; i < times; i++)
+        {
+            for(0 => int i; i < notes.cap(); i++)
+            {
+                if(notes[i] == 0)
+                {
+                    inst[activeInst].noteOff;
+                    Dur(convert(TEMPO),Division)/notes.cap() => now;
+                }
+                else
+                {
+                    Std.mtof(notes[i]) => inst[activeInst].freq;
+                    //Math.random2f(0.5,1) => inst[activeInst].gain;
+                    1 => inst[activeInst].noteOn;
+                    inst[activeInst].noteOn;
+                    Dur(convert(TEMPO),Division)/notes.cap() => now;
+                    inst[activeInst].noteOff;
+                }
+            }          
+        }
+    }
     public int[] granularize(int array[], int howmany)
     {
         (howmany * 8) => Division;

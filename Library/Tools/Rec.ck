@@ -1,3 +1,3 @@
 Rec rec;
 
-rec.recDAC("Agua"); //name your file here
+rec.recDAC("Synth"); //name your file here

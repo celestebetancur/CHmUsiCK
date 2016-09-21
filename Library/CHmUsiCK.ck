@@ -294,6 +294,17 @@ public class Chmusick extends Chubgraph
         
         return everyArray;
     }
+    public int[] transpose(int pattern[], int param)
+    // transpose note by param
+    {
+        int newPattern[pattern.cap()];
+        
+        for(0 => int i; i < pattern.cap(); i++)
+        {
+            pattern[i] + param => newPattern[i];
+        }
+        return newPattern;
+    }
     public int[] rotate(int pattern[])
 	// rotates int array pattern by one
 	{
