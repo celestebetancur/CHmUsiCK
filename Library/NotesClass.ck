@@ -445,7 +445,7 @@ public class Notes
         }
         if( input == 15 )
         {
-            [0, 2, 4, 6, 7, 9, 10] @=> notes;//psuedo indian lydian
+            [0, 2, 4, 6, 7, 9, 10] @=> notes;//pseudo indian lydian
             return notes;
         }
         else

@@ -13,9 +13,17 @@ public class Drum extends Chmusick
     oscout.dest(this.host(),this.port());
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     
-    Gain Normalize => Gain vol => Master;
+    Gain Normalizehh => Gain vol => Master;
+    Gain Normalizesn => vol;
+    Gain Normalizebd => vol;
     
-    0.6 => Normalize.gain; //don't change this
+    Gain hhgain => Normalizehh;
+    Gain sngain => Normalizesn;
+    Gain bdgain => Normalizebd;
+    
+    0.2 => Normalizehh.gain; //don't change this
+    0.45 => Normalizesn.gain; //don't change this
+    0.9 => Normalizebd.gain; //don't change this
     
     SndBuf Kick[8]; SndBuf Snare[12]; SndBuf HH[9];
     
@@ -54,17 +62,17 @@ public class Drum extends Chmusick
 	
     for(0 => int i; i < Kick.cap(); i++)
     {
-        Kick[i] => Normalize;
+        Kick[i] => bdgain;
         Kick[i].samples() => Kick[i].pos;
     }
     for(0 => int i; i < Snare.cap(); i++)
     { 
-        Snare[i] => Normalize;
+        Snare[i] => sngain;
         Snare[i].samples() => Snare[i].pos;
     }
     for(0 => int i; i < HH.cap(); i++)
     {   
-        HH[i] => Normalize;
+        HH[i] => hhgain;
         HH[i].samples() => HH[i].pos;
     }
     
@@ -84,15 +92,34 @@ public class Drum extends Chmusick
     
     int rythym[0][0]; 
 	
-    public float gain(float volum)
+    public float bdGain(float volum)
     {
-        volum => vol.gain;
-        return vol.gain();
+        volum => bdgain.gain;
+        return bdgain.gain();
     }
-    public float gain()
+    public float bdGain()
     {
-        return vol.gain();
+        return  bdgain.gain();
     }
+    public float snGain(float volum)
+    {
+        volum => sngain.gain;
+        return sngain.gain();
+    }
+    public float snGain()
+    {
+        return  sngain.gain();
+    }
+    public float hhGain(float volum)
+    {
+        volum => hhgain.gain;
+        return hhgain.gain();
+    }
+    public float hhGain()
+    {
+        return  hhgain.gain();
+    }
+  
      public int subdivision(int div)
     {
         div => Division;

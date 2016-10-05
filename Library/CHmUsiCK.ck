@@ -184,6 +184,24 @@ public class Chmusick extends Chubgraph
         }
         return random;
     }
+    public int[] subArray(int pattern[], int toCut[])
+    // cuts an array pattern 
+    // Thanx to Santiago Beta
+    {
+        toCut.size() => int newsize;
+        int sub[newsize];
+        
+        for(0 => int i; i < newsize; i++)
+        {
+            if(toCut[i] < pattern.size() && toCut[i] >= 0) {
+                pattern[toCut[i]] => sub[i];
+            }
+            else {
+                 0 => sub[i];
+            }
+        }
+        return sub;
+    }
     public int[] trunc(int pattern[], float howmany)
 	// truncates an array pattern by howmany
 	{
