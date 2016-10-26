@@ -7,11 +7,11 @@
 //
 
 //Library
+Machine.add(me.dir() + "/Library/STATIC.ck");
 Machine.add(me.dir() + "/Library/MelodyArray.ck");
 Machine.add(me.dir() + "/Library/Array.ck");
 Machine.add(me.dir() + "/Library/CHmUsiCK.ck");
 Machine.add(me.dir() + "/Library/FavoriteArray.ck");
-Machine.add(me.dir() + "/Library/STATIC.ck");
 Machine.add(me.dir() + "/Library/AudioClass.ck");
 Machine.add(me.dir() + "/Library/TempoTap.ck");
 Machine.add(me.dir() + "/Library/SyncClass.ck");

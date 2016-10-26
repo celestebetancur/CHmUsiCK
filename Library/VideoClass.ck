@@ -66,9 +66,9 @@ public class Video
     {
         return "/1/cscale";
     }
-    public string source()
+    public string states()
     {
-        return "/source";
+        return "/state";
     }
     public string sin()
     {
@@ -77,6 +77,22 @@ public class Video
     public string cos()
     {
         return "/1/cos";
+    }
+    public string divW()
+    {
+        return "/divW";
+    }
+    public string divH()
+    {
+        return "/divH";
+    }
+    public string depth()
+    {
+        return "/depth";
+    }
+    public string density()
+    {
+        return "/density";
     }
     public void send(string tag, int msg)
     {

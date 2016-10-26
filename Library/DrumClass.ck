@@ -9,7 +9,7 @@ public class Drum extends Chmusick
 {
     OscOut oscout;
     FileIO rythyms;
-    
+        
     oscout.dest(this.host(),this.port());
     rythyms.open(me.dir() + "/favoriteRythyms.txt", FileIO.READ);
     

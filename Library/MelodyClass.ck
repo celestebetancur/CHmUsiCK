@@ -281,7 +281,6 @@ public class Melody extends Chmusick
                 else
                 {
                     Std.mtof(notes[i]) => inst[activeInst].freq;
-                    //Math.random2f(0.5,1) => inst[activeInst].gain;
                     1 => inst[activeInst].noteOn;
                     inst[activeInst].noteOn;
                     Dur(convert(TEMPO),Division)/notes.cap() => now;

@@ -30,6 +30,9 @@ public static int beatCounter()
         if(STATIC.BEATS % (extractor.MEASURE * extractor.CYCLES) == 0)
         {
 			//Std.system("./CMKlang CMKbridge");
+            //0.31::second => now;  //120 bpm, 0.35::second
+            //Std.system("python /Users/estebanbetancur/Desktop/CHmUsiCK/end.py");
+           
             if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") == true)
             {
 				//Std.system("./CMKlang CMKbridge");

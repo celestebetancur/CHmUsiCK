@@ -19,7 +19,7 @@ public class Chmusick extends Chubgraph
     4 => static int CYCLES;
     4 => static int MEASURE; 
     
-    12000 => static int PORT;
+    5001 => static int PORT;
     "127.0.0.1" => string HOST;
     
     1 => static float MASTER;

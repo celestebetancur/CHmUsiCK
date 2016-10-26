@@ -138,8 +138,8 @@ public class FMSynth extends Chmusick
     }
     public float gain(float cg)
     {
-        cg => carrier.gain;
-        return carrier.gain();
+        cg => env.gain;
+        return env.gain();
     }
     public float gain()
     {
