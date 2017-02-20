@@ -1,3 +1,3 @@
 Rec rec;
 
-rec.recDAC("Synth"); //name your file here
+rec.recDAC("Cook"); //name your file here

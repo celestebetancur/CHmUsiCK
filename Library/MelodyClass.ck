@@ -7,12 +7,10 @@
 
 public class Melody extends Chmusick
 {   
-    Gain Normalize => Gain vol => Master;
+    ADSR envelope => Gain Normalize => Gain vol => Master;
     
     0.25 => Normalize.gain; //don't change this
-    
-    ADSR envelope;
-    
+        
     SinOsc sin; SqrOsc sqr; PulseOsc pulse; SawOsc saw;TriOsc tri;
     [sin,sqr,pulse,saw,tri] @=> Osc osc[];
     
@@ -31,10 +29,10 @@ public class Melody extends Chmusick
     int Notes[0];
     
     //———————————-envelope————————————//
-    10::ms => dur A;
-    8::ms => dur D;
+    25::ms => dur A;
+    25::ms => dur D;
     0.5 => float S;
-    5::ms => dur R;
+    0::ms => dur R;
     
     envelope.set(A, D, S, R);
     
@@ -104,11 +102,11 @@ public class Melody extends Chmusick
     public int controlChangeOsc(int parameter)
     {
         parameter => activeOsc;
-        if(parameter == 0) 0.5 => Normalize.gain;
-        if(parameter == 1) 0.19 => Normalize.gain;
-        if(parameter == 2) 0.19 => Normalize.gain;
-        if(parameter == 3) 0.19 => Normalize.gain;
-        if(parameter == 4) 0.45 => Normalize.gain;
+        if(parameter == 0) 0.6 => Normalize.gain;
+        if(parameter == 1) 0.25 => Normalize.gain;
+        if(parameter == 2) 0.25 => Normalize.gain;
+        if(parameter == 3) 0.25 => Normalize.gain;
+        if(parameter == 4) 0.6 => Normalize.gain;
         return activeOsc;
     }
     public int controlChangeOsc()
@@ -204,7 +202,7 @@ public class Melody extends Chmusick
         div => Division;
         setNotes(notes);
         
-        osc[activeOsc] => envelope => Normalize;
+        osc[activeOsc] => envelope;
         
         while(true)
         {
@@ -212,6 +210,7 @@ public class Melody extends Chmusick
             {
                 if(notes[i] == 0)
                 {
+                    0 => osc[activeOsc].gain;
                     envelope.keyOff();
                     Dur(convert(TEMPO),Division) => now;
                 }

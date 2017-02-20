@@ -1,5 +1,3 @@
-Chmusick tempo; 
-
 Gain gate => NRev rev => dac; 
 Sampler r => gate;
 Sampler a => dac; Sampler l => dac; Sampler e => dac; Sampler x => dac;
@@ -8,8 +6,7 @@ Melody t => gate => d;
 Drum drum => gate;
 Harmony pad => gate;
 
-128 => tempo.tempo;
-4 => tempo.cycles;
+128 => Chmusick.tempo;
 
 0.13 => rev.mix;
 

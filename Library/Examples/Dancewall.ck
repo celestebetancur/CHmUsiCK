@@ -1,5 +1,3 @@
-Chmusick params;
-
 Gain gate => dac;
 Drum drum => gate;
 FMSynth bass => gate;
@@ -10,7 +8,8 @@ FMSynth d => DelayL delay => NRev rev => gate;
 
 .5::second => delay.max => delay.delay;
 rev.mix(.2);
-params.tempo(190);
+
+Chmusick.tempo(190);
 
 mel.controlChange(1);
 mel.gain(1.5);
