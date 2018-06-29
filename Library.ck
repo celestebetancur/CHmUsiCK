@@ -16,9 +16,9 @@ Machine.add(me.dir() + "/Library/SyncClass.ck");
 Machine.add(me.dir() + "/Library/HarmonyClass.ck");
 Machine.add(me.dir() + "/Library/Pan.ck");
 // Synths
-Machine.add(me.dir() + "/Library/TheCooker.ck");
-Machine.add(me.dir() + "/Library/Synthfrog.ck");
-Machine.add(me.dir() + "/Library/Crowley.ck");
+Machine.add(me.dir() + "/Library/Synths/TheCooker.ck");
+Machine.add(me.dir() + "/Library/Synths/Synthfrog.ck");
+Machine.add(me.dir() + "/Library/Synths/Crowley.ck");
 // MainLoop
 Machine.add(me.dir() + "/Library/LoopByCounter.ck");
 

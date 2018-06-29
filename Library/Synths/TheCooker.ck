@@ -16,7 +16,7 @@ public class TheCooker extends Chmusick
     
     0.15 => rev.mix;
     
-    1.0/partial => Normalize.gain;  
+    0.65/partial => Normalize.gain;  
     
     440 => float frq;
 

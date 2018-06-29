@@ -22,7 +22,7 @@ public class Synthfrog extends Chmusick
 
     rev2.mix(0.03);
     
-    out.gain(0.25);
+    out.gain(0.15);
 
     public void synth(int div,int notes[])
     {

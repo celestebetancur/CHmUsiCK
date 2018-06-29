@@ -391,8 +391,7 @@ public class Chmusick extends Chubgraph {
         {
             for(0 => int j; j < times; j++)
             {
-                pattern[counter] + 12 * auxC=> toReturn[tempVar];
-                //<<<pattern[counter] + 12 * auxC>>>;//DONE
+                (pattern[counter] + 12 * auxC) + octave => toReturn[tempVar];
                 counter + 1 => counter;
                 if(counter == pattern.size()){
                     0 => counter;
@@ -402,6 +401,37 @@ public class Chmusick extends Chubgraph {
             }
         }
         return toReturn;
+    }
+    public int[] concat(int toConcat[][]){
+        int toReturn[0];
+        for(0 => int i; i < toConcat.size(); i++){
+            for(0 => int j; j < toConcat[i].size(); j++){
+                toReturn << toConcat[i][j];
+            }
+        }
+        return toReturn;
+    }
+    public void grain(SndBuf buf, float duration , int position, float pitch, int randompos, float randpitch)
+    { 
+        buf => Envelope e => outlet;
+        
+        2 => e.gain;
+        int samples;
+        buf.samples() => samples;
+        44100*position/1000 => position;
+        44100*randompos/1000 => randompos;
+        
+        duration*Std.rand2f(0.45,0.5)::ms => e.duration;
+        float freq;
+        
+        while(true){
+            Std.rand2f(pitch-randpitch,pitch+randpitch) => buf.rate;
+            Std.rand2(position-randompos,position+randompos) => buf.pos;
+            e.keyOn();
+            (duration*0.5)::ms => now;
+            e.keyOff();
+            (duration*0.5)::ms => now;
+        }
     }
     public void play(SndBuf buffer)
     {

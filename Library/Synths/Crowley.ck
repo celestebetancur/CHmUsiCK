@@ -9,7 +9,7 @@ out => HalfRect hf => outlet;
 
 env1.set(5::ms,15::ms,0.7,80::ms);
 
-out.gain(0.1);
+out.gain(0.05);
 ramp.gain(500);
 
 one.gain(0.5);
