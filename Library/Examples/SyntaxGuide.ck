@@ -15,9 +15,9 @@ live.file("erk") => Buffer.d5.read;
 live.file("elec",8) => Buffer.d6.read;
 live.file("claps",5) => Buffer.d7.read;
 
-4 => live.CYCLES;
-4 => live.MEASURE;
-130 => live.TEMPO;
+4 => STATIC.CYCLES;
+4 => STATIC.MEASURE;
+130 => STATIC.TEMPO;
 0.5 => gate.gain;
 0.03 => rev.mix;
 0.18 => melody.gain;
@@ -33,7 +33,7 @@ live.every(4) => live.densify => live.rotate @=> int arpyR[];
 [60,0,60,0,67,72] @=> int synthR[];
 [0,0,1,0,1,0,0,0,1,0,0,1,0,0,1,0] @=> int clave[];
 [40,0,0,43,0,0,47,0,40,0,0,43,0,0,47,0] @=> int bassR1[];
-[64,66,67,71,76] => live.randomize @=> int mel[]
+[64,66,67,71,76] => live.randomize @=> int mel[];
 
 /*spork~live.play(Buffer.d8,["casio","~"],0);*/
 /*spork~live.play(melody,tri,2);*/
@@ -50,5 +50,5 @@ spork~live.play(Buffer.d7,[0,0,1,0],0);
 spork~pad.sinOsc(["Cm"],6);
 
 while(true){
-    live.Dur(live.TEMPO,live.MEASURE) => now;
+    live.Dur(STATIC.TEMPO,STATIC.MEASURE) => now;
 }
