@@ -11,7 +11,7 @@ Machine.add(me.dir() + "/Library/STATIC.ck");
 Machine.add(me.dir() + "/Library/Buffer.ck");
 Machine.add(me.dir() + "/Library/NotesClass.ck");
 Machine.add(me.dir() + "/Library/FMSynthClass.ck");
-Machine.add(me.dir() + "/Library/Chmusick.ck");
+Machine.add(me.dir() + "/Library/CHmUsiCK.ck");
 Machine.add(me.dir() + "/Library/SyncClass.ck");
 Machine.add(me.dir() + "/Library/HarmonyClass.ck");
 Machine.add(me.dir() + "/Library/Pan.ck");
