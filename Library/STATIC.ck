@@ -1,17 +1,17 @@
 public class STATIC 
 {
-    //static Object GARBAGE[];
     0 => static int BEATS;
     0 => static int MEASURES;
     0 => static int PHRASES;
-    8 => static int STEP;
+    static int STEP;
+    static float TEMPO;
+    
+    // Moving all static objects to this class
+    static int MEASURE;
+    static int CYCLES;
 }
-/*
-Object objects[100];
 
-for(0 => int i; i < objects.size(); i++) {
-    null @=> objects[i];
-}
-
-objects @=> STATIC.GARBAGE;
-*/
+8 => STATIC.STEP;
+120 => STATIC.TEMPO;
+4 => STATIC.MEASURE;
+4 => STATIC.CYCLES;

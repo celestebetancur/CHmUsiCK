@@ -9,7 +9,7 @@
 public class Sync
 {
     4 => static int NUMMEASURES;
-    (Sync.NUMMEASURES * Chmusick.MEASURE) => static float tSync; 
+    (Sync.NUMMEASURES * STATIC.MEASURE) => static float tSync; 
     
     public float sync() 
     {

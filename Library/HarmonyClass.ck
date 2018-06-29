@@ -6,20 +6,20 @@
 //
 
 public class Harmony extends Chmusick
-{  
-    Gain Normalize => Gain vol => NRev rev => Master => outlet;
-    
-    0.08 => Normalize.gain; // don't change this
-    0.3 => rev.mix;
-    
+{
+    Gain Normalize => Gain vol => NRev rev => Envelope e => outlet;
+
+    0.17 => Normalize.gain; // don't change this
+    0.35 => rev.mix;
+
     Notes chords;
-    
+
     3 => int numVoices;
-    
+
     (1.0 / numVoices) => float partialGain;
-    
+
     string Notes[0];
-    
+
     public float gain(float volum)
     {
         volum => vol.gain;
@@ -41,7 +41,7 @@ public class Harmony extends Chmusick
     public string[] setNotes(string notes[])
     {
         notes @=> Notes;
-        return Notes; 
+        return Notes;
     }
     public string[] setNotes()
     {
@@ -50,23 +50,23 @@ public class Harmony extends Chmusick
     public string[] random(int capacity)
     {
         string progression[0];
-        
+
         chords.key(chords.randomNote()) @=> string notes[];
-        
+
         for(0 => int i; i < capacity ; i++)
         {
             progression << notes[Math.random2(0,(notes.cap()-1))];
-        }  
+        }
         return progression;
     }
     public string[] random(int capacity, string Key)
     {
         string progression[0];
-        
+
         for(0 => int i; i < capacity ; i++)
         {
             progression << chords.key(Key)[Math.random2(0,(chords.key(Key).cap()-1))];
-        }  
+        }
         return progression;
     }
     public void randomHarmony()
@@ -93,36 +93,40 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-        
+
         SinOsc polyphony[voices];
+
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
             partialGain => polyphony[i].gain;
-        }   
+        }
+        Normalize => e;
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
             {
                 if(note[i] != "") {
+                    e.keyOn();
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         partialGain => polyphony[i].gain;
-                    } 
+                    }
                     chords.voicing(note[i]) @=> int harmony[];
-                    
+
                     for(0 => int i; i < polyphony.cap(); i++)
                     {
-                        Std.mtof(harmony[i]) => polyphony[i].freq;                
+                        Std.mtof(harmony[i]) => polyphony[i].freq;
                     }
-                    (convert(TEMPO) * MEASURE) => now;  
+                    Dur(STATIC.TEMPO,Division) => now;
                 }
                 if(note[i] == "") {
+                    e.keyOff();
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         0 => polyphony[i].gain;
-                    } 
-                    (convert(TEMPO) * MEASURE) => now;  
+                    }
+                    Dur(STATIC.TEMPO,Division) => now;
                 }
             }
         }
@@ -135,13 +139,13 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-        
+
         SqrOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
             partialGain => polyphony[i].gain;
-        }   
+        }
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
@@ -150,21 +154,21 @@ public class Harmony extends Chmusick
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         partialGain => polyphony[i].gain;
-                    } 
+                    }
                     chords.voicing(note[i]) @=> int harmony[];
-                    
+
                     for(0 => int i; i < polyphony.cap(); i++)
                     {
-                        Std.mtof(harmony[i]) => polyphony[i].freq;                
+                        Std.mtof(harmony[i]) => polyphony[i].freq;
                     }
-                    (convert(TEMPO) * MEASURE) => now;  
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
                 if(note[i] == "") {
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         0 => polyphony[i].gain;
-                    } 
-                    (convert(TEMPO) * MEASURE) => now;  
+                    }
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
             }
         }
@@ -177,13 +181,13 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-        
+
         TriOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
             partialGain => polyphony[i].gain;
-        }  
+        }
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
@@ -192,21 +196,21 @@ public class Harmony extends Chmusick
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         partialGain => polyphony[i].gain;
-                    } 
+                    }
                     chords.voicing(note[i]) @=> int harmony[];
-                    
+
                     for(0 => int i; i < polyphony.cap(); i++)
                     {
-                        Std.mtof(harmony[i]) => polyphony[i].freq;                
+                        Std.mtof(harmony[i]) => polyphony[i].freq;
                     }
-                    (convert(TEMPO) * MEASURE) => now;  
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
                 if(note[i] == "") {
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         0 => polyphony[i].gain;
-                    } 
-                    (convert(TEMPO) * MEASURE) => now;  
+                    }
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
             }
         }
@@ -219,13 +223,13 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-        
+
         SawOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
             polyphony[i] => Normalize;
             partialGain => polyphony[i].gain;
-        }  
+        }
         while(true)
         {
             for (0 => int i; i < note.cap(); i++)
@@ -234,21 +238,21 @@ public class Harmony extends Chmusick
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         partialGain => polyphony[i].gain;
-                    } 
+                    }
                     chords.voicing(note[i]) @=> int harmony[];
-                    
+
                     for(0 => int i; i < polyphony.cap(); i++)
                     {
-                        Std.mtof(harmony[i]) => polyphony[i].freq;                
+                        Std.mtof(harmony[i]) => polyphony[i].freq;
                     }
-                    (convert(TEMPO) * MEASURE) => now;  
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
                 if(note[i] == "") {
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         0 => polyphony[i].gain;
-                    } 
-                    (convert(TEMPO) * MEASURE) => now;  
+                    }
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
             }
         }
@@ -261,7 +265,7 @@ public class Harmony extends Chmusick
     {
         voices => numVoices;
         setNotes(note);
-        
+
         PulseOsc polyphony[voices];
         for (0 => int i; i < polyphony.cap(); i++)
         {
@@ -276,21 +280,21 @@ public class Harmony extends Chmusick
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         partialGain => polyphony[i].gain;
-                    } 
+                    }
                     chords.voicing(note[i]) @=> int harmony[];
-                    
+
                     for(0 => int i; i < polyphony.cap(); i++)
                     {
-                        Std.mtof(harmony[i]) => polyphony[i].freq;                
+                        Std.mtof(harmony[i]) => polyphony[i].freq;
                     }
-                    (convert(TEMPO) * MEASURE) => now;  
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
                 if(note[i] == "") {
                     for (0 => int i; i < polyphony.cap(); i++)
                     {
                         0 => polyphony[i].gain;
-                    } 
-                    (convert(TEMPO) * MEASURE) => now;  
+                    }
+                    (convert(STATIC.TEMPO) * STATIC.MEASURE) => now;
                 }
             }
         }

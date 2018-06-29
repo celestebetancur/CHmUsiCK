@@ -7,24 +7,28 @@
 
 public class Pan extends Chmusick
 {
-    inlet => Pan2 p => Master => outlet;
-    
-    8 => int Division;
+    inlet => Pan2 p => outlet;
     
     public void randomPan()
     {        
         while(true)
         {
-            Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 
-            Dur(convert(TEMPO),Division) => now; 
+            Math.random2f(-1,1) => p.pan; 
+            0.125::second => now; 
         }
     }
-    public void randomPan()
+    public void randomPanEx()
     {        
         while(true)
         {
-            Math.sin(now/1::second*(Math.random2f(-1,1))*pi) => p.pan; 
-            Dur(convert(TEMPO),Division) => now; 
+            Math.random2f(-1,1)  => float temp;
+            if(temp < 0 ){
+                -1 => p.pan; 
+            }
+            if(temp > 0 ) {
+                1 => p.pan; 
+            }
+            250::ms => now; 
         }
     }
     public void circularPan(float t)
@@ -37,14 +41,5 @@ public class Pan extends Chmusick
                 t::ms => now; 
             }
         }
-    }
-    public int subdivision(int div)
-    {
-        div => Division;
-        return Division;
-    }
-    public int subdivision()
-    {
-        return subdivision(Division);
     }
 }

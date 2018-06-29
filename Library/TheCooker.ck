@@ -12,16 +12,14 @@ public class TheCooker extends Chmusick
     10 => int partial;
    
     BlitSaw s[partial];      
-    Gain Normalize => Gain volum => NRev rev => Envelope env => Master;  
+    Gain Normalize => Gain volum => NRev rev => Envelope env => outlet;  
     
     0.15 => rev.mix;
     
     1.0/partial => Normalize.gain;  
     
     440 => float frq;
-    
-    8 => int Division;
-    
+
     0.1 => float Factor;
     
     for (int i; i < partial; i++) 
@@ -63,11 +61,11 @@ public class TheCooker extends Chmusick
             (freq() + (factor() * i)) => s[i].freq;
         }
     }
-    public void sound(int notes[])
+    public void synth(int notes[])
     {
-        sound(Division, notes);
+        synth(Division, notes);
     }
-    public void sound(int div,int notes[])
+    public void synth(int div,int notes[])
     {
         div => Division;
         
@@ -78,14 +76,14 @@ public class TheCooker extends Chmusick
                 if(notes[i] == 0)
                 {
                     env.keyOff();
-                    Dur(convert(TEMPO),Division) => now;
+                    Dur(STATIC.TEMPO,Division) => now;
                 }
                 else
                 {
                     Std.mtof(notes[i]) => freq;
                     freqAssign();
                     env.keyOn();
-                    Dur(convert(TEMPO),Division) => now;
+                    Dur(STATIC.TEMPO,Division) => now;
                 }
             }          
         }
