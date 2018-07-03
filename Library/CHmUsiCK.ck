@@ -477,30 +477,31 @@ public class Chmusick extends Chubgraph {
             <<< "Start and End must be numbers between 0 and 1" >>>;
         }
     }
-    public void play(MidiOut mout, int note[], int channel)
+    public MidiMsg msgMidi(int command, int channel, int byte1, int byte2)
     {
         MidiMsg msg;
-
+        ((command & 0xf) << 4) | ((channel - 1) & 0xf) => msg.data1;
+        command | channel => command;
+        byte1 & 0x7f  => msg.data2;
+        byte2 & 0x7f => msg.data3;
+        return msg;  
+    }
+    public void play(MidiOut mout, int note[],int div, int channel)
+    {
             while(true)
             {
                 for(0 => int i; i < note.cap(); i++)
                 {
                     if (note[i] != 0)
                     {
-                        channel => msg.data1;
-                        note[i] => msg.data2;
-                        127 => msg.data3;
-                        mout.send(msg);
-                        Dur(STATIC.TEMPO,Division)/2 => now;
-                        channel => msg.data1;
-                        note[i] => msg.data2;
-                        0 => msg.data3;
-                        mout.send(msg);
-                        Dur(STATIC.TEMPO,Division)/2 => now;
+                        mout.send(msgMidi(0x9,channel,note[i],127));
+                        Dur(STATIC.TEMPO,div)/2 => now;
+                        mout.send(msgMidi(0x8,channel,note[i],0));
+                        Dur(STATIC.TEMPO,div)/2 => now;
                     }
                     if (note[i] == 0)
                     {
-                        Dur(STATIC.TEMPO,Division) => now;
+                        Dur(STATIC.TEMPO,div) => now;
                     }
                 }
             }
