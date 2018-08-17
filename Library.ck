@@ -15,6 +15,7 @@ Machine.add(me.dir() + "/Library/CHmUsiCK.ck");
 Machine.add(me.dir() + "/Library/SyncClass.ck");
 Machine.add(me.dir() + "/Library/HarmonyClass.ck");
 Machine.add(me.dir() + "/Library/Pan.ck");
+Machine.add(me.dir() + "/Library/Deelay.ck");
 // Synths
 Machine.add(me.dir() + "/Library/Synths/TheCooker.ck");
 Machine.add(me.dir() + "/Library/Synths/Synthfrog.ck");

@@ -486,27 +486,47 @@ public class Chmusick extends Chubgraph {
         byte2 & 0x7f => msg.data3;
         return msg;  
     }
+    
     public void play(MidiOut mout, int note[],int div, int channel)
     {
-            while(true)
+        while(true)
+        {
+            for(0 => int i; i < note.cap(); i++)
             {
-                for(0 => int i; i < note.cap(); i++)
+                if (note[i] != 0)
                 {
-                    if (note[i] != 0)
-                    {
-                        mout.send(msgMidi(0x9,channel,note[i],127));
-                        Dur(STATIC.TEMPO,div)/2 => now;
-                        mout.send(msgMidi(0x8,channel,note[i],0));
-                        Dur(STATIC.TEMPO,div)/2 => now;
-                    }
-                    if (note[i] == 0)
-                    {
-                        Dur(STATIC.TEMPO,div) => now;
-                    }
+                    mout.send(msgMidi(0x9,channel,note[i],127));
+                    Dur(STATIC.TEMPO,div)/2 => now;
+                    mout.send(msgMidi(0x8,channel,note[i],0));
+                    Dur(STATIC.TEMPO,div)/2 => now;
+                }
+                if (note[i] == 0)
+                {
+                    mout.send(msgMidi(0x8,channel,note[i],0));
+                    Dur(STATIC.TEMPO,div) => now;
                 }
             }
+        }
     }
-
+    public void play(MidiOut mout, float note[][] ,int div, int channel)
+    {
+        while(true)
+        {
+            for(0 => int i; i < note.cap(); i++)
+            {
+                if(note[i][0] != 0){
+                    mout.send(msgMidi(0x9,channel,Std.ftoi(note[i][0]),127));
+                    Dur(STATIC.TEMPO,div) => now;
+                    mout.send(msgMidi(0x8,channel,Std.ftoi(note[i][0]),0));
+                    Dur(STATIC.TEMPO,div)/2 => now;
+                }
+                if(note[i][0] == 0){
+                    mout.send(msgMidi(0x8,channel,Std.ftoi(note[i][0]),0));
+                    Dur(STATIC.TEMPO,div) => now;
+                }
+            }
+        }
+    }
     public void play(SndBuf buffer, int sample[], int mode)
     {
         buffer => Envelope envelope => outlet;
@@ -527,6 +547,14 @@ public class Chmusick extends Chubgraph {
                         envelope.keyOff();
                         Dur(STATIC.TEMPO,Division) => now;
                     }
+                    if (sample[i] != 0 && sample[i] != 1)
+                    {
+                        envelope.keyOn();
+                        0 => buffer.pos;
+                        Dur(STATIC.TEMPO,sample[i])*0.5 => now;
+                        envelope.keyOff();
+                        Dur(STATIC.TEMPO,sample[i])*0.5 => now;
+                    }
                 }
             }
         }
@@ -535,7 +563,7 @@ public class Chmusick extends Chubgraph {
             {
                 for(0 => int i; i < sample.cap(); i++)
                 {
-                    if (sample[i] != 0)
+                    if (sample[i] == 1)
                     {
                         envelope.keyOn();
                         0 => buffer.pos;
@@ -595,6 +623,23 @@ public class Chmusick extends Chubgraph {
     public void play(SndBuf buffer, int sample[]){
         play(buffer, sample,0);
     }
+    public void play(SndBuf buffer, float sample[][])
+    {
+        buffer => outlet;
+        while(true)
+        {
+            for(0 => int i; i < sample.cap(); i++)
+            {
+                if(sample[i][0] != 0){
+                    buffer.pos(1);
+                    Dur(STATIC.TEMPO,Division/2)*sample[i][1] => now;
+                }
+                if(sample[i][0] == 0){
+                    Dur(STATIC.TEMPO,Division/2)*sample[i][1] => now;
+                }
+            }
+        }
+    }
     public void play(FMSynth fm, int sample[], int mode)
     {
         fm => outlet;
@@ -604,22 +649,13 @@ public class Chmusick extends Chubgraph {
             {
                 for(0 => int i; i < sample.cap(); i++)
                 {
-                    if (sample[i] != 0)
+                    if (sample[i] == 1)
                     {
                         fm.gain(1);
                         fm.noteOn();
-                        Buffer.osc.dest( hostname, port );
-                        "/" + tool.mtos(sample[i]) => string tag;
-                        Buffer.osc.start( tag );
-                        1 => Buffer.osc.add;
-                        Buffer.osc.send();
                         Std.mtof(sample[i]) => fm.freq;
                         Dur(STATIC.TEMPO,Division)/2 => now;
                         fm.noteOff();
-                        Buffer.osc.dest( hostname, port );
-                        Buffer.osc.start( tag );
-                        0 => Buffer.osc.add;
-                        Buffer.osc.send();
                         Dur(STATIC.TEMPO,Division)/2 => now;
                     }
                     if (sample[i] == 0)
@@ -639,18 +675,9 @@ public class Chmusick extends Chubgraph {
                     if (sample[i] != 0)
                     {
                         fm.noteOn();
-                        Buffer.osc.dest( hostname, port );
-                        "/" + tool.mtos(sample[i]) => string tag;
-                        Buffer.osc.start( tag );
-                        1 => Buffer.osc.add;
-                        Buffer.osc.send();
                         Std.mtof(sample[i]) => fm.freq;
                         Dur(STATIC.TEMPO/2,Division)/sample.cap()/2 => now;
                         fm.noteOff();
-                        Buffer.osc.dest( hostname, port );
-                        Buffer.osc.start( tag );
-                        0 => Buffer.osc.add;
-                        Buffer.osc.send();
                         Dur(STATIC.TEMPO/2,Division)/sample.cap()/2 => now;
                     }
                     if (sample[i] == 0)
@@ -704,6 +731,49 @@ public class Chmusick extends Chubgraph {
     public void play(FMSynth fm, int trigger[]){
         play(fm, trigger,0);
     }
+    
+    public void play(FMSynth fm, float sample[][])
+    {
+        fm => outlet;
+        while(true)
+        {
+            for(0 => int i; i < sample.cap(); i++)
+            {
+                if(sample[i][0] != 0){
+                    fm.gain(1);
+                    fm.noteOn();
+                    Std.mtof(sample[i][0]) => fm.freq;
+                    Dur(STATIC.TEMPO,Division/2)*sample[i][1] => now;
+                }
+                if(sample[i][0] == 0){
+                    fm.gain(0);
+                    fm.noteOff();
+                    Dur(STATIC.TEMPO,Division/2)*sample[i][1] => now;
+                }
+            }
+        }
+    }
+    public void play(FMSynth fm, int sample[][])
+    {
+        fm => outlet;
+        while(true){
+            for(0 => int i; i < sample.cap(); i++)
+            {
+                if(sample[i][0] != 0){
+                    fm.gain(1);
+                    fm.noteOn();
+                    Std.mtof(sample[i][0]) => fm.freq;
+                    Dur(STATIC.TEMPO,sample[i][1]) => now;
+                }
+                if(sample[i][0] == 0){
+                    fm.gain(0);
+                    fm.noteOff();
+                    Dur(STATIC.TEMPO,sample[i][1]) => now;
+                }
+            }
+        }
+    }
+    
     public void play(Osc osc, int sample[], int mode)
     {
         osc => ADSR env => outlet;
