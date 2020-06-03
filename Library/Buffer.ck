@@ -16,10 +16,13 @@ public class Buffer extends Chubgraph{
     new SndBuf @=> static SndBuf @ d14;
     new SndBuf @=> static SndBuf @ d15;
     new SndBuf @=> static SndBuf @ d16;
-    new OscOut @=> static OscOut @ osc;
+
+    new SndBuf @=> static SndBuf @ d17;
+    0 => static int buffer17Status;
+
+    new OscOut @=> static OscOut @ oscOut;
     new OscIn @=> static OscIn @ oscIn;
     new OscMsg @=> static OscMsg @ msg;
-    static int KICK[];
 
     d1 => outlet;
     d2 => outlet;
@@ -37,6 +40,7 @@ public class Buffer extends Chubgraph{
     d14 => outlet;
     d15 => outlet;
     d16 => outlet;
+    d17 => outlet;
 }
 
-[0,0,0,0,0,0,0,0] @=> Buffer.KICK;
+0 => Buffer.buffer17Status;

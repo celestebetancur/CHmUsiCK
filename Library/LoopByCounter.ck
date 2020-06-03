@@ -27,39 +27,42 @@ Buffer buffer;
 Sync sync;
 sync.sync(STATIC.MEASURE, Sync.NUMMEASURES);
 
+spork~replaceSyncTerminal();
 //Std.system("./CMKlang CMKbridge");
-int fileID;
-if(Machine.add(me.dir()+"/LiveCode.ck") => fileID){
-    extractor.convert(STATIC.TEMPO) => now;
+
+Machine.add(me.dir()+"/LiveCode.ck") => int fileID;
+
+if(fileID != 0){
     spork~beatCounter() @=> counterID;
+    spork~replaceSyncTerminal();
+    while(true) day => now;
 }
 else {
-    <<< "Check your LiveCode.ck file..." >>>;
+    <<< "Check your LiveCode.ck file and add Library.ck again..." >>>;
 }
 
+/* spork~beatCounter() @=> counterID;
 spork~replaceSyncTerminal();
-
-while(true) day => now;
+while(true) day => now; */
 
 public static int beatCounter()
 {
     while(true)
     {
         STATIC.BEATS++;
-        //<<<STATIC.BEATS, "Beats">>>; //uncomment to see # of beats
-
-        if(STATIC.BEATS % (STATIC.MEASURE * STATIC.CYCLES) == 0)
+        if(STATIC.BEATS % (STATIC.MEASURE * STATIC.CYCLES) == 0 && STATIC.BEATS > 2)
         {
-            if(Machine.replace(fileID,me.dir()+"/LiveCode.ck"))
+            samp => now;
+            Machine.replace(fileID,me.dir()+"/LiveCode.ck");
+            /* if(Machine.replace(fileID,me.dir()+"/LiveCode.ck"))
             {
                 Machine.remove(fileID);
                 Machine.add(me.dir()+"/LiveCode.ck") => fileID;
-            }
+            } */
         }
-
+        samp => now; // to let ChucK change STATIC.TEMPO value in case of change
         measureCounter();
         phraseCounter();
-        samp => now; // to let ChucK change STATIC.TEMPO value in case of change
         extractor.convert(STATIC.TEMPO) => now;
     }
     return STATIC.BEATS;
@@ -94,12 +97,12 @@ public static int phraseCounter()
             if( msg.isButtonDown() && msg.which == 224)
             {
                 1 => cmd;
-            }   
+            }
             if( !msg.isButtonDown() && msg.which == 224)
             {
                 0 => cmd;
                 0 => syncState;
-            } 
+            }
             if(msg.which == 21 && cmd == 1){
                 if(syncState == 0){
                     if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") => fileID)
@@ -126,8 +129,9 @@ public void replaceSyncTerminal(){
     {
         kb => now;
         while( kb.more() )
-        { 
-            if(kb.getchar() == 18){
+        {
+          //<<<kb.getchar()>>>;
+            if(kb.getchar() == 82){
                 if(syncState == 0){
                     if(Machine.replace(fileID,me.dir()+"/LiveCode.ck") => fileID)
                     {

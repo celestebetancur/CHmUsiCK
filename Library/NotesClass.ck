@@ -240,7 +240,7 @@ public class Notes
         }
         if(note == "Am" || note == "am" || note == "lam" || note == "Lam")
         {
-            [60,69,64,67,81,72,74,93,83,79,84,88,0] @=> chords;
+            [60,69,64,67,81,72,76,93,83,79,84,88,0] @=> chords;
             return chords;
         }
         if(note == "A#m" || note == "a#m" || note == "la#m" || note == "La#m" || note == "Bbm" || note == "bbm" || note == "sibm" || note == "Sibm")
@@ -255,7 +255,7 @@ public class Notes
         }
         if(note == "Cm" || note == "cm" || note == "dom" || note == "Dom")
         {
-            [60,67,63,70,74,72,76,79,80,96,86,94,0] @=> chords;
+            [60,67,63,70,74,72,75,79,80,96,86,94,0] @=> chords;
             return chords;
         }
         if(note == "C#m" || note == "c#m" || note == "do#m" || note == "Do#m" || note == "Dbm" || note == "dbm" || note == "rebm" || note == "Rebm")
@@ -756,6 +756,9 @@ public class Notes
         {
             [0, 2, 4, 6, 7, 9, 10] @=> notes;//pseudo indian lydian
             return notes;
+        }
+        else {
+          <<< "Not a mode in this library" >>>;
         }
       }
     }
