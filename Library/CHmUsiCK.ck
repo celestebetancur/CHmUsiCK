@@ -61,9 +61,9 @@ public class Chmusick extends Chubgraph {
     }
     public int toNote(int note)
     {
-        maybe => int trig;
-        if(trig == 1)
-          return note;
+        if(maybe)
+            return note;
+        return 0;
     }
     public int[] trigToNote(int pattern[] ,int note)
     {
@@ -158,6 +158,7 @@ public class Chmusick extends Chubgraph {
         }
         return pattern;
     }
+
     public int[] reverse(SndBuf buffer){
       buffer => outlet;
       buffer.samples() => int total;
@@ -168,6 +169,7 @@ public class Chmusick extends Chubgraph {
       }
       return int toReturn[0];;
     }
+
     public int[] density(int pattern[],int times)
     {
         int toReturn[0];
@@ -181,6 +183,7 @@ public class Chmusick extends Chubgraph {
         }
         return toReturn;
     }
+
     public int[] degrade(int pattern[])
     // randomly removes non zero events of an int array
     {
@@ -193,6 +196,7 @@ public class Chmusick extends Chubgraph {
         }
         return pattern;
     }
+
     public int[] every(int parameter)
     // fills an array of parameter size with ones
     {
@@ -214,6 +218,7 @@ public class Chmusick extends Chubgraph {
         }
         return everyArray;
     }
+
     public int[] every(int note, int parameter)
     // fills an array -parameter sized-  with note
     {
@@ -228,6 +233,7 @@ public class Chmusick extends Chubgraph {
 
         return everyArray;
     }
+
     public int[] randomize(int pattern[])
     //shuffle pattern
     {
@@ -242,6 +248,7 @@ public class Chmusick extends Chubgraph {
         }
         return pattern;
     }
+
     public int[] granularize(int array[], int howmany)
     {
         int granularized[0];
@@ -255,6 +262,7 @@ public class Chmusick extends Chubgraph {
         }
         return granularized;
     }
+
     public int[] transpose(int pattern[], int param)
     // transpose note by param
     {
@@ -270,6 +278,7 @@ public class Chmusick extends Chubgraph {
         }
         return newPattern;
     }
+
     public int[] rotate(int pattern[])
     // rotates int array pattern by one
     {
@@ -283,6 +292,7 @@ public class Chmusick extends Chubgraph {
         }
         return newPattern;
     }
+
     public int[] rotate(int pattern[], int move)
     // rotates int array pattern by move positions
     {
@@ -295,6 +305,7 @@ public class Chmusick extends Chubgraph {
         }
         return pattern;
     }
+
     public int counter(int pattern[])
     // retunrs the number of non zero positions in int array
     {
@@ -309,6 +320,7 @@ public class Chmusick extends Chubgraph {
         }
         return notesOn;
     }
+
     public int counter(float pattern[])
     // returns the number of non zero positions in float array
     {
@@ -323,6 +335,7 @@ public class Chmusick extends Chubgraph {
         }
         return notesOn;
     }
+
     public int[] densify(int pattern[], float parameter)
     //densify or degrade an array with a float parameter as percentage
     {
@@ -381,6 +394,7 @@ public class Chmusick extends Chubgraph {
         }
         return toReturn;
     }
+
     public int[] palindrome(int pattern[])
     // returns the same patern and the reversed appended
     {
@@ -395,6 +409,7 @@ public class Chmusick extends Chubgraph {
         }
         return toReturn;
     }
+
     public int[] arpegiate(int pattern[], int times)
     {
         int toReturn[pattern.size()*times];
@@ -419,6 +434,7 @@ public class Chmusick extends Chubgraph {
         }
         return toReturn;
     }
+
     public int[] concat(int toConcat[][]){
         int toReturn[0];
         for(0 => int i; i < toConcat.size(); i++){
@@ -428,9 +444,11 @@ public class Chmusick extends Chubgraph {
         }
         return toReturn;
     }
+
     public float bpmToRate(int real, float target){
         return target / (real*1.0);
     }
+
     public void grain(SndBuf buf, float duration , int position, float pitch, int randompos, float randpitch)
     {
         buf => Envelope e => outlet;
@@ -454,6 +472,7 @@ public class Chmusick extends Chubgraph {
             (duration*0.5)::ms => now;
         }
     }
+
     public void play(SndBuf buffer)
     {
         buffer => Envelope envelope => outlet;
@@ -465,6 +484,7 @@ public class Chmusick extends Chubgraph {
             buffer.samples()::samp => now;
         }
     }
+
     public void play(SndBuf buffer, float start)
     {
         if(start >= 0 && start <= 1){
@@ -481,6 +501,7 @@ public class Chmusick extends Chubgraph {
             <<< "Start must be a number between 0 and 1" >>>;
         }
     }
+
     public void play(SndBuf buffer, float start, float end)
     {
         if(start >= 0 && start <= 1 && end >= 0 && end <= 1){
@@ -501,6 +522,7 @@ public class Chmusick extends Chubgraph {
             <<< "Start and End must be numbers between 0 and 1" >>>;
         }
     }
+
     public MidiMsg msgMidi(int command, int channel, int byte1, int byte2)
     {
         MidiMsg msg;
@@ -519,6 +541,7 @@ public class Chmusick extends Chubgraph {
             0 => msg.data3;
         }
     }
+
     public void play(int note[],int div, int channel)
     {
         while(true)
@@ -542,6 +565,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(int note[],int div, int channel, int velocity)
     {
         while(true)
@@ -565,6 +589,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(float note[][] ,int div, int channel)
     {
         while(true)
@@ -587,6 +612,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(SndBuf buffer, int sample[], int mode)
     {
         buffer => Envelope envelope => outlet;
@@ -699,6 +725,7 @@ public class Chmusick extends Chubgraph {
     public void play(SndBuf buffer, int sample[]){
         play(buffer, sample,0);
     }
+
     public void play(SndBuf buffer, float sample[][])
     {
         buffer => outlet;
@@ -717,6 +744,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(FMSynth fm, int sample[], int mode)
     {
         fm => outlet;
@@ -809,6 +837,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(FMSynth fm, int trigger[]){
         play(fm, trigger,0);
     }
@@ -835,6 +864,7 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(FMSynth fm, int sample[][])
     {
         fm => outlet;
@@ -948,9 +978,11 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(Osc osc, int sample[]){
         play(osc, sample,0);
     }
+
     public void play(StkInstrument osc, int sample[], int mode)
     {
       /*BlowBotl; BandedWG; Wurley; TubeBell; Bowed;
@@ -1052,9 +1084,11 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(StkInstrument osc, int sample[]){
         play(osc, sample,0);
     }
+
     public void play(SndBuf buffer, string sample[], int mode)
     {
         buffer => Envelope envelope => outlet;
@@ -1151,9 +1185,11 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void play(SndBuf buffer, string sample[]){
         play(buffer,sample,0);
     }
+
     public void playF(SndBuf buffer, int sample[], int mode)
     {
         buffer => Envelope envelope => outlet;
@@ -1185,9 +1221,11 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void playF(SndBuf buffer, int sample[]){
         play(buffer,sample,8);
     }
+
     public void playC(SndBuf buffer, int sample[], int mode)
     {
         buffer => Envelope envelope => outlet;
@@ -1220,9 +1258,11 @@ public class Chmusick extends Chubgraph {
             }
         }
     }
+
     public void playC(SndBuf buffer, int sample[]){
         play(buffer,sample,8);
     }
+    
     /*public void RB(SndBuf buf, float init, float end){
 
         Std.system("python samples.py"); //write txt file with samples folder

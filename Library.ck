@@ -2,7 +2,7 @@
 //  Library.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 25/06/15.
+//  Created by Celeste Betancur on 25/06/15.
 //
 //
 
@@ -11,7 +11,6 @@ Machine.add(me.dir() + "/Library/STATIC.ck");
 Machine.add(me.dir() + "/Library/Buffer.ck");
 Machine.add(me.dir() + "/Library/NotesClass.ck");
 Machine.add(me.dir() + "/Library/FMSynthClass.ck");
-Machine.add(me.dir() + "/Library/Axiom.ck");
 Machine.add(me.dir() + "/Library/CHmUsiCK.ck");
 Machine.add(me.dir() + "/Library/SyncClass.ck");
 Machine.add(me.dir() + "/Library/HarmonyClass.ck");

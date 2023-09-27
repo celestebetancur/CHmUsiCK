@@ -1,4 +1,4 @@
-public class Buffer extends Chubgraph{
+public class Buffer extends Chugraph{
 
     new SndBuf @=> static SndBuf @ d1;
     new SndBuf @=> static SndBuf @ d2;

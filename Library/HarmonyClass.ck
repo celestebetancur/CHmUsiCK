@@ -2,7 +2,7 @@
 //  SynthClass.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 18/10/14.
+//  Created by Celeste Betancur on 18/10/14.
 //
 
 public class Harmony extends Chmusick

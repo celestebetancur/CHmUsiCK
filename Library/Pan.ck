@@ -2,7 +2,7 @@
 //  Pan.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 10/12/14.
+//  Created by Celeste Betancur on 10/12/14.
 //
 
 public class Pan extends Chmusick

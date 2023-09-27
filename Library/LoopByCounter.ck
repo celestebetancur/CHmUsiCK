@@ -2,7 +2,7 @@
 //  Loop.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 18/10/14.
+//  Created by Celeste Betancur on 18/10/14.
 //  Modified 24/06/15.
 //  Testing ram overflow fix 1/03/2017.
 

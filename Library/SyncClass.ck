@@ -2,7 +2,7 @@
 //  SyncClass.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 04/11/14.
+//  Created by Celeste Betancur on 04/11/14.
 //  
 //
 

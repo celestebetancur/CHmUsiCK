@@ -2,12 +2,11 @@
 //  FMSynth.ck
 //  CHmUsiCK
 //
-//  Created by Esteban Betancur on 18/10/14.
-//  Copyright (c) 2014 Esteban Betancur. All rights reserved.
+//  Created by Celeste Betancur on 18/10/14.
 //
 
 
-public class FMSynth extends Chubgraph
+public class FMSynth extends Chugraph
 {
 
     SinOsc modulator => ADSR envelope => SinOsc carrier => Envelope env => Gain Normalize => outlet;
