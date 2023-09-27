@@ -27,7 +27,7 @@ mv miniAudicle ~/
 In a terminal
 
 ```bash
-$ chuck --loop Library.ck
+$ chuck Library.ck
 ```
 
 Edit the file called LiveCode.ck and save changes
